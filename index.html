@@ -19,8 +19,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2'/></svg>">
 
   <!-- Estilos da Aplicação -->
-  <link rel="stylesheet" href="assets/css/style.css?v=3.5">
-  <link rel="stylesheet" href="assets/css/components.css?v=3.5">
+  <link rel="stylesheet" href="assets/css/style.css?v=4.0">
+  <link rel="stylesheet" href="assets/css/components.css?v=4.0">
 </head>
 <body>
   <!-- Orbe Luminosa Central Flutuante para o Modo Escuro -->
@@ -87,7 +87,7 @@
           </span>
         </button>
 
-        <button class="mobile-toggle" aria-label="Abrir menu de navegação" id="mobile-toggle" aria-expanded="false">
+        <button type="button" class="mobile-toggle" aria-label="Abrir menu de navegação" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-dropdown-menu">
           <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -100,66 +100,66 @@
         </button>
       </div>
     </div>
-
-    <!-- Menu Dropdown Compacto (Expansão fluida abaixo do header) -->
-    <nav class="mobile-dropdown-menu" id="mobile-dropdown-menu" aria-label="Menu de navegação móvel">
-      <div class="mobile-dropdown-inner">
-        <ul class="mobile-dropdown-links">
-          <li>
-            <a href="#diretrizes" class="mobile-dropdown-link">
-              <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              <span>Temas</span>
-            </a>
-          </li>
-          <li>
-            <a href="#checklists" class="mobile-dropdown-link">
-              <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m9 11 3 3L22 4"></path>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-              </svg>
-              <span>Checklists</span>
-            </a>
-          </li>
-          <li>
-            <a href="#duvidas" class="mobile-dropdown-link">
-              <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-              <span>Dúvidas</span>
-            </a>
-          </li>
-          <li>
-            <a href="#fontes-oficiais" class="mobile-dropdown-link">
-              <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
-                <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
-                <path d="M7 21h10"></path>
-                <path d="M12 3v18"></path>
-              </svg>
-              <span>Legislação</span>
-            </a>
-          </li>
-          <li class="mobile-dropdown-cta-item">
-            <a href="https://forms.gle/CNi8nQm6ViK3J8j4A" target="_blank" rel="noopener noreferrer" class="mobile-dropdown-cta">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-              <span>Diagnóstico</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
   </header>
+
+  <!-- Menu Dropdown Compacto (Top-level overlay independente, sem risco de clipping pelo header) -->
+  <nav class="mobile-dropdown-menu" id="mobile-dropdown-menu" aria-label="Menu de navegação móvel">
+    <div class="mobile-dropdown-inner">
+      <ul class="mobile-dropdown-links">
+        <li>
+          <a href="#diretrizes" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>Temas</span>
+          </a>
+        </li>
+        <li>
+          <a href="#checklists" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 11 3 3L22 4"></path>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+            <span>Checklists</span>
+          </a>
+        </li>
+        <li>
+          <a href="#duvidas" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <span>Dúvidas</span>
+          </a>
+        </li>
+        <li>
+          <a href="#fontes-oficiais" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+              <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+              <path d="M7 21h10"></path>
+              <path d="M12 3v18"></path>
+            </svg>
+            <span>Legislação</span>
+          </a>
+        </li>
+        <li class="mobile-dropdown-cta-item">
+          <a href="https://forms.gle/CNi8nQm6ViK3J8j4A" target="_blank" rel="noopener noreferrer" class="mobile-dropdown-cta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Diagnóstico</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
   <!-- Backdrop suave para fechar ao tocar fora -->
   <div class="mobile-dropdown-backdrop" id="dropdown-backdrop" aria-hidden="true"></div>
@@ -1059,8 +1059,8 @@
   </footer>
 
   <!-- Scripts Modulares -->
-  <script src="assets/js/checklist.js?v=3.5"></script>
-  <script src="assets/js/rating.js?v=3.5"></script>
-  <script src="assets/js/app.js?v=3.5"></script>
+  <script src="assets/js/checklist.js?v=4.0"></script>
+  <script src="assets/js/rating.js?v=4.0"></script>
+  <script src="assets/js/app.js?v=4.0"></script>
 </body>
 </html>

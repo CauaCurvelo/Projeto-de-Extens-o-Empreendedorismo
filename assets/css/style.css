@@ -292,7 +292,7 @@ a:hover {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -1375,7 +1375,7 @@ mark.search-match {
   .site-header {
     width: 100%;
     max-width: 100%;
-    overflow-x: clip;
+    overflow: visible !important;
   }
 
   .site-header .nav-container {
@@ -1451,6 +1451,7 @@ mark.search-match {
     user-select: none;
     -webkit-user-select: none;
     overflow: hidden;
+    z-index: 1001;
     transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
   }
 
@@ -1504,6 +1505,7 @@ mark.search-match {
 .mobile-dropdown-backdrop {
   position: fixed;
   top: 68px;
+  top: var(--header-actual-height, 68px);
   left: 0;
   right: 0;
   bottom: 0;
@@ -1513,7 +1515,7 @@ mark.search-match {
   background: rgba(15, 23, 42, 0.4);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
-  z-index: 99;
+  z-index: 997;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -1527,8 +1529,9 @@ mark.search-match {
 }
 
 .mobile-dropdown-menu {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 68px;
+  top: var(--header-actual-height, 68px);
   left: 0;
   right: 0;
   width: 100%;
@@ -1546,11 +1549,11 @@ mark.search-match {
               transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
               opacity 0.22s ease,
               visibility 0.3s ease;
-  z-index: 101;
+  z-index: 998;
 }
 
 .mobile-dropdown-menu.open {
-  max-height: 420px;
+  max-height: 480px;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

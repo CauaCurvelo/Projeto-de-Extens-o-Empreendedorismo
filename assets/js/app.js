@@ -27,9 +27,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadContent() {
   try {
-    const response = await fetch('assets/data/content.json?v=3.5');
-    if (!response.ok) throw new Error('Não foi possível carregar o arquivo content.json');
-    appData = await response.json();
+    if (window.__APP_DATA__) {
+      appData = window.__APP_DATA__;
+    } else {
+      const response = await fetch('assets/data/content.json?v=4.0');
+      if (!response.ok) throw new Error('Não foi possível carregar o arquivo content.json');
+      appData = await response.json();
+    }
 
     renderModules(appData.modules);
     renderCategoryTabs(appData.modules);
@@ -448,13 +452,22 @@ function initNavigation() {
   const dropdown = document.getElementById('mobile-dropdown-menu');
   const backdrop = document.getElementById('dropdown-backdrop');
 
+  const updateHeaderHeight = () => {
+    if (header) {
+      const h = header.offsetHeight || 68;
+      document.documentElement.style.setProperty('--header-actual-height', `${h}px`);
+      if (dropdown) dropdown.style.top = `${h}px`;
+      if (backdrop) backdrop.style.top = `${h}px`;
+    }
+  };
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
       header?.classList.add('scrolled');
     } else {
       header?.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 
   let isMenuOpen = false;
   let menuOpenedTime = 0;
@@ -462,6 +475,7 @@ function initNavigation() {
   const openMenu = () => {
     isMenuOpen = true;
     menuOpenedTime = Date.now();
+    updateHeaderHeight();
     dropdown?.classList.add('open');
     backdrop?.classList.add('active');
     toggleBtn?.classList.add('active');
@@ -469,9 +483,8 @@ function initNavigation() {
   };
 
   const closeMenu = (force = false) => {
-    // Bloqueia qualquer fechamento nos primeiros 500ms (a menos que o usuário tenha clicado em um link de navegação)
-    // Isso torna IMPOSSÍVEL que ghost clicks, rebotes táteis ou eventos de layout do iOS Safari fechem o menu rápido
-    if (!force && Date.now() - menuOpenedTime < 500) {
+    // Bloqueia qualquer fechamento nos primeiros 400ms (a menos que seja clique forçado em link de navegação)
+    if (!force && Date.now() - menuOpenedTime < 400) {
       return;
     }
     isMenuOpen = false;
@@ -482,16 +495,24 @@ function initNavigation() {
   };
 
   if (toggleBtn) {
-    toggleBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      e.stopPropagation();
+    let lastToggleTime = 0;
+    const handleToggle = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const now = Date.now();
+      if (now - lastToggleTime < 350) return;
+      lastToggleTime = now;
 
       if (isMenuOpen) {
         closeMenu();
       } else {
         openMenu();
       }
-    });
+    };
+
+    toggleBtn.addEventListener('click', handleToggle);
   }
 
   if (backdrop) {
@@ -499,12 +520,16 @@ function initNavigation() {
       e.preventDefault();
       closeMenu();
     });
+    backdrop.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closeMenu();
+    }, { passive: false });
   }
 
   if (dropdown) {
     dropdown.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        closeMenu(true); // Força fechamento quando o usuário escolhe navegar para uma seção
+        closeMenu(true); // Força fechamento imediato quando o usuário clica no item para rolar até a seção
       });
     });
   }
@@ -516,7 +541,7 @@ function initNavigation() {
     }
   });
 
-  // Fecha o menu apenas se a LARGURA da tela mudar para desktop (ignora redimensionamento vertical da barra do Safari no iOS)
+  // Fecha o menu apenas se a LARGURA da tela mudar para desktop
   let lastWindowWidth = window.innerWidth;
   window.addEventListener('resize', () => {
     const currentWidth = window.innerWidth;
@@ -526,7 +551,10 @@ function initNavigation() {
         closeMenu(true);
       }
     }
+    updateHeaderHeight();
   });
+
+  updateHeaderHeight();
 }
 
 /**

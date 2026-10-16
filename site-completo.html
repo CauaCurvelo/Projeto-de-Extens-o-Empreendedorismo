@@ -20,6 +20,7 @@
 
   
   <style>
+/* === style.css === */
 /* ==========================================================================
    Empreendedorismo em Foco — Design System & Layout Principal
    Tipografia: Plus Jakarta Sans
@@ -51,7 +52,7 @@
 
   /* Bordas e Sombras */
   --border-subtle: #e2e8f0;
-  --border-focus: #0f766e;
+  --border-focus: #1d4ed8;
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
@@ -66,6 +67,52 @@
   --transition-normal: 0.28s ease;
 }
 
+/* ==========================================================================
+   Modo Escuro — Preto Verdadeiro (True Pitch Black / OLED Black #000000)
+   Contraste máximo, estética moderna ultra-limpa e fundo 100% preto.
+   ========================================================================== */
+[data-theme="dark"] {
+  --color-primary: #ffffff;
+  --color-primary-light: #e2e8f0;
+  --color-accent: #3b82f6;         /* Blue 500 nítido */
+  --color-accent-light: #60a5fa;   /* Blue 400 */
+  --color-accent-subtle: #18181b;  /* Zinc 900 */
+  --color-accent-gold: #f59e0b;
+  --color-gold-subtle: #271700;
+  
+  /* Superfícies e Fundos 100% Preto Verdadeiro */
+  --bg-page: #000000;              /* Preto Puro / OLED */
+  --bg-surface: #0a0a0a;           /* Superfície Quase Preta */
+  --bg-surface-elevated: #121212;  /* Cards e Elementos Elevados */
+  --bg-subtle: #171717;            /* Fundo Sutil */
+  --bg-card-hover: #1c1c1c;
+  
+  /* Textos */
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-light: #71717a;
+  --text-inverse: #000000;
+
+  /* Bordas e Sombras no Preto Verdadeiro */
+  --border-subtle: #262626;
+  --border-focus: #3b82f6;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.8);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.9);
+  --shadow-lg: 0 14px 28px -4px rgba(0, 0, 0, 0.95);
+}
+
+/* Transição Global Coordenada e Fluida de Tema */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-delay: 0s !important;
+}
+
 /* Reset básico */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -76,6 +123,10 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -84,6 +135,141 @@ body {
   background-color: var(--bg-page);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
+}
+
+/* Luzes Azuis Orgânicas — Estilo Lava Lamp (Gentil, Suave, Flutuando pela Tela Toda) */
+body::before {
+  content: '';
+  position: fixed;
+  top: 10%;
+  left: 10%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 680px;
+  max-height: 680px;
+  border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(29, 78, 216, 0.08) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(120px);
+  transition: opacity 0.35s ease;
+  animation: lavaLampOne 36s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 10%;
+  right: 15%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 60% 40% 50% 50% / 45% 55% 45% 55%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.13) 0%, rgba(30, 64, 175, 0.06) 55%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(130px);
+  transition: opacity 0.35s ease;
+  animation: lavaLampTwo 42s ease-in-out infinite alternate-reverse;
+}
+
+/* Terceira gota fluida que passeia pelo centro e laterais */
+.ambient-glow-orb {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 42vw;
+  height: 42vw;
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14) 0%, rgba(79, 70, 229, 0.05) 50%, transparent 75%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(115px);
+  transition: opacity 0.35s ease;
+  animation: lavaLampThree 48s ease-in-out infinite alternate;
+}
+
+[data-theme="dark"] body::before,
+[data-theme="dark"] body::after,
+[data-theme="dark"] .ambient-glow-orb {
+  opacity: 1;
+}
+
+/* Desativa as orbes de desfoque pesado (120px) no celular para máxima fluidez e 0 travamento */
+@media (max-width: 768px) {
+  body::before,
+  body::after,
+  .ambient-glow-orb {
+    display: none !important;
+  }
+}
+
+/* Movimentos amplos e fluidos imitando cera de lâmpada de lava */
+@keyframes lavaLampOne {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(35vw, 25vh) scale(1.15) rotate(45deg);
+  }
+  50% {
+    transform: translate(15vw, 65vh) scale(0.9) rotate(90deg);
+  }
+  75% {
+    transform: translate(-10vw, 40vh) scale(1.1) rotate(135deg);
+  }
+  100% {
+    transform: translate(25vw, -5vh) scale(1) rotate(180deg);
+  }
+}
+
+@keyframes lavaLampTwo {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translate(-40vw, -30vh) scale(1.2) rotate(-60deg);
+  }
+  60% {
+    transform: translate(-20vw, -70vh) scale(0.85) rotate(-120deg);
+  }
+  85% {
+    transform: translate(15vw, -40vh) scale(1.1) rotate(-180deg);
+  }
+  100% {
+    transform: translate(-25vw, 10vh) scale(0.95) rotate(-240deg);
+  }
+}
+
+@keyframes lavaLampThree {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(-20%, -75%) scale(1.18) rotate(70deg);
+  }
+  66% {
+    transform: translate(-80%, -25%) scale(0.9) rotate(140deg);
+  }
+  100% {
+    transform: translate(-30%, -30%) scale(1.12) rotate(210deg);
+  }
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* Tipografia */
@@ -129,7 +315,7 @@ a:hover {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -159,17 +345,17 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, #2563eb 100%);
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.2);
-  transition: transform var(--transition-fast);
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  color: var(--color-accent);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .brand:hover .brand-badge {
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(-3deg);
+  color: #2563eb;
 }
 
 .brand-title {
@@ -180,11 +366,19 @@ a:hover {
   white-space: nowrap;
 }
 
+.mobile-only {
+  display: none;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   list-style: none;
+}
+
+.nav-icon {
+  display: none;
 }
 
 .nav-link {
@@ -225,6 +419,108 @@ a:hover {
   box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-full);
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-primary);
+  cursor: pointer;
+  position: relative;
+  overflow: visible;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  user-select: none;
+  z-index: 99995;
+}
+
+.theme-toggle-btn:focus {
+  outline: none !important;
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 2px;
+}
+
+/* Feedback tátil imediato no celular (pressionar o botão dá efeito de mola instantâneo) */
+.theme-toggle-btn:active {
+  transform: scale(0.88);
+}
+
+/* Hover suave apenas para computadores com mouse (evita travar o botão torto no toque de celular) */
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle-btn:hover {
+    background: var(--bg-surface);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: scale(1.06);
+  }
+}
+
+.theme-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  transform-origin: center center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s ease;
+  pointer-events: none;
+}
+
+/* No tema claro: mostra lua elegante, sol escondido */
+.sun-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.2);
+}
+
+.moon-icon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* No tema escuro: mostra sol dourado vibrante, lua escondida */
+[data-theme="dark"] .sun-icon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .moon-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.2);
+}
+
+/* ==========================================================================
+   Transição de Tema Circular (Bolha Expansiva Revelando o Novo Tema)
+   ========================================================================== */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 99999;
+}
+
 .mobile-toggle {
   display: none;
   background: none;
@@ -240,113 +536,116 @@ a:hover {
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding: 4.5rem 0 3.5rem;
-  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 50%),
-              radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.04), transparent 40%);
+  padding: 5rem 0 4.25rem;
+  background: radial-gradient(circle at 85% 15%, rgba(37, 99, 235, 0.09) 0%, transparent 45%),
+              radial-gradient(circle at 10% 85%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+              var(--bg-page);
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
 }
 
 .hero-wrapper {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
   align-items: center;
 }
 
 .hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 700;
+  gap: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-accent);
-  background: var(--color-accent-subtle);
-  border: 1px solid rgba(29, 78, 216, 0.2);
-  padding: 0.35rem 0.85rem;
+  color: #1d4ed8;
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.95) 0%, rgba(219, 234, 254, 0.7) 100%);
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  padding: 0.4rem 0.95rem;
   border-radius: var(--radius-full);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
 }
 
 .hero-title {
-  font-size: 2.85rem;
+  font-size: clamp(2.35rem, 4.2vw, 3.25rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: var(--color-primary);
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
+  line-height: 1.12;
+  margin-bottom: 1.4rem;
 }
 
 .hero-title span {
-  color: var(--color-accent);
-  background: linear-gradient(135deg, var(--color-accent) 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-desc {
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
-  line-height: 1.65;
-  margin-bottom: 2rem;
-  max-width: 600px;
+  line-height: 1.68;
+  margin-bottom: 2.25rem;
+  max-width: 580px;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
   flex-wrap: wrap;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background-color: var(--color-accent);
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.8rem 1.5rem;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.75rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 3px 10px rgba(29, 78, 216, 0.2);
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.32);
   transition: all var(--transition-fast);
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
 }
 
 .btn-primary:hover {
-  background-color: #2563eb;
-  color: #ffffff;
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.3);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.42);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background-color: #ffffff;
-  color: var(--color-primary);
-  font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.8rem 1.4rem;
+  gap: 0.65rem;
+  background-color: var(--bg-surface);
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.65rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-subtle);
   transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background-color: var(--bg-surface-elevated);
+  border-color: #94a3b8;
+  background-color: var(--bg-subtle);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Destaque Visual Hero */
 .hero-card-preview {
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 1.75rem;
@@ -410,12 +709,14 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border-radius: var(--radius-sm);
-  background: #ffffff;
   margin-top: 0.15rem;
+  flex-shrink: 0;
   color: var(--color-primary);
+}
+
+.pillar-icon-box svg {
+  width: 18px;
+  height: 18px;
 }
 
 .method-pillar.law .pillar-icon-box { color: #2563eb; }
@@ -441,6 +742,12 @@ a:hover {
    ========================================================================== */
 .section {
   padding: 4.5rem 0;
+}
+
+.section-alternate {
+  background-color: var(--bg-subtle);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .section-header {
@@ -472,19 +779,29 @@ a:hover {
 }
 
 /* ==========================================================================
-   Controles: Busca e Filtro de Categorias
+   Controles: Busca e Filtro de Categorias (Design Lindo, Fluido & Editorial)
    ========================================================================== */
 .guide-controls {
-  margin-bottom: 2.5rem;
+  max-width: 980px;
+  margin: 0 auto 3rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06);
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.guide-controls:focus-within {
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 16px 36px -4px rgba(37, 99, 235, 0.12);
 }
 
 .search-box-wrapper {
   position: relative;
-  max-width: 600px;
-  margin: 0 auto;
   width: 100%;
 }
 
@@ -493,90 +810,288 @@ a:hover {
   left: 1.25rem;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--text-light);
+  color: var(--color-accent);
   display: flex;
   align-items: center;
   pointer-events: none;
+  transition: transform var(--transition-fast);
 }
 
 .search-input {
   width: 100%;
-  padding: 0.9rem 1.25rem 0.9rem 3.2rem;
-  border: 1px solid var(--border-subtle);
+  padding: 0.95rem 3rem 0.95rem 3.25rem;
+  border: 1.5px solid var(--border-subtle);
   border-radius: var(--radius-full);
-  background-color: #ffffff;
-  font-size: 0.92rem;
+  background-color: var(--bg-subtle);
+  font-size: 0.9375rem;
   font-family: inherit;
   color: var(--text-main);
-  box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .search-input:focus {
   outline: none;
+  background-color: var(--bg-surface);
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18), inset 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
-.category-tabs {
+.search-clear-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(148, 163, 184, 0.25);
+  border: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.tab-btn {
-  background: #ffffff;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-full);
-  padding: 0.45rem 1.1rem;
-  font-size: 0.84rem;
-  font-weight: 600;
   color: var(--text-muted);
   cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-@media (max-width: 768px) {
-  .guide-controls {
-    margin-bottom: 1.5rem;
-    gap: 0.85rem;
-  }
+.search-clear-btn:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  transform: translateY(-50%) scale(1.1);
+}
 
-  .category-tabs {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    justify-content: flex-start !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch !important;
-    padding: 0.5rem 1rem !important;
-    margin: 0 -1.5rem !important;
-    scrollbar-width: none !important;
-  }
+/* Category Tabs Carousel */
+.category-tabs-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  width: 100%;
+}
 
-  .category-tabs::-webkit-scrollbar {
-    display: none !important;
-  }
+.category-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0.35rem 0.2rem;
+  width: 100%;
+}
 
-  .tab-btn {
-    white-space: nowrap !important;
-    flex-shrink: 0 !important;
-    padding: 0.4rem 0.85rem !important;
-    font-size: 0.8rem !important;
-  }
+.category-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab-btn {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0.52rem 1.15rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 .tab-btn:hover {
+  border-color: #94a3b8;
+  color: var(--color-accent);
+  background: var(--bg-subtle);
+  transform: translateY(-1px);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  border-color: #1d4ed8;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(29, 78, 216, 0.3);
+  transform: translateY(-1px);
+}
+
+.tabs-scroll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.tabs-scroll-btn:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+  transform: scale(1.08);
+  box-shadow: 0 3px 10px rgba(29, 78, 216, 0.25);
+}
+
+.tabs-scroll-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .guide-controls {
+    padding: 0.85rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-md);
+    gap: 0.75rem;
+  }
+
+  .tabs-scroll-btn {
+    display: none; /* Em mobile o usuário faz swipe com o dedo com total fluidez */
+  }
+
+  .tab-btn {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.85rem;
+  }
+
+}
+
+/* Sugestões Rápidas de Busca */
+.search-suggestions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  width: 100%;
+}
+
+.suggestions-label {
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.78rem;
+}
+
+.suggestion-chips {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.suggestion-chip {
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.suggestion-chip:hover {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: var(--color-accent);
+}
+
+.suggestion-chip.active {
+  background: #dbeafe;
   border-color: var(--color-accent);
   color: var(--color-accent);
 }
 
-.tab-btn.active {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  color: #ffffff;
-  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.2);
+/* Regras Mobile Específicas para Linha Horizontal de Sugestões */
+@media (max-width: 768px) {
+  .search-suggestions {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 0.45rem !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .suggestions-label {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    font-size: 0.72rem !important;
+  }
+
+  .suggestion-chips {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    padding: 0.2rem 0 !important;
+    width: 100% !important;
+    gap: 0.4rem !important;
+  }
+
+  .suggestion-chips::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .suggestion-chip {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    padding: 0.25rem 0.65rem !important;
+    font-size: 0.72rem !important;
+  }
+}
+
+/* Barra de Status e Contador de Resultados */
+.search-results-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-subtle);
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.results-count-text strong {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.results-reset-btn {
+  background: none;
+  border: none;
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.results-reset-btn:hover {
+  color: #1e40af;
+}
+
+/* Highlight de termos pesquisados */
+mark.search-match {
+  background-color: #fef08a;
+  color: #854d0e;
+  font-weight: 600;
+  padding: 0.05rem 0.2rem;
+  border-radius: 3px;
 }
 
 /* ==========================================================================
@@ -665,7 +1180,7 @@ a:hover {
 }
 
 .diagnosis-content {
-  flex: 1 1 320px;
+  flex: 1 1 auto;
 }
 
 .diagnosis-content h4 {
@@ -688,19 +1203,43 @@ a:hover {
 
 @media (max-width: 768px) {
   .bottom-diagnosis-card {
-    padding: 1.5rem 1.25rem;
-    margin-top: 2.5rem;
+    padding: 1.25rem 1rem;
+    margin-top: 1.5rem;
+    border-radius: var(--radius-md);
   }
 
   .diagnosis-inner {
     flex-direction: column;
     text-align: center;
-    gap: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  .diagnosis-icon-badge {
+    width: 44px;
+    height: 44px;
+  }
+
+  .diagnosis-content {
+    flex: none;
+    width: 100%;
+  }
+
+  .diagnosis-content h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .diagnosis-content p {
+    font-size: 0.85rem;
+    margin-bottom: 0;
   }
 
   .diagnosis-cta {
     width: 100%;
     justify-content: center;
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
   }
 }
 
@@ -855,25 +1394,120 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
+  /* Header compacto no celular puxando logo e título para a esquerda e mantendo botões dentro da tela */
+  .site-header {
+    width: 100%;
+    max-width: 100%;
+    overflow: visible !important;
   }
 
-  .nav-links.open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 72px;
-    left: 0;
+  .site-header .nav-container {
+    padding: 0.65rem 0.75rem;
     width: 100%;
-    background: #ffffff;
-    padding: 1.5rem;
-    box-shadow: var(--shadow-lg);
-    border-bottom: 1px solid var(--border-subtle);
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.4rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 1;
+    min-width: 0;
+    margin-left: 0;
+  }
+
+  .brand-badge {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+  }
+
+  .brand-badge svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .brand-title {
+    font-size: clamp(0.76rem, 3.8vw, 0.9rem);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .desktop-navigation {
+    display: none !important;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+    margin-right: 0;
+  }
+
+  .theme-toggle-btn {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
   }
 
   .mobile-toggle {
-    display: block;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: var(--radius-full);
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    color: var(--color-primary);
+    cursor: pointer;
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+    overflow: hidden;
+    z-index: 1001;
+    transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  }
+
+  .mobile-toggle svg {
+    position: absolute;
+    pointer-events: none;
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  }
+
+  .mobile-toggle .hamburger-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+
+  .mobile-toggle .close-icon {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+
+  .mobile-toggle.active {
+    background: var(--bg-surface);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .mobile-toggle.active .hamburger-icon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  .mobile-toggle.active .close-icon {
+    opacity: 1;
+    transform: rotate(0) scale(1);
   }
 
   .callout-inner {
@@ -888,6 +1522,298 @@ a:hover {
   }
 }
 
+/* ==========================================================================
+   Menu Dropdown Compacto (Expansão fluida abaixo do header via Hamburger)
+   ========================================================================== */
+.mobile-dropdown-backdrop {
+  position: fixed;
+  top: 68px;
+  top: var(--header-actual-height, 68px);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100vh - 68px);
+  height: calc(100dvh - 68px);
+  background: rgba(15, 23, 42, 0.4);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 997;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.24s ease, visibility 0.24s ease;
+}
+
+.mobile-dropdown-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-dropdown-menu {
+  position: fixed;
+  top: 68px;
+  top: var(--header-actual-height, 68px);
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-subtle);
+  box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.04);
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  transform: translateY(-6px);
+  transform-origin: top center;
+  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s ease,
+              visibility 0.3s ease;
+  z-index: 998;
+}
+
+.mobile-dropdown-menu.open {
+  max-height: 480px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+@media (min-width: 769px) {
+  .mobile-dropdown-menu,
+  .mobile-dropdown-backdrop {
+    display: none !important;
+  }
+}
+
+.mobile-dropdown-inner {
+  padding: 0.75rem 1rem 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.mobile-dropdown-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.mobile-dropdown-links li {
+  width: 100%;
+}
+
+.mobile-dropdown-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-main);
+  text-decoration: none;
+  width: 100%;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-dropdown-link:hover,
+.mobile-dropdown-link:active {
+  background: var(--bg-subtle);
+  color: var(--color-accent);
+}
+
+.mobile-dropdown-icon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.mobile-dropdown-cta-item {
+  margin-top: 0.4rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.mobile-dropdown-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-accent);
+  color: #ffffff !important;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  width: 100%;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-dropdown-cta:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Ajustes Específicos & Refinamento Visual para Modo Escuro (Preto Puro)
+   ========================================================================== */
+[data-theme="dark"] .site-header {
+  background-color: rgba(0, 0, 0, 0.92);
+  border-bottom-color: var(--border-subtle);
+}
+
+[data-theme="dark"] .nav-link {
+  color: #a1a1aa;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
+  color: #60a5fa;
+  background-color: #171717;
+}
+
+[data-theme="dark"] .hero-section {
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(37, 99, 235, 0.12), transparent 45%),
+              #000000;
+  border-bottom-color: var(--border-subtle);
+}
+
+[data-theme="dark"] .hero-card-preview {
+  background: #0a0a0a;
+  border-color: #262626;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] .method-pillar {
+  background: #0d0d0d;
+  border: 1px solid #262626;
+}
+
+[data-theme="dark"] .guide-controls {
+  background: #0a0a0a;
+  border-color: #262626;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .search-input {
+  background-color: #182234;
+  color: #f8fafc;
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .search-input:focus {
+  background-color: #111827;
+  border-color: var(--color-accent);
+}
+
+[data-theme="dark"] .tab-btn {
+  background: #182234;
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .tab-btn:hover {
+  background: #1e293b;
+  color: #60a5fa;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .tab-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+[data-theme="dark"] .tabs-scroll-btn {
+  background: #182234;
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .tabs-scroll-btn:hover {
+  background: #1e293b;
+  color: #60a5fa;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .suggestion-chip {
+  background: #182234;
+  border-color: #1e293b;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .suggestion-chip:hover {
+  background: #1e293b;
+  border-color: #3b82f6;
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .suggestion-chip.active {
+  background: #1e3a8a;
+  border-color: #3b82f6;
+  color: #93c5fd;
+}
+
+[data-theme="dark"] mark.search-match {
+  background-color: #713f12;
+  color: #fef08a;
+}
+
+[data-theme="dark"] .source-card {
+  background: #111827;
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .source-card:hover {
+  background: #182234;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .bottom-diagnosis-card {
+  background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .btn-secondary {
+  background: #182234;
+  color: #f8fafc;
+  border-color: #334155;
+}
+
+[data-theme="dark"] .btn-secondary:hover {
+  background: #1e293b;
+  border-color: var(--color-accent);
+}
+
+[data-theme="dark"] .mobile-dropdown-menu {
+  background: #0a0a0a;
+  border-bottom-color: #262626;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
+}
+
+[data-theme="dark"] .mobile-dropdown-link:hover,
+[data-theme="dark"] .mobile-dropdown-link:active {
+  background: #171717;
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .mobile-dropdown-cta-item {
+  border-top-color: #262626;
+}
+
+
+/* === components.css === */
 /* ==========================================================================
    Empreendedorismo em Foco — Componentes Específicos
    1. Cards em 3 Camadas (Lei / Prática / Prevenção)
@@ -954,63 +1880,70 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
+  width: 100%;
 }
 
-/* O Card em si */
+/* O Card em si (Tri-Layer Design Elevado e Centralizado) */
 .guide-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
   display: flex;
   flex-direction: column;
-  flex: 1 1 calc(50% - 1.5rem);
-  min-width: 340px;
+  position: relative;
+  flex: 1 1 360px;
   max-width: 580px;
+  min-width: 320px;
 }
 
 .guide-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(29, 78, 216, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.1);
+  border-color: rgba(37, 99, 235, 0.45);
 }
 
 .card-top {
-  padding: 1.25rem 1.4rem;
+  padding: 1.4rem 1.6rem;
   border-bottom: 1px solid var(--border-subtle);
-  background: #ffffff;
-  min-height: 72px;
+  background: var(--bg-surface);
+  min-height: 76px;
   display: flex;
   align-items: center;
 }
 
 .card-title {
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--color-primary);
   line-height: 1.35;
+  letter-spacing: -0.015em;
   margin: 0;
 }
 
 /* Camadas de Conteúdo */
 .card-layers {
-  padding: 1.25rem 1.4rem;
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  gap: 0.85rem;
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
   flex-grow: 1;
 }
 
 .layer-item {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  padding: 0.85rem 1rem;
-  border-radius: var(--radius-md);
-  transition: background var(--transition-fast);
+  gap: 0.4rem;
+  padding: 0.95rem 1.15rem;
+  border-radius: 10px;
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.layer-item:hover {
+  transform: scale(1.01);
 }
 
 .layer-label {
@@ -1020,44 +1953,44 @@ a:hover {
   font-size: 0.72rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .layer-text {
-  font-size: 0.86rem;
-  line-height: 1.55;
+  font-size: 0.88rem;
+  line-height: 1.6;
   color: var(--text-muted);
 }
 
 /* Cores e Bordas das 3 Camadas */
 .layer-law {
-  background-color: #f8fafc;
-  border-left: 3px solid #3b82f6;
-  border-top: 1px solid #f1f5f9;
-  border-right: 1px solid #f1f5f9;
-  border-bottom: 1px solid #f1f5f9;
+  background-color: rgba(239, 246, 255, 0.7);
+  border-left: 3.5px solid #2563eb;
+  border-top: 1px solid rgba(219, 234, 254, 0.6);
+  border-right: 1px solid rgba(219, 234, 254, 0.6);
+  border-bottom: 1px solid rgba(219, 234, 254, 0.6);
 }
 .layer-law .layer-label {
   color: #1d4ed8;
 }
 
 .layer-practice {
-  background-color: #fefce8;
-  border-left: 3px solid #eab308;
-  border-top: 1px solid #fef9c3;
-  border-right: 1px solid #fef9c3;
-  border-bottom: 1px solid #fef9c3;
+  background-color: rgba(254, 252, 232, 0.7);
+  border-left: 3.5px solid #d97706;
+  border-top: 1px solid rgba(254, 243, 199, 0.6);
+  border-right: 1px solid rgba(254, 243, 199, 0.6);
+  border-bottom: 1px solid rgba(254, 243, 199, 0.6);
 }
 .layer-practice .layer-label {
-  color: #a16207;
+  color: #b45309;
 }
 
 .layer-prevent {
-  background-color: #f0fdf4;
-  border-left: 3px solid #10b981;
-  border-top: 1px solid #dcfce7;
-  border-right: 1px solid #dcfce7;
-  border-bottom: 1px solid #dcfce7;
+  background-color: rgba(240, 253, 244, 0.7);
+  border-left: 3.5px solid #10b981;
+  border-top: 1px solid rgba(220, 252, 231, 0.6);
+  border-right: 1px solid rgba(220, 252, 231, 0.6);
+  border-bottom: 1px solid rgba(220, 252, 231, 0.6);
 }
 .layer-prevent .layer-label {
   color: #047857;
@@ -1065,8 +1998,8 @@ a:hover {
 
 /* Rodapé do Card com a Base Legal */
 .card-footer {
-  padding: 0.75rem 1.4rem;
-  background: #f8fafc;
+  padding: 0.85rem 1.6rem;
+  background: var(--bg-subtle);
   border-top: 1px solid var(--border-subtle);
   display: flex;
   align-items: center;
@@ -1085,75 +2018,402 @@ a:hover {
 }
 
 /* ==========================================================================
-   2. Checklists Interativos
+   2. Checklists Interativos (Design Ergonômico & Tátil)
    ========================================================================== */
-.checklists-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+/* Barra de Controles Superiores do Carrossel */
+.carousel-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.2rem;
 }
 
-.checklist-card {
+/* Pílulas de Seleção Direta de Tema */
+.carousel-pill-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-surface);
+  padding: 0.35rem 0.4rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  overflow-x: auto;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+.carousel-pill-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.pill-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.15rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pill-tab .pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border-subtle);
+  transition: all 0.22s ease;
+}
+
+.pill-tab:hover {
+  color: var(--color-primary);
+  background: var(--bg-subtle);
+}
+
+.pill-tab.active {
+  background: var(--color-accent);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+}
+
+.pill-tab.active .pill-dot {
   background: #ffffff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+/* Grupo de Ações (Contador + Setas) */
+.carousel-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-left: auto;
+}
+
+.carousel-counter {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.carousel-counter strong {
+  font-size: 1.05rem;
+  color: var(--color-accent);
+}
+
+.carousel-arrows {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.carousel-arrow-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-arrow-btn:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+}
+
+.carousel-arrow-btn:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.container.checklists-container-full {
+  max-width: 1360px;
+  padding: 0 1rem;
+}
+
+/* Contêiner da Trilha do Carrossel */
+.checklists-carousel-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.checklists-carousel-track {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  /* Padding lateral para que o card ativo fique no centro exato */
+  padding: 1.5rem calc(50% - 210px) 1.5rem;
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.checklists-carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.checklists-grid.checklists-carousel-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start; /* Permite que cada card mantenha sua própria altura real */
+  gap: 1.75rem;
+  width: max-content;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0;
+}
+
+/* Card Padrão (Laterais Meio Apagados / Dimmed e com degradê para disfarçar o corte) */
+.checklists-carousel-grid .checklist-card {
+  scroll-snap-align: center;
+  flex: 0 0 420px;
+  width: 420px;
+  max-width: 420px;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
-  padding: 1.75rem;
-  box-shadow: var(--shadow-sm);
+  padding: 1.85rem;
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
   display: flex;
   flex-direction: column;
-  transition: all var(--transition-fast);
+  opacity: 0.38;
+  transform: scale(0.92);
+  filter: blur(0.3px);
+  pointer-events: auto;
+  overflow: hidden;
+  position: relative;
+  /* Altura transitando suavemente em ambas as direções (crescer e diminuir) */
+  max-height: var(--active-card-height, 600px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.checklist-card:hover {
-  box-shadow: var(--shadow-md);
+.checklists-carousel-grid .checklist-card:hover {
+  opacity: 0.65;
+  transform: scale(0.95);
+}
+
+/* Card Ativo no Meio (Destaque Total, altura natural suave e sem corte) */
+.checklists-carousel-grid .checklist-card.is-active {
+  opacity: 1;
+  transform: scale(1.02);
+  filter: none;
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.16),
+              0 0 0 1px rgba(37, 99, 235, 0.25);
+  z-index: 2;
+  max-height: var(--active-card-height, 1200px);
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  overflow: visible;
+}
+
+[data-theme="dark"] .checklists-carousel-grid .checklist-card.is-active {
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(37, 99, 235, 0.2),
+              0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+/* Botões Laterais no Desktop */
+.carousel-side-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.carousel-side-btn.prev {
+  left: 6px;
+}
+
+.carousel-side-btn.next {
+  right: 6px;
+}
+
+.carousel-side-btn:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4);
+}
+
+.carousel-side-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Adaptação Mobile: Visualizar card central + pontas dos laterais para incentivar swipe */
+@media (max-width: 768px) {
+  .carousel-side-btn {
+    display: none !important;
+  }
+
+  .checklists-carousel-track {
+    /* Deixa 15% de cada lado vazando o próximo e o anterior */
+    padding: 1rem 12vw 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .checklists-grid.checklists-carousel-grid {
+    gap: 1.25rem;
+  }
+
+  .checklists-carousel-grid .checklist-card {
+    flex: 0 0 76vw;
+    width: 76vw;
+    max-width: 340px;
+    padding: 1.45rem;
+    opacity: 0.45;
+    transform: scale(0.94);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+
+  .checklists-carousel-grid .checklist-card.is-active {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+/* Indicadores / Pontos de Navegação Inferiores (Dots Estáticos Centralizados) */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+  width: max-content;
+  margin: 1.5rem auto 0;
+  padding: 0.4rem 0.8rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
+  position: relative;
+  z-index: 10;
+}
+
+.carousel-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: var(--radius-full);
+  background: var(--border-subtle);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.carousel-dot:hover {
+  background: rgba(37, 99, 235, 0.4);
+}
+
+.carousel-dot.active {
+  width: 24px;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
 }
 
 .checklist-header {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.4rem;
 }
 
 .checklist-header h3 {
   font-size: 1.15rem;
+  font-weight: 800;
   color: var(--color-primary);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.015em;
 }
 
 .checklist-header p {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   color: var(--text-muted);
+  line-height: 1.5;
 }
 
-/* Barra de Progresso */
+/* Barra de Progresso com Gradiente Vivo */
 .progress-container {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.4rem;
 }
 
 .progress-info {
   display: flex;
   justify-content: space-between;
-  font-size: 0.76rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
   color: var(--color-accent);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 .progress-bar-bg {
   width: 100%;
-  height: 7px;
+  height: 8px;
   background-color: var(--bg-subtle);
   border-radius: var(--radius-full);
   overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-accent) 0%, #10b981 100%);
+  background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%);
   width: 0%;
   border-radius: var(--radius-full);
-  transition: width 0.3s ease;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
 }
 
-/* Lista de Itens */
+/* Lista de Itens Táteis */
 .checklist-items {
   list-style: none;
   display: flex;
@@ -1164,45 +2424,66 @@ a:hover {
 
 .checklist-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 0.95rem;
   cursor: pointer;
   user-select: none;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--text-muted);
-  line-height: 1.45;
-  transition: color var(--transition-fast);
+  line-height: 1.5;
+  padding: 0.85rem 1.05rem;
+  border-radius: 10px;
+  background: var(--bg-subtle);
+  border: 1px solid transparent;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .checklist-item:hover {
+  background: var(--bg-surface);
+  border-color: rgba(37, 99, 235, 0.35);
   color: var(--text-main);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.checklist-item.checked {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.3);
+  color: var(--color-primary);
 }
 
 .custom-checkbox {
   flex-shrink: 0;
-  width: 18px;
-  height: 18px;
-  border: 1.5px solid var(--border-subtle);
-  border-radius: 4px;
+  width: 22px;
+  height: 22px;
+  border: 1.8px solid var(--border-subtle);
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2px;
-  transition: all var(--transition-fast);
-  background: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background: var(--bg-surface);
+}
+
+.checklist-item:hover .custom-checkbox {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .custom-checkbox svg {
   display: none;
-  width: 11px;
-  height: 11px;
+  width: 14px;
+  height: 14px;
   stroke: #ffffff;
-  stroke-width: 3;
+  stroke-width: 3.2;
 }
 
 .checklist-item.checked .custom-checkbox {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #38bdf8 100%);
+  border-color: #2563eb;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.45);
+  transform: scale(1.05);
 }
 
 .checklist-item.checked .custom-checkbox svg {
@@ -1212,10 +2493,11 @@ a:hover {
 .checklist-item.checked span {
   text-decoration: line-through;
   color: var(--text-light);
+  opacity: 0.85;
 }
 
 .checklist-actions {
-  margin-top: 1.25rem;
+  margin-top: 1.4rem;
   display: flex;
   justify-content: flex-end;
 }
@@ -1223,12 +2505,12 @@ a:hover {
 .btn-reset-checklist {
   background: none;
   border: none;
-  font-size: 0.76rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   color: var(--text-light);
   cursor: pointer;
-  text-decoration: underline;
   transition: color var(--transition-fast);
+  padding: 0.2rem 0.4rem;
 }
 
 .btn-reset-checklist:hover {
@@ -1236,27 +2518,34 @@ a:hover {
 }
 
 /* ==========================================================================
-   3. Situações do Dia a Dia (FAQ Acordeon)
+   3. Situações do Dia a Dia (FAQ Acordeon com Design Elevado)
    ========================================================================== */
 .faq-grid {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  max-width: 820px;
+  gap: 1rem;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .faq-item {
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-2px);
+  border-color: #94a3b8;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
 }
 
 .faq-item.open {
-  border-color: rgba(29, 78, 216, 0.3);
-  box-shadow: var(--shadow-sm);
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.12);
 }
 
 .faq-trigger {
@@ -1264,53 +2553,64 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.15rem 1.5rem;
+  padding: 1.25rem 1.6rem;
   background: none;
   border: none;
   text-align: left;
   cursor: pointer;
   font-family: inherit;
-  gap: 1rem;
+  gap: 1.2rem;
+  transition: background 0.2s ease;
+}
+
+.faq-trigger:hover {
+  background: var(--bg-subtle);
 }
 
 .faq-question {
-  font-size: 0.98rem;
+  font-size: 1.02rem;
   font-weight: 700;
   color: var(--color-primary);
   line-height: 1.4;
+  letter-spacing: -0.01em;
 }
 
 .faq-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--color-accent);
-  transition: transform var(--transition-fast);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.2s ease, color 0.2s ease;
   flex-shrink: 0;
 }
 
 .faq-item.open .faq-icon {
   transform: rotate(45deg);
+  background: var(--color-accent);
+  color: #ffffff;
 }
 
 .faq-body {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0, 1, 0, 1);
+  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   background: var(--bg-subtle);
   border-top: 1px solid transparent;
 }
 
 .faq-item.open .faq-body {
-  max-height: 400px;
+  max-height: 500px;
   border-top-color: var(--border-subtle);
-  transition: max-height 0.35s ease-in-out;
 }
 
 .faq-answer {
-  padding: 1.25rem 1.5rem;
-  font-size: 0.92rem;
-  line-height: 1.6;
+  padding: 1.35rem 1.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.68;
   color: var(--text-muted);
 }
 
@@ -1464,6 +2764,173 @@ a:hover {
   }
 }
 
+/* ==========================================================================
+   Componentes Específicos no Modo Escuro
+   ========================================================================== */
+[data-theme="dark"] .guide-card {
+  background: #0a0a0a;
+  border-color: #262626;
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="dark"] .guide-card:hover {
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.95);
+  background: #0f0f0f;
+}
+
+[data-theme="dark"] .card-top {
+  background: #0a0a0a;
+  border-bottom-color: #262626;
+}
+
+[data-theme="dark"] .card-title {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .layer-law {
+  background-color: #050b14;
+  border-left-color: #3b82f6;
+  border-top-color: #1e293b;
+  border-right-color: #1e293b;
+  border-bottom-color: #1e293b;
+}
+[data-theme="dark"] .layer-law .layer-label {
+  color: #60a5fa;
+}
+
+[data-theme="dark"] .layer-practice {
+  background-color: #120d06;
+  border-left-color: #f59e0b;
+  border-top-color: #292524;
+  border-right-color: #292524;
+  border-bottom-color: #292524;
+}
+[data-theme="dark"] .layer-practice .layer-label {
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .layer-prevent {
+  background-color: #03120c;
+  border-left-color: #10b981;
+  border-top-color: #064e3b;
+  border-right-color: #064e3b;
+  border-bottom-color: #064e3b;
+}
+[data-theme="dark"] .layer-prevent .layer-label {
+  color: #34d399;
+}
+
+[data-theme="dark"] .card-footer {
+  background: #080808;
+  border-top-color: #262626;
+}
+
+[data-theme="dark"] .base-legal {
+  color: #a1a1aa;
+}
+
+/* Checklists no Modo Escuro */
+[data-theme="dark"] #checklists {
+  background-color: #000000 !important;
+  border-top-color: #262626 !important;
+  border-bottom-color: #262626 !important;
+}
+
+[data-theme="dark"] .checklist-card {
+  background: #0a0a0a;
+  border-color: #262626;
+}
+
+[data-theme="dark"] .checklist-card-header {
+  border-bottom-color: #1e293b;
+}
+
+[data-theme="dark"] .checklist-item {
+  border-color: #1e293b;
+  background: #131c2e;
+}
+
+[data-theme="dark"] .checklist-item:hover {
+  background: #18243b;
+  border-color: #3b82f6;
+}
+
+[data-theme="dark"] .checklist-item.checked {
+  background: #0b2216;
+  border-color: #059669;
+}
+
+[data-theme="dark"] .custom-checkbox {
+  background: #1e293b;
+  border-color: #475569;
+}
+
+[data-theme="dark"] .progress-track {
+  background: #1e293b;
+}
+
+[data-theme="dark"] .checklist-action-btn.secondary {
+  background: #182234;
+  border-color: #334155;
+  color: #cbd5e1;
+}
+
+[data-theme="dark"] .checklist-action-btn.secondary:hover {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+/* Acordeon / FAQ no Modo Escuro */
+[data-theme="dark"] .faq-item {
+  background: #111827;
+  border-color: #1e293b;
+}
+
+[data-theme="dark"] .faq-trigger:hover {
+  background: #182234;
+}
+
+[data-theme="dark"] .faq-body {
+  background: #0b0f19;
+  border-top-color: #1e293b;
+}
+
+/* Alerta de Orientação Especializada no Modo Escuro */
+[data-theme="dark"] .warning-box {
+  background: #1c1917;
+  border-color: #78350f;
+}
+
+[data-theme="dark"] .warning-icon-box {
+  background: #451a03;
+  color: #f59e0b;
+}
+
+[data-theme="dark"] .warning-header h3 {
+  color: #fbbf24;
+}
+
+[data-theme="dark"] .warning-list li {
+  color: #fed7aa;
+}
+
+/* Widget de Avaliação no Modo Escuro */
+[data-theme="dark"] .rating-section {
+  background: #111827;
+  border-color: #1e293b;
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .rating-stats-badge {
+  background: #182234;
+  color: #94a3b8;
+}
+
+[data-theme="dark"] .rating-stats-badge strong {
+  color: #f1f5f9;
+}
+
 </style>
 </head>
 <body>
@@ -1486,8 +2953,8 @@ a:hover {
         <span class="brand-title">Empreendedorismo em Foco</span>
       </a>
 
-      <nav aria-label="Navegação Principal">
-        <ul class="nav-links" id="nav-links">
+      <nav aria-label="Navegação Principal" class="desktop-navigation">
+        <ul class="nav-links">
           <li><a href="#diretrizes" class="nav-link">Temas</a></li>
           <li><a href="#checklists" class="nav-link">Checklists</a></li>
           <li><a href="#duvidas" class="nav-link">Dúvidas</a></li>
@@ -1529,16 +2996,82 @@ a:hover {
           </span>
         </button>
 
-        <button class="mobile-toggle" aria-label="Abrir menu de navegação" id="mobile-toggle">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <button type="button" class="mobile-toggle" aria-label="Abrir menu de navegação" id="mobile-toggle" aria-expanded="false" aria-controls="mobile-dropdown-menu">
+          <svg class="hamburger-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="3" y1="12" x2="21" y2="12"></line>
             <line x1="3" y1="6" x2="21" y2="6"></line>
             <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="close-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
           </svg>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- Menu Dropdown Compacto (Top-level overlay independente, sem risco de clipping pelo header) -->
+  <nav class="mobile-dropdown-menu" id="mobile-dropdown-menu" aria-label="Menu de navegação móvel">
+    <div class="mobile-dropdown-inner">
+      <ul class="mobile-dropdown-links">
+        <li>
+          <a href="#diretrizes" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>Temas</span>
+          </a>
+        </li>
+        <li>
+          <a href="#checklists" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m9 11 3 3L22 4"></path>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+            </svg>
+            <span>Checklists</span>
+          </a>
+        </li>
+        <li>
+          <a href="#duvidas" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            <span>Dúvidas</span>
+          </a>
+        </li>
+        <li>
+          <a href="#fontes-oficiais" class="mobile-dropdown-link">
+            <svg class="mobile-dropdown-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+              <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+              <path d="M7 21h10"></path>
+              <path d="M12 3v18"></path>
+            </svg>
+            <span>Legislação</span>
+          </a>
+        </li>
+        <li class="mobile-dropdown-cta-item">
+          <a href="https://forms.gle/CNi8nQm6ViK3J8j4A" target="_blank" rel="noopener noreferrer" class="mobile-dropdown-cta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            <span>Diagnóstico</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Backdrop suave para fechar ao tocar fora -->
+  <div class="mobile-dropdown-backdrop" id="dropdown-backdrop" aria-hidden="true"></div>
 
   <!-- ========================================================================
        Hero Section
@@ -2388,12 +3921,12 @@ window.__APP_DATA__ = {
       "category": "Vendas & CDC",
       "badge": "Obrigatório",
       "icon": "shield",
-      "title": "2. Regras Gerais para Qualquer Negócio",
+      "title": "Regras Gerais para Qualquer Negócio",
       "summary": "Deveres de quem vende, informação clara, publicidade responsável e cumprimento integral da oferta.",
       "cards": [
         {
           "id": "cdc-deveres",
-          "title": "2.1 Quem vende também assume deveres",
+          "title": "Quem vende também assume deveres",
           "layers": {
             "lei": "O Código de Defesa do Consumidor estabelece direitos básicos, entre eles proteção à vida, saúde e segurança, informação adequada e clara e proteção contra publicidade enganosa ou abusiva. O CDC também disciplina oferta, contratos, vícios, responsabilidade e práticas comerciais.",
             "pratica": "Quem comercializa produtos ou presta serviços assume obrigações legais diretas perante o comprador, mesmo em negócios informais ou de pequeno porte.",
@@ -2403,7 +3936,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "informacao-obrigacao",
-          "title": "2.2 Informação é obrigação, não favor",
+          "title": "Informação é obrigação, não favor",
           "layers": {
             "lei": "Preço, características, composição, quantidade, qualidade, condições da oferta e riscos relevantes devem ser informados de maneira adequada. Uma descrição incompleta pode criar expectativa que o negócio depois não consegue cumprir.",
             "pratica": "Exemplo do guia: se uma confeiteira anuncia 'bolo de chocolate com recheio de morango', mas usa outro recheio ou reduz substancialmente a quantidade sem avisar, comete descumprimento de oferta.",
@@ -2413,7 +3946,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "publicidade-enganosa",
-          "title": "2.3 Publicidade enganosa e abusiva",
+          "title": "Publicidade enganosa e abusiva",
           "layers": {
             "lei": "Publicidade enganosa é aquela inteira ou parcialmente falsa, ou capaz de induzir o consumidor a erro. Publicidade abusiva inclui, entre outras hipóteses, práticas que explorem medo, superstição, deficiência de julgamento da criança ou outras situações previstas no CDC.",
             "pratica": "Omissão de restrições importantes ou apelo a medos e inseguranças para forçar uma venda configura infração ao consumidor.",
@@ -2423,7 +3956,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "publicidade-promessas",
-          "title": "2.4 Não prometa resultado que você não controla",
+          "title": "Não prometa resultado que você não controla",
           "layers": {
             "lei": "Frases que prometem resultados infalíveis geram obrigação de resultado. A comunicação deve corresponder rigorosamente ao que pode ser efetivamente entregue.",
             "pratica": "Expressões como 'resultado garantido', 'sem qualquer risco', 'vai funcionar para todo mundo' ou promessas de cura são extremamente problemáticas, sobretudo em beleza, estética e saúde.",
@@ -2433,7 +3966,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "oferta-vinculante",
-          "title": "2.5 Oferta anunciada precisa ser cumprida",
+          "title": "Oferta anunciada precisa ser cumprida",
           "layers": {
             "lei": "Se a oferta for suficientemente precisa, ela integra a obrigação do fornecedor. Se o fornecedor se recusar a cumprir, o CDC prevê alternativas ao consumidor (exigir o cumprimento forçado, aceitar outro equivalente ou rescindir com restituição).",
             "pratica": "Informou um preço em post, panfleto ou catálogo? Você fica legalmente vinculada àquele valor enquanto a oferta estiver pública.",
@@ -2448,12 +3981,12 @@ window.__APP_DATA__ = {
       "category": "Vendas Online",
       "badge": "Instagram & WhatsApp",
       "icon": "message",
-      "title": "3. Vendas pelo Instagram, WhatsApp e Internet",
+      "title": "Vendas pelo Instagram, WhatsApp e Internet",
       "summary": "Informações prévias obrigatórias, direito de arrependimento (7 dias), encomendas e validade das conversas.",
       "cards": [
         {
           "id": "o-que-deve-aparecer",
-          "title": "3.1 O que deve aparecer antes da contratação",
+          "title": "O que deve aparecer antes da contratação",
           "layers": {
             "lei": "No comércio eletrônico, o Decreto nº 7.962/2013 regulamenta aspectos do CDC e exige informações claras sobre produto, serviço e fornecedor, além de mecanismos para atendimento e exercício do direito de arrependimento.",
             "pratica": "A cliente precisa ter acesso prévio a: produto/serviço detalhado, preço e formas de pagamento, prazo de confecção/entrega, limitações, regras de cancelamento, canais de atendimento e dados do vendedor.",
@@ -2463,7 +3996,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "direito-arrependimento",
-          "title": "3.2 Direito de arrependimento: não confunda",
+          "title": "Direito de arrependimento: não confunda",
           "layers": {
             "lei": "O art. 49 do CDC prevê o direito de desistir da contratação em até 7 dias a contar da assinatura ou do recebimento do produto/serviço quando a contratação ocorrer fora do estabelecimento comercial (telefone, WhatsApp, Instagram, internet).",
             "pratica": "A aplicação do direito depende da forma e das circunstâncias da contratação. Não trate automaticamente qualquer venda online como se a cliente não tivesse direitos.",
@@ -2473,7 +4006,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "venda-encomenda",
-          "title": "3.3 Venda por encomenda",
+          "title": "Venda por encomenda",
           "layers": {
             "lei": "Em produtos personalizados, não trate automaticamente a encomenda como se o consumidor nunca tivesse direitos. A situação concreta e a forma de contratação importam.",
             "pratica": "Desentendimentos com cores, tecidos ou detalhes customizados acontecem quando o combinativo fica vago.",
@@ -2483,7 +4016,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "conversas-whatsapp",
-          "title": "3.4 Conversas no WhatsApp",
+          "title": "Conversas no WhatsApp",
           "layers": {
             "lei": "Mensagens podem registrar o que foi oferecido e combinado, servindo como elementos probatórios de obrigações contratuais.",
             "pratica": "Se um áudio combinou algo diferente do texto inicial e gerou dúvida posterior, o registro documental é o que protege as partes.",
@@ -2498,12 +4031,12 @@ window.__APP_DATA__ = {
       "category": "Contratos & Parcerias",
       "badge": "Formalização",
       "icon": "contract",
-      "title": "4. Contratos, Encomendas e Termos",
+      "title": "Contratos, Encomendas e Termos",
       "summary": "Perguntas que um contrato simples deve responder, limites de cláusulas abusivas e a Lei da Parceria em Salão de Beleza.",
       "cards": [
         {
           "id": "contrato-perguntas",
-          "title": "4.1 O que um contrato simples deve responder",
+          "title": "O que um contrato simples deve responder",
           "layers": {
             "lei": "O Código Civil prevê que a liberdade contratual deve ser exercida nos limites da função social do contrato e que os contratantes devem observar a probidade e a boa-fé (arts. 421 e 422).",
             "pratica": "Um contrato não precisa ter termos difíceis; ele precisa ser compreensível para ambas as partes.",
@@ -2513,7 +4046,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "contrato-direitos-legais",
-          "title": "4.2 Contrato não pode apagar direitos legais",
+          "title": "Contrato não pode apagar direitos legais",
           "layers": {
             "lei": "Em relações de consumo, cláusulas abusivas que retirem direitos do consumidor ou isentem o fornecedor de responsabilidade são juridicamente nulas (CDC, art. 51).",
             "pratica": "Colocar no contrato ou recibo uma frase como 'não nos responsabilizamos por nenhum problema' não elimina a responsabilidade legal do negócio perante a lei.",
@@ -2523,7 +4056,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "parceria-salao",
-          "title": "4.3 Parceria em salão de beleza",
+          "title": "Parceria em salão de beleza",
           "layers": {
             "lei": "A Lei nº 12.592/2012 permite contratos de parceria, por escrito, entre salões-parceiros e profissionais-parceiros. A própria lei estabelece requisitos para essa parceria e prevê consequências quando não houver contrato formalizado ou quando o profissional desempenhar funções diferentes das previstas.",
             "pratica": "Sem contrato formalizado ou agindo com subordinação direta e cumprimento obrigatório de jornada, a relação pode ser descaracterizada e gerar passivos trabalhistas.",
@@ -2538,12 +4071,12 @@ window.__APP_DATA__ = {
       "category": "Cobranças & Pagamentos",
       "badge": "Financeiro",
       "icon": "wallet",
-      "title": "5. Cobranças, Reservas, Sinal e Inadimplência",
+      "title": "Cobranças, Reservas, Sinal e Inadimplência",
       "summary": "Procedimentos corretos em caso de inadimplência, regras para cobrança de sinal/reserva e conferência de comprovantes.",
       "cards": [
         {
           "id": "cliente-nao-pagou",
-          "title": "5.1 Cliente não pagou",
+          "title": "Cliente não pagou",
           "layers": {
             "lei": "O CDC (art. 42) determina expressamente que na cobrança de débitos o consumidor inadimplente não pode ser exposto ao ridículo nem submetido a qualquer tipo de constrangimento ou ameaça.",
             "pratica": "Cobrar em público ou postar indiretas/nomes em redes sociais configura crime contra o consumidor (art. 71) e gera indenização por danos morais contra você.",
@@ -2553,7 +4086,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "sinal-reserva",
-          "title": "5.2 Sinal / reserva de horário ou pedido",
+          "title": "Sinal / reserva de horário ou pedido",
           "layers": {
             "lei": "Se você cobra um valor para reservar horário, encomenda ou serviço, explique por escrito o que esse pagamento representa e o que ocorre se qualquer das partes cancelar.",
             "pratica": "Reter valores integrais sem justificativa de despesas reais comprovadas pode ser considerado retenção indevida ou abusiva.",
@@ -2563,7 +4096,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "comprovante-pagamento",
-          "title": "5.3 Comprovante de pagamento",
+          "title": "Comprovante de pagamento",
           "layers": {
             "lei": "A relação comercial exige dever de cautela de quem entrega o bem. A presunção de quitação decorre da efetiva disponibilização dos fundos.",
             "pratica": "Imagens e 'prints' de tela podem ser agendamentos cancelados minutos depois, comprovantes editados ou montagens de aplicativos falsos.",
@@ -2578,12 +4111,12 @@ window.__APP_DATA__ = {
       "category": "Imagem & LGPD",
       "badge": "Privacidade",
       "icon": "camera",
-      "title": "6. Fotos, Vídeos, Imagem e LGPD",
+      "title": "Fotos, Vídeos, Imagem e LGPD",
       "summary": "Direitos de imagem, autorização para divulgação de fotos, regras da LGPD e cuidados redobrados com crianças e adolescentes.",
       "cards": [
         {
           "id": "foto-cliente-protecao",
-          "title": "6.1 Foto da cliente não é simplesmente 'uma foto do meu trabalho'",
+          "title": "Foto da cliente não é simplesmente 'uma foto do meu trabalho'",
           "layers": {
             "lei": "A imagem da pessoa possui proteção jurídica. A Constituição Federal protege a intimidade, a vida privada, a honra e a imagem (art. 5º, X). O Código Civil disciplina os direitos da personalidade (arts. 11 a 21).",
             "pratica": "A cliente é dona de sua própria imagem. O trabalho executado não anula o direito de privacidade dela.",
@@ -2593,7 +4126,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "tirar-foto-autorizacao",
-          "title": "6.2 Tirar foto ≠ autorização automática para publicar",
+          "title": "Tirar foto ≠ autorização automática para publicar",
           "layers": {
             "lei": "O consentimento deve ter finalidade determinada. A permissão para um ato não autoriza automaticamente atos posteriores distintos.",
             "pratica": "Uma cliente pode aceitar ser fotografada para registro do procedimento no prontuário interno e não querer que a foto vá para o Instagram, TikTok ou anúncio.",
@@ -2603,7 +4136,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "lgpd-dados-imagens",
-          "title": "6.3 LGPD e imagens/dados",
+          "title": "LGPD e imagens/dados",
           "layers": {
             "lei": "A LGPD se aplica ao tratamento de dados pessoais (inclusive imagem facial), em meios digitais. Consentimento deve ser livre, informado e inequívoco para finalidade determinada; autorizações genéricas são inadequadas.",
             "pratica": "Termos de autorização vagos ou amplos demais não conferem segurança jurídica caso haja questionamento futuro.",
@@ -2613,7 +4146,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "como-criar-autorizacao",
-          "title": "6.4 Como criar autorização mais segura",
+          "title": "Como criar autorização mais segura",
           "layers": {
             "lei": "A autorização deve explicar de forma compreensível qual imagem será utilizada, finalidade e canais. Para campanhas complexas ou menores, recomenda-se orientação profissional.",
             "pratica": "Um texto claro no WhatsApp ou em formulário simples tem validade e evita qualquer desentendimento posterior.",
@@ -2623,7 +4156,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "cliente-pediu-retirar",
-          "title": "6.5 Cliente pediu para retirar a foto",
+          "title": "Cliente pediu para retirar a foto",
           "layers": {
             "lei": "Não ignore o pedido. Quando o tratamento se baseia em consentimento, a LGPD (art. 8º, §5º e art. 18) prevê expressamente a possibilidade de revogação por manifestação expressa.",
             "pratica": "Mesmo que a cliente tenha autorizado no passado, se ela solicitar a retirada hoje, você deve arquivar ou deletar o post.",
@@ -2633,7 +4166,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "criancas-adolescentes",
-          "title": "6.6 Crianças e adolescentes",
+          "title": "Crianças e adolescentes",
           "layers": {
             "lei": "O tratamento de dados e imagens de crianças e adolescentes deve observar o melhor interesse (LGPD, art. 14). Além disso, o Estatuto da Criança e do Adolescente (ECA) protege rigorosamente a imagem e a dignidade (Lei nº 8.069/1990, especialmente art. 17).",
             "pratica": "Fotos de menores em festas infantis, salões ou ensaios sem autorização inequívoca de pai/mãe configuram infração gravíssima.",
@@ -2648,12 +4181,12 @@ window.__APP_DATA__ = {
       "category": "Alimentação & Anvisa",
       "badge": "Vigilância Sanitária",
       "icon": "food",
-      "title": "7. Quem Vende Comida: Guia Prático",
+      "title": "Quem Vende Comida: Guia Prático",
       "summary": "Regras sanitárias, RDC 216/2004, contaminação cruzada, alergênicos, rotulagem e delivery seguro.",
       "cards": [
         {
           "id": "regra-sanitaria-motivo",
-          "title": "7.1 Por que existe uma regra sanitária?",
+          "title": "Por que existe uma regra sanitária?",
           "layers": {
             "lei": "A venda de alimentos envolve risco direto à saúde pública. A Anvisa indica a RDC nº 216/2004 como referência para Boas Práticas para Serviços de Alimentação, garantindo condições higiênico-sanitárias do alimento preparado.",
             "pratica": "O cumprimento das práticas protege os clientes contra surtos alimentares e protege a reputação do seu empreendimento.",
@@ -2663,7 +4196,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "higiene-manipulacao",
-          "title": "7.2 Higiene das mãos e manipulação",
+          "title": "Higiene das mãos e manipulação",
           "layers": {
             "lei": "As Boas Práticas da Anvisa exigem controle sanitário rigoroso no contato manual com ingredientes e alimentos prontos para consumo.",
             "pratica": "Pegar em dinheiro, maquininha ou celular e logo em seguida manipular pães, salgados ou doces transfere microrganismos nocivos.",
@@ -2673,7 +4206,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "contaminacao-cruzada",
-          "title": "7.3 Contaminação cruzada",
+          "title": "Contaminação cruzada",
           "layers": {
             "lei": "A transmissão de microrganismos de superfícies ou insumos contaminados para alimentos prontos fere as normas sanitárias básicas de produção de alimentos.",
             "pratica": "Exemplo do guia: usar a mesma faca ou tábua de corte para frango cru e para legumes de uma salada pronta sem higienização adequada multiplica o risco de contaminação.",
@@ -2683,7 +4216,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "conservacao-temperatura",
-          "title": "7.4 Conservação e temperatura",
+          "title": "Conservação e temperatura",
           "layers": {
             "lei": "Alimentos perecíveis exigem controle adequado de conservação conforme orientações sanitárias e parâmetros de temperatura.",
             "pratica": "Manter recheios de leite, tortas, maioneses ou carnes em temperatura ambiente por horas propicia proliferação bacteriana acelerada.",
@@ -2693,7 +4226,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "validade-alimentos",
-          "title": "7.5 Validade",
+          "title": "Validade",
           "layers": {
             "lei": "Não invente um prazo de validade apenas porque 'sempre funcionou'. A validade depende das características do alimento, formulação, processamento, embalagem e condições de armazenamento.",
             "pratica": "Rotular validade sem embasamento gera risco de intoxicação e autuação pelos órgãos fiscalizadores.",
@@ -2703,7 +4236,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "alergenicos-rotulos",
-          "title": "7.6 Alergênicos: cuidado com declarações",
+          "title": "Alergênicos: cuidado com declarações",
           "layers": {
             "lei": "A Anvisa (RDC nº 727/2022) estabelece normas sobre rotulagem de alergênicos. Alegações de ausência de alergênicos não podem ser usadas indiscriminadamente até que existam critérios específicos aplicáveis.",
             "pratica": "Dizer que um produto é 'zero glúten' quando há farinha de trigo manipulada no mesmo ambiente expõe pessoas celíacas a choque anafilático.",
@@ -2713,7 +4246,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "rotulagem-geral",
-          "title": "7.7 Rotulagem de produtos embalados",
+          "title": "Rotulagem de produtos embalados",
           "layers": {
             "lei": "Para alimentos embalados sujeitos às regras de rotulagem, existem exigências quanto a ingredientes, validade, informações nutricionais, origem, lote e alergênicos.",
             "pratica": "Vender potes de doces, geleias ou congelados em mercados e feiras sem rótulo adequado sujeita à apreensão da mercadoria.",
@@ -2723,7 +4256,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "delivery-comida-guia",
-          "title": "7.8 Venda de comida por delivery",
+          "title": "Venda de comida por delivery",
           "layers": {
             "lei": "O fornecedor responde pela integridade do produto até a entrega ao destinatário final.",
             "pratica": "Embalagens frágeis que vazam ou abrem no baú da moto arruinam o produto e geram direito de cancelamento.",
@@ -2733,7 +4266,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "vigilancia-sanitaria-alimentos",
-          "title": "7.9 Vigilância Sanitária local",
+          "title": "Vigilância Sanitária local",
           "layers": {
             "lei": "A regularização sanitária depende da atividade e da legislação municipal e estadual específica.",
             "pratica": "Trabalhar em conformidade evita multas, interdições e dá credibilidade comercial perante clientes.",
@@ -2748,12 +4281,12 @@ window.__APP_DATA__ = {
       "category": "Beleza & Estética",
       "badge": "Biossegurança",
       "icon": "beauty",
-      "title": "8. Profissionais da Beleza e Embelezamento",
+      "title": "Profissionais da Beleza e Embelezamento",
       "summary": "Profissões abrangidas, normas sanitárias municipais, materiais reutilizáveis, formol e cuidados com manicure e maquiagem.",
       "cards": [
         {
           "id": "quem-esta-abrangido",
-          "title": "8.1 Quem está abrangido pela Lei nº 12.592/2012",
+          "title": "Quem está abrangido pela Lei nº 12.592/2012",
           "layers": {
             "lei": "A Lei nº 12.592/2012 reconhece as atividades de cabeleireiro, barbeiro, esteticista, manicure, pedicure, depilador e maquiador. A lei determina que esses profissionais observem normas sanitárias e efetuem a esterilização de materiais e utensílios.",
             "pratica": "A legislação reconhece a profissão mas atrela diretamente o exercício à responsabilidade sanitária e de biossegurança.",
@@ -2763,7 +4296,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "regra-sanitaria-municipio",
-          "title": "8.2 A regra sanitária não é igual em todo município",
+          "title": "A regra sanitária não é igual em todo município",
           "layers": {
             "lei": "A Anvisa informa que normas sanitárias específicas para serviços de embelezamento são definidas por estados e municípios, cabendo consulta à autoridade sanitária local.",
             "pratica": "Exigências de autoclave, ventilação ou descarte podem ter especificidades no Código de Posturas do seu município.",
@@ -2773,7 +4306,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "materiais-reutilizaveis",
-          "title": "8.3 Materiais reutilizáveis",
+          "title": "Materiais reutilizáveis",
           "layers": {
             "lei": "A esterilização de instrumentos é exigência expressa do art. 4º da Lei nº 12.592/2012.",
             "pratica": "Compartilhar instrumentos sem processamento sanitário correto gera risco de transmissão de hepatites B e C e infecções bacterianas.",
@@ -2783,7 +4316,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "produtos-cosmeticos",
-          "title": "8.4 Produtos cosméticos",
+          "title": "Produtos cosméticos",
           "layers": {
             "lei": "Os produtos aplicados em clientes devem ter regularização formal perante a Anvisa e serem compatíveis com a finalidade indicada no rótulo.",
             "pratica": "Substituir cosméticos por misturas caseiras ou substâncias proibidas enseja responsabilização civil e criminal.",
@@ -2793,7 +4326,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "formol-alisantes-proibicao",
-          "title": "8.5 Formol e alisantes",
+          "title": "Formol e alisantes",
           "layers": {
             "lei": "A Anvisa informa que a adição de formol a produtos para obter alisamento capilar não é permitida por causa dos graves riscos à saúde pública.",
             "pratica": "O formol possui usos específicos na fabricação de alguns produtos, mas isso não significa que possa ser adicionado livremente durante o atendimento no salão.",
@@ -2803,7 +4336,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "unhas-manicure-pedicure",
-          "title": "8.6 Unhas, manicure e pedicure",
+          "title": "Unhas, manicure e pedicure",
           "layers": {
             "lei": "Instrumentos que entram em contato com cutículas e tecidos biológicos devem seguir parâmetros sanitários de esterilização.",
             "pratica": "Cortes acidentais durante a cutilagem podem ocorrer e exigem conduta padronizada de higienização imediata.",
@@ -2813,7 +4346,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "cabelo-quimica-couro",
-          "title": "8.7 Cabelo, química e couro cabeludo",
+          "title": "Cabelo, química e couro cabeludo",
           "layers": {
             "lei": "Quem aplica químicas capilares responde pelos danos e lesões causados à integridade física do cliente (art. 14 do CDC).",
             "pratica": "Cortes químicos e queimaduras de couro cabeludo decorrem frequentemente da falta do teste de mecha prévio.",
@@ -2823,7 +4356,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "maquiagem-biosseguranca",
-          "title": "8.8 Maquiagem e aplicação higiênica",
+          "title": "Maquiagem e aplicação higiênica",
           "layers": {
             "lei": "Regras de biossegurança proíbem aplicação de cosméticos contaminados ou com prazo de validade expirado.",
             "pratica": "Encostar o aplicador de rímel ou batom diretamente na cliente e voltar para a embalagem contamina o frasco inteiro para a próxima pessoa.",
@@ -2838,12 +4371,12 @@ window.__APP_DATA__ = {
       "category": "Estética & Procedimentos",
       "badge": "Atenção Sanitária",
       "icon": "sparkles",
-      "title": "9. Estética e Procedimentos de Maior Risco",
+      "title": "Estética e Procedimentos de Maior Risco",
       "summary": "Competências legais, as 3 perguntas antes do procedimento, limites com a medicina e conduta em reações adversas.",
       "cards": [
         {
           "id": "tres-perguntas-estetica",
-          "title": "9.1 Três perguntas antes de um procedimento",
+          "title": "Três perguntas antes de um procedimento",
           "layers": {
             "lei": "A Anvisa orienta na campanha 'Procedimento Seguro' que todo consumidor e profissional verifique a regularidade prévia.",
             "pratica": "Antes de oferecer qualquer procedimento, certifique-se: 1) O local está regularizado para aquela atividade? 2) O produto ou equipamento é regularizado na Anvisa? 3) O profissional possui habilitação legal comprovada?",
@@ -2853,7 +4386,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "estetica-nao-confundir-medicina",
-          "title": "9.2 Não confundir estética com medicina",
+          "title": "Não confundir estética com medicina",
           "layers": {
             "lei": "A Lei nº 13.643/2018 regulamenta Esteticista e Técnico em Estética e estabelece limites claros para a atuação. Procedimentos e atos privativos de outras profissões não podem ser realizados apenas porque um curso comercial ensina a técnica.",
             "pratica": "Cursos livres rápidos na internet não conferem amparo legal para procedimentos médicos invasivos.",
@@ -2863,7 +4396,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "anvisa-situacao-nota-tecnica",
-          "title": "9.3 Atenção à situação atual das orientações da Anvisa",
+          "title": "Atenção à situação atual das orientações da Anvisa",
           "layers": {
             "lei": "Em setembro de 2026, a Anvisa informou a suspensão temporária dos efeitos da Nota Técnica nº 2/2024/SEI/GGTES/DIRE3/Anvisa durante reavaliação. A suspensão não significa que as normas sanitárias tenham deixado de existir.",
             "pratica": "O site não deve tratar essa Nota Técnica como se fosse uma norma federal atualmente vigente; deve priorizar a legislação aplicável e a orientação da Vigilância Sanitária local.",
@@ -2873,7 +4406,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "reacoes-acidentes",
-          "title": "9.4 Reações e acidentes",
+          "title": "Reações e acidentes",
           "layers": {
             "lei": "O dever de socorro e proteção do consumidor é imediato. A profissional não deve emitir diagnósticos médicos nem prescrever medicamentos privativos.",
             "pratica": "Se uma cliente apresentar dor intensa, queimadura, sangramento ou reação preocupante, a prioridade absoluta é a segurança e o encaminhamento ao serviço de saúde.",
@@ -2888,12 +4421,12 @@ window.__APP_DATA__ = {
       "category": "Produtos & Confecção",
       "badge": "Varejo & Moda",
       "icon": "shopping-bag",
-      "title": "10. Roupas, Artesanato e Produtos",
+      "title": "Roupas, Artesanato e Produtos",
       "summary": "Prazos de vício do CDC, política de troca por gosto/tamanho e regras para produtos personalizados.",
       "cards": [
         {
           "id": "produto-defeito-vicio",
-          "title": "10.1 Produto com defeito ou vício",
+          "title": "Produto com defeito ou vício",
           "layers": {
             "lei": "O CDC (arts. 18 a 26) prevê regras específicas para vícios aparentes e ocultos em produtos (30 dias para bens não duráveis e 90 dias para duráveis). O fornecedor deve observar os prazos e mecanismos legais de solução.",
             "pratica": "Avisos como 'não aceitamos trocas de produtos em liquidação' não anulam a obrigação legal de consertar ou trocar caso o item tenha vício de fabricação.",
@@ -2903,7 +4436,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "troca-gosto-tamanho",
-          "title": "10.2 Troca por gosto ou tamanho",
+          "title": "Troca por gosto ou tamanho",
           "layers": {
             "lei": "Nas compras feitas na loja física, a troca por mera preferência (cor ou tamanho que não serviu, sem defeito) depende da política comercial da loja, salvo direito legal específico.",
             "pratica": "Se você promete na etiqueta ou no perfil que troca peças sem uso em até 15 dias, essa oferta passa a ser vinculante e obrigatória.",
@@ -2913,7 +4446,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "produto-personalizado",
-          "title": "10.3 Produto personalizado sob medida",
+          "title": "Produto personalizado sob medida",
           "layers": {
             "lei": "Contratos de produção personalizada regem-se pela conformidade estrita com o projeto acordado previamente com o comprador.",
             "pratica": "Cliente que aprovou a arte digital do bordado ou convite não pode exigir reembolso total após a confecção completa ter sido concluída fielmente ao aprovado.",
@@ -2928,12 +4461,12 @@ window.__APP_DATA__ = {
       "category": "Prestação de Serviços",
       "badge": "Escopo & Termos",
       "icon": "briefcase",
-      "title": "11. Prestadoras de Serviços",
+      "title": "Prestadoras de Serviços",
       "summary": "Diretrizes práticas para fotógrafas, designers, social media, costureiras e professoras particulares.",
       "cards": [
         {
           "id": "fotografia-servicos",
-          "title": "11.1 Fotografia",
+          "title": "Fotografia",
           "layers": {
             "lei": "A relação envolve prestação de serviços (Código Civil) e cessão de direitos autorais patrimoniais (Lei nº 9.610/1998).",
             "pratica": "Sem alinhamento, a cliente exige arquivos brutos sem edição ou quer remarcar datas sem pagar os custos do estúdio reservado.",
@@ -2943,7 +4476,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "social-media-design",
-          "title": "11.2 Social media e Designers",
+          "title": "Social media e Designers",
           "layers": {
             "lei": "A obrigação deve conter delimitação de escopo, prazos de envio de material e limites de responsabilidade contratual.",
             "pratica": "O cliente atrasa o envio de dados e depois culpa a profissional pelo atraso do cronograma, além de pedir alterações intermináveis.",
@@ -2953,7 +4486,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "costura-encomendas",
-          "title": "11.3 Costura e encomendas",
+          "title": "Costura e encomendas",
           "layers": {
             "lei": "A confecção de roupas sob medida envolve obrigação de resultado conforme medidas e modelo aprovados.",
             "pratica": "Ajustes decorrentes de mudança de modelo de última hora geram custos extras que a cliente não quer pagar se não foram pactuados antes.",
@@ -2968,12 +4501,12 @@ window.__APP_DATA__ = {
       "category": "Marketing & Redes",
       "badge": "Comunicação",
       "icon": "megaphone",
-      "title": "12. Publicidade, Promoções e Influência",
+      "title": "Publicidade, Promoções e Influência",
       "summary": "Promoções sem omissões, antes e depois sem distorções e o uso legítimo de depoimentos reais.",
       "cards": [
         {
           "id": "promocao-informacao",
-          "title": "12.1 Promoção não é desculpa para informação incompleta",
+          "title": "Promoção não é desculpa para informação incompleta",
           "layers": {
             "lei": "O CDC veda aumentos prévios de preço para simular descontos falsos ('metade do dobro') ou ofertas enganosas.",
             "pratica": "Anunciar 'tudo com 50% de desconto' e na hora dizer que só se aplica a 2 itens de ponta de estoque gera infração perante o Procon.",
@@ -2983,7 +4516,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "antes-e-depois-guia",
-          "title": "12.2 Fotos de Antes e Depois",
+          "title": "Fotos de Antes e Depois",
           "layers": {
             "lei": "A imagem deve retratar a realidade do procedimento, sem manipulação digital que crie expectativa irreal no consumidor.",
             "pratica": "Uso de filtros suavizadores, iluminação distorcida ou Photoshop em fotos de antes/depois mascara a realidade e pode configurar publicidade enganosa.",
@@ -2993,7 +4526,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "depoimentos-reais",
-          "title": "12.3 Depoimentos de clientes",
+          "title": "Depoimentos de clientes",
           "layers": {
             "lei": "Depoimentos forjados ou fictícios violam o dever de transparência e veracidade da publicidade comercial.",
             "pratica": "Criar prints fakes de conversas elogiando seu próprio produto quebra a confiança e fere o CDC.",
@@ -3008,12 +4541,12 @@ window.__APP_DATA__ = {
       "category": "Segurança Digital",
       "badge": "Prevenção a Golpes",
       "icon": "lock",
-      "title": "13. PIX, Golpes e Segurança Digital",
+      "title": "PIX, Golpes e Segurança Digital",
       "summary": "Prevenção contra prints falsos de Pix, autenticação em dois fatores e o que fazer se sua conta do Instagram for invadida.",
       "cards": [
         {
           "id": "cuidados-pix-golpes",
-          "title": "13.1 PIX, golpes e comprovantes",
+          "title": "PIX, golpes e comprovantes",
           "layers": {
             "lei": "A verificação do pagamento legítimo é diligência básica do comerciante antes da tradição (entrega) do bem.",
             "pratica": "Golpistas enviam comprovantes falsificados com tipografia adulterada ou usam chave agendada para cancelar logo após pegar a mercadoria.",
@@ -3023,7 +4556,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "instagram-invadido",
-          "title": "13.2 Conta do Instagram invadida",
+          "title": "Conta do Instagram invadida",
           "layers": {
             "lei": "O titular da conta deve agir prontamente para mitigar danos e fraudes aplicadas contra seus seguidores e clientes.",
             "pratica": "Criminosos usam a conta invadida para divulgar falsos investimentos (tabela do Pix) ou vender eletrodomésticos inexistentes em seu nome.",
@@ -3038,12 +4571,12 @@ window.__APP_DATA__ = {
       "category": "Gestão de Conflitos",
       "badge": "Pós-Venda",
       "icon": "user-check",
-      "title": "14. Reclamações: O Que Fazer",
+      "title": "Reclamações: O Que Fazer",
       "summary": "Postura profissional ao receber reclamações, procedimentos quando há ameaça de Procon/processo e casos com danos físicos.",
       "cards": [
         {
           "id": "cliente-reclamou-postura",
-          "title": "14.1 Cliente reclamou",
+          "title": "Cliente reclamou",
           "layers": {
             "lei": "O CDC assegura canais eficazes de resolução de vícios e atendimento ao consumidor de boa-fé.",
             "pratica": "Responder cliente insatisfeita com ironia ou grosseria no WhatsApp transforma um problema simples de produto em um litígio desgastante.",
@@ -3053,7 +4586,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "ameaca-procon-processo",
-          "title": "14.2 Cliente ameaça Procon ou processo",
+          "title": "Cliente ameaça Procon ou processo",
           "layers": {
             "lei": "O acesso aos órgãos de defesa do consumidor e ao Poder Judiciário é direito constitucional. Nenhuma das partes deve agir com coação.",
             "pratica": "O medo de processo pode levar a empreendedora a apagar conversas, o que destrói a própria prova da defesa.",
@@ -3063,7 +4596,7 @@ window.__APP_DATA__ = {
         },
         {
           "id": "produto-causou-dano",
-          "title": "14.3 Produto ou serviço causou dano",
+          "title": "Produto ou serviço causou dano",
           "layers": {
             "lei": "Situações que envolvam lesão, intoxicação, queimadura, reação grave ou prejuízo patrimonial caracterizam fato do produto ou serviço (CDC, arts. 12 a 14).",
             "pratica": "Acidentes exigem apoio e empatia imediata, mas não se deve assumir culpas indevidas por escrito sem conhecimento dos fatos.",
@@ -3077,7 +4610,7 @@ window.__APP_DATA__ = {
   "checklists": [
     {
       "id": "chk-anuncio",
-      "title": "15. Checklist Geral — Antes de Publicar Qualquer Anúncio",
+      "title": "Checklist Geral — Antes de Publicar Qualquer Anúncio",
       "desc": "Conferência rápida do documento base antes de postar no feed, stories ou WhatsApp.",
       "items": [
         "O preço está correto e visível?",
@@ -3094,7 +4627,7 @@ window.__APP_DATA__ = {
     },
     {
       "id": "chk-comida",
-      "title": "16. Checklist — Quem Vende Comida",
+      "title": "Checklist — Quem Vende Comida",
       "desc": "Boas práticas sanitárias e de manipulação para alimentos e confeitarias.",
       "items": [
         "Consultei a Vigilância Sanitária local?",
@@ -3112,7 +4645,7 @@ window.__APP_DATA__ = {
     },
     {
       "id": "chk-beleza",
-      "title": "17. Checklist — Profissional da Beleza",
+      "title": "Checklist — Profissional da Beleza",
       "desc": "Biossegurança, normas sanitárias e conformidade para serviços de beleza.",
       "items": [
         "Consultei a Vigilância Sanitária local?",
@@ -3130,7 +4663,7 @@ window.__APP_DATA__ = {
     },
     {
       "id": "chk-fotos",
-      "title": "18. Checklist — Fotos e Imagem",
+      "title": "Checklist — Fotos e Imagem",
       "desc": "Conformidade com a LGPD e direitos da personalidade antes de postar fotos.",
       "items": [
         "A pessoa sabe que a foto será publicada?",
@@ -3145,7 +4678,7 @@ window.__APP_DATA__ = {
     },
     {
       "id": "chk-contrato",
-      "title": "19. Checklist — Contrato",
+      "title": "Checklist — Contrato",
       "desc": "Estrutura essencial para acordos escritos e termos de prestação de serviço.",
       "items": [
         "Identifiquei as partes?",
@@ -3253,23 +4786,43 @@ window.__APP_DATA__ = {
     },
     {
       "title": "Anvisa — RDC nº 216/2004",
-      "desc": "Regulamento Técnico de Boas Práticas para Serviços de Alimentação.",
-      "url": "https://www.gov.br/anvisa/pt-br"
+      "desc": "Regulamento Técnico de Boas Práticas para Serviços de Alimentação (texto integral).",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2004/res0216_15_09_2004.html"
     },
     {
       "title": "Anvisa — RDC nº 727/2022",
-      "desc": "Rotulagem de alimentos embalados e declaração de substâncias alergênicas.",
-      "url": "https://www.gov.br/anvisa/pt-br"
+      "desc": "Rotulagem de alimentos embalados e declaração obrigatória de substâncias alergênicas.",
+      "url": "https://www.gov.br/anvisa/pt-br/assuntos/alimentos/rotulagem"
     },
     {
       "title": "Anvisa — RDC nº 429/2020 e IN nº 75/2020",
-      "desc": "Rotulagem nutricional de alimentos embalados.",
-      "url": "https://www.gov.br/anvisa/pt-br"
+      "desc": "Nova rotulagem nutricional (tabela padronizada e rotulagem frontal com lupa).",
+      "url": "https://www.gov.br/anvisa/pt-br/assuntos/alimentos/rotulagem"
+    },
+    {
+      "title": "Anvisa — Serviços de Embelezamento",
+      "desc": "Orientações sanitárias oficiais para salões de beleza, esterilização e produtos cosméticos.",
+      "url": "https://www.gov.br/anvisa/pt-br/acessoainformacao/perguntasfrequentes/servicos-de-saude/servicos-de-embelezamento"
+    },
+    {
+      "title": "Lei de Direitos Autorais",
+      "desc": "Lei nº 9.610/1998 — Proteção de fotografias, criações visuais, artesanato e cessão patrimonial.",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9610.htm"
+    },
+    {
+      "title": "Marco Civil da Internet",
+      "desc": "Lei nº 12.965/2014 — Direitos e deveres online, guarda de registros e segurança digital.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm"
+    },
+    {
+      "title": "Lei do Ato Médico",
+      "desc": "Lei nº 12.842/2013 — Delimitação entre procedimentos estéticos e atos privativos de médicos.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12842.htm"
     }
   ]
-}
-;
+};
 
+/* === checklist.js === */
 /**
  * checklist.js — Gerenciamento interativo de Checklists com persistência no LocalStorage
  */
@@ -3295,9 +4848,104 @@ const ChecklistManager = {
     }
   },
 
+  // Atualiza um card específico (contagem de itens marcados e barra de progresso)
+  updateCardProgress(card) {
+    if (!card) return;
+    const chkId = card.id ? card.id.replace('card-', '') : null;
+    const items = card.querySelectorAll('.checklist-item');
+    const checked = card.querySelectorAll('.checklist-item.checked');
+    const total = items.length;
+    const count = checked.length;
+    const percent = total > 0 ? Math.round((count / total) * 100) : 0;
+
+    const percentEl = chkId ? document.getElementById(`percent-${chkId}`) : card.querySelector('[id^="percent-"]');
+    const barEl = chkId ? document.getElementById(`bar-${chkId}`) : card.querySelector('[id^="bar-"]');
+
+    if (percentEl) percentEl.textContent = `${count} de ${total} (${percent}%)`;
+    if (barEl) barEl.style.width = `${percent}%`;
+  },
+
+  // Alterna o estado de um item clicado
+  toggleItemEl(itemEl) {
+    if (!itemEl) return;
+    const chkId = itemEl.dataset.chkId;
+    const idx = parseInt(itemEl.dataset.idx, 10);
+    const card = itemEl.closest('.checklist-card');
+
+    const state = this.getState();
+    if (!state[chkId]) state[chkId] = [];
+
+    // Inverte estado
+    state[chkId][idx] = !state[chkId][idx];
+    this.saveState(state);
+
+    const isChecked = Boolean(state[chkId][idx]);
+    itemEl.classList.toggle('checked', isChecked);
+    itemEl.setAttribute('aria-checked', isChecked ? 'true' : 'false');
+
+    if (card) {
+      this.updateCardProgress(card);
+    }
+  },
+
+  // Reseta um checklist inteiro
+  resetChecklist(chkId, card) {
+    const state = this.getState();
+    delete state[chkId];
+    this.saveState(state);
+
+    if (card) {
+      card.querySelectorAll('.checklist-item').forEach(el => {
+        el.classList.remove('checked');
+        el.setAttribute('aria-checked', 'false');
+      });
+      this.updateCardProgress(card);
+    }
+  },
+
+  // Hidrata os itens já presentes no HTML ou recém-renderizados
+  hydrateContainer(container) {
+    if (!container) return;
+    const savedState = this.getState();
+
+    Object.keys(savedState).forEach(chkId => {
+      const items = savedState[chkId];
+      if (Array.isArray(items)) {
+        items.forEach((checked, idx) => {
+          if (checked) {
+            const itemEl = container.querySelector(`.checklist-item[data-chk-id="${chkId}"][data-idx="${idx}"]`);
+            if (itemEl) {
+              itemEl.classList.add('checked');
+              itemEl.setAttribute('aria-checked', 'true');
+            }
+          }
+        });
+      }
+    });
+
+    container.querySelectorAll('.checklist-card').forEach(card => {
+      this.updateCardProgress(card);
+    });
+  },
+
+  // Inicializa checklists estáticos
+  initStatic() {
+    const container = document.getElementById('checklists-container');
+    if (container) {
+      this.hydrateContainer(container);
+    }
+  },
+
+  // Renderiza dinamicamente se chamado via content.json ou aba interna
   renderChecklists(checklists, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
+    // Se já existem cards no container estático e são os mesmos, apenas hidrata para não piscar
+    if (container.querySelectorAll('.checklist-card').length > 0 && containerId === 'checklists-container') {
+      this.hydrateContainer(container);
+      return;
+    }
 
     const savedState = this.getState();
 
@@ -3305,7 +4953,7 @@ const ChecklistManager = {
       const chkState = savedState[chk.id] || [];
       const total = chk.items.length;
       const checkedCount = chkState.filter(Boolean).length;
-      const percent = Math.round((checkedCount / total) * 100);
+      const percent = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
 
       const itemsHtml = chk.items.map((item, idx) => {
         const isChecked = Boolean(chkState[idx]);
@@ -3314,7 +4962,7 @@ const ChecklistManager = {
               data-chk-id="${chk.id}" 
               data-idx="${idx}"
               role="checkbox"
-              aria-checked="${isChecked}"
+              aria-checked="${isChecked ? 'true' : 'false'}"
               tabindex="0">
             <div class="custom-checkbox">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -3354,95 +5002,252 @@ const ChecklistManager = {
       `;
     }).join('');
 
-    this.bindEvents(container, checklists);
+    this.hydrateContainer(container);
+    this.initCarousel();
   },
 
-  bindEvents(container, checklists) {
-    // Clique nos itens
-    container.addEventListener('click', (e) => {
-      const itemEl = e.target.closest('.checklist-item');
-      if (itemEl) {
-        const chkId = itemEl.dataset.chkId;
-        const idx = parseInt(itemEl.dataset.idx, 10);
-        this.toggleItem(chkId, idx, itemEl, checklists);
-        return;
-      }
+  // Inicializador do Carrossel com navegação em loop contínuo, pílulas e contador
+  initCarousel() {
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const sidePrevBtn = document.getElementById('carousel-side-prev');
+    const sideNextBtn = document.getElementById('carousel-side-next');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const pillsContainer = document.getElementById('carousel-pills');
+    const counterCurrent = document.getElementById('counter-current');
+    const container = document.getElementById('checklists-container');
 
-      const resetBtn = e.target.closest('.btn-reset-checklist');
-      if (resetBtn) {
-        const chkId = resetBtn.dataset.resetId;
-        this.resetChecklist(chkId, checklists);
-      }
-    });
+    if (!track || !container) return;
 
-    // Acessibilidade via teclado (Enter / Space)
-    container.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        const itemEl = e.target.closest('.checklist-item');
-        if (itemEl) {
-          e.preventDefault();
-          const chkId = itemEl.dataset.chkId;
-          const idx = parseInt(itemEl.dataset.idx, 10);
-          this.toggleItem(chkId, idx, itemEl, checklists);
-        }
-      }
-    });
-  },
+    const cards = container.querySelectorAll('.checklist-card');
+    if (cards.length === 0) return;
 
-  toggleItem(chkId, idx, itemEl, checklists) {
-    const state = this.getState();
-    const chk = checklists.find(c => c.id === chkId);
-    if (!chk) return;
-
-    if (!state[chkId]) {
-      state[chkId] = new Array(chk.items.length).fill(false);
-    }
-
-    state[chkId][idx] = !state[chkId][idx];
-    this.saveState(state);
-
-    const isChecked = state[chkId][idx];
-    itemEl.classList.toggle('checked', isChecked);
-    itemEl.setAttribute('aria-checked', isChecked);
-
-    this.updateProgress(chkId, chk);
-  },
-
-  resetChecklist(chkId, checklists) {
-    const chk = checklists.find(c => c.id === chkId);
-    if (!chk) return;
-
-    const state = this.getState();
-    state[chkId] = new Array(chk.items.length).fill(false);
-    this.saveState(state);
-
-    const itemsContainer = document.getElementById(`items-${chkId}`);
-    if (itemsContainer) {
-      itemsContainer.querySelectorAll('.checklist-item').forEach(el => {
-        el.classList.remove('checked');
-        el.setAttribute('aria-checked', 'false');
+    // Gera os pontinhos indicadores inferiores
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      cards.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Ir para o checklist ${idx + 1}`);
+        dot.addEventListener('click', () => {
+          this.scrollToIndex(idx);
+        });
+        dotsContainer.appendChild(dot);
       });
     }
 
-    this.updateProgress(chkId, chk);
+    // Configura cliques nas pílulas superiores
+    if (pillsContainer) {
+      const pills = pillsContainer.querySelectorAll('.pill-tab');
+      pills.forEach((pill, idx) => {
+        if (!pill._bound) {
+          pill._bound = true;
+          pill.addEventListener('click', () => {
+            this.scrollToIndex(idx);
+          });
+        }
+      });
+    }
+
+    // Calcula qual card está mais próximo do centro geométrico do trilho
+    const updateActiveIndex = () => {
+      const trackRect = track.getBoundingClientRect();
+      const trackCenter = trackRect.left + trackRect.width / 2;
+
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(trackCenter - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIdx = idx;
+        }
+      });
+
+      // Aplica classe de destaque is-active (meio nítido, lados apagados)
+      cards.forEach((card, idx) => {
+        card.classList.toggle('is-active', idx === closestIdx);
+      });
+
+      // Ajusta a altura de referência para os cards laterais cortarem na altura exata do selecionado
+      const activeCard = cards[closestIdx];
+      if (activeCard) {
+        const activeHeight = activeCard.scrollHeight || activeCard.offsetHeight;
+        if (activeHeight > 0) {
+          container.style.setProperty('--active-card-height', `${activeHeight}px`);
+        }
+      }
+
+      // Atualiza dots
+      if (dotsContainer) {
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === closestIdx);
+        });
+      }
+
+      // Atualiza pílulas superiores (sem disparar scrollIntoView na página inteira)
+      if (pillsContainer) {
+        pillsContainer.querySelectorAll('.pill-tab').forEach((pill, idx) => {
+          const isActive = idx === closestIdx;
+          pill.classList.toggle('active', isActive);
+          pill.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          if (isActive) {
+            // Rola apenas dentro da barra de pílulas horizontal, sem mexer na página vertical
+            const pillCenter = pill.offsetLeft + pill.offsetWidth / 2;
+            const targetPillScroll = pillCenter - pillsContainer.clientWidth / 2;
+            pillsContainer.scrollTo({ left: Math.max(0, targetPillScroll), behavior: 'smooth' });
+          }
+        });
+      }
+
+      // Atualiza contador
+      if (counterCurrent) {
+        counterCurrent.textContent = String(closestIdx + 1).padStart(2, '0');
+      }
+
+      this._currentIndex = closestIdx;
+    };
+
+    track.removeEventListener('scroll', track._scrollHandler);
+    track._scrollHandler = updateActiveIndex;
+    track.addEventListener('scroll', updateActiveIndex, { passive: true });
+
+    // Funções de Avançar e Voltar com Loop Infinito
+    const goNext = () => {
+      const current = this._currentIndex || 0;
+      const nextIdx = (current + 1) % cards.length;
+      this.scrollToIndex(nextIdx);
+    };
+
+    const goPrev = () => {
+      const current = this._currentIndex || 0;
+      const prevIdx = (current - 1 + cards.length) % cards.length;
+      this.scrollToIndex(prevIdx);
+    };
+
+    // Vincula botões superiores e laterais
+    [nextBtn, sideNextBtn].forEach(btn => {
+      if (btn && !btn._bound) {
+        btn._bound = true;
+        btn.addEventListener('click', goNext);
+      }
+    });
+
+    [prevBtn, sidePrevBtn].forEach(btn => {
+      if (btn && !btn._bound) {
+        btn._bound = true;
+        btn.addEventListener('click', goPrev);
+      }
+    });
+
+    // Clique direto no card lateral traz ele para o meio
+    cards.forEach((card, idx) => {
+      if (!card._clickBound) {
+        card._clickBound = true;
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist')) return;
+          if (!card.classList.contains('is-active')) {
+            this.scrollToIndex(idx);
+          }
+        });
+      }
+    });
+
+    // Suporte a arrasto fluído no desktop
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    track.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist')) return;
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+      track.style.cursor = '';
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+      track.style.cursor = '';
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeft - walk;
+    });
+
+    // Executa uma vez no início para marcar o primeiro card ativo
+    updateActiveIndex();
   },
 
-  updateProgress(chkId, chk) {
-    const state = this.getState();
-    const chkState = state[chkId] || [];
-    const total = chk.items.length;
-    const checkedCount = chkState.filter(Boolean).length;
-    const percent = Math.round((checkedCount / total) * 100);
-
-    const percentEl = document.getElementById(`percent-${chkId}`);
-    const barEl = document.getElementById(`bar-${chkId}`);
-
-    if (percentEl) percentEl.textContent = `${checkedCount} de ${total} (${percent}%)`;
-    if (barEl) barEl.style.width = `${percent}%`;
+  scrollToIndex(index) {
+    const track = document.getElementById('carousel-track');
+    const container = document.getElementById('checklists-container');
+    if (!track || !container) return;
+    const cards = container.querySelectorAll('.checklist-card');
+    if (cards[index]) {
+      const card = cards[index];
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const targetScroll = cardCenter - track.clientWidth / 2;
+      track.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
+    }
   }
 };
 
+// Listener global para cliques em qualquer checklist (seja no container principal ou na aba)
+document.addEventListener('click', (e) => {
+  const itemEl = e.target.closest('.checklist-item');
+  if (itemEl) {
+    ChecklistManager.toggleItemEl(itemEl);
+    return;
+  }
 
+  const resetBtn = e.target.closest('.btn-reset-checklist');
+  if (resetBtn) {
+    const chkId = resetBtn.dataset.resetId;
+    const card = resetBtn.closest('.checklist-card');
+    ChecklistManager.resetChecklist(chkId, card);
+  }
+});
+
+// Acessibilidade via teclado (Enter / Barra de espaço)
+document.addEventListener('keydown', (e) => {
+  if (e.key === ' ' || e.key === 'Enter') {
+    const itemEl = e.target.closest('.checklist-item');
+    if (itemEl) {
+      e.preventDefault();
+      ChecklistManager.toggleItemEl(itemEl);
+    }
+  }
+});
+
+window.ChecklistManager = ChecklistManager;
+
+// Auto-inicializa checklists assim que o documento carregar
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    ChecklistManager.initStatic();
+    ChecklistManager.initCarousel();
+  });
+} else {
+  ChecklistManager.initStatic();
+  ChecklistManager.initCarousel();
+}
+
+
+/* === rating.js === */
 /**
  * rating.js — Sistema de Avaliação com Estrelas SVG e Métricas do Projeto
  * Sem emojis, com ícones vetoriais elegantes e feedback visual profissional.
@@ -3611,6 +5416,7 @@ const RatingManager = {
 };
 
 
+/* === app.js === */
 /**
  * app.js — Controlador central da aplicação
  * Carrega os dados de content.json, renderiza os módulos em 3 camadas com ícones SVG inline profissionais,
@@ -3631,6 +5437,7 @@ const SVG_ICONS = {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
+  initThemeToggle();
   await loadContent();
   initNavigation();
   initSearchAndFilter();
@@ -3639,7 +5446,13 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadContent() {
   try {
-    appData = window.__APP_DATA__;
+    if (window.__APP_DATA__) {
+      appData = window.__APP_DATA__;
+    } else {
+      const response = await fetch('assets/data/content.json?v=4.0');
+      if (!response.ok) throw new Error('Não foi possível carregar o arquivo content.json');
+      appData = await response.json();
+    }
 
     renderModules(appData.modules);
     renderCategoryTabs(appData.modules);
@@ -3671,16 +5484,48 @@ async function loadContent() {
   }
 }
 
-function renderModules(modules) {
+// Função auxiliar de normalização (remove acentos, pontuações e põe em minúsculo)
+function normalizeText(str) {
+  if (!str) return '';
+  return str
+    .toString()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+// Destaca os termos pesquisados mantendo o texto original legível
+function highlightMatch(text, query) {
+  if (!text || !query) return text;
+  const terms = query
+    .split(/\s+/)
+    .map(t => t.trim())
+    .filter(t => t.length >= 2);
+
+  if (terms.length === 0) return text;
+
+  // Cria regex combinando os termos com busca flexível
+  const escapedTerms = terms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+  const regex = new RegExp(`(${escapedTerms.join('|')})`, 'gi');
+
+  return text.replace(regex, '<mark class="search-match">$1</mark>');
+}
+
+function renderModules(modules, activeQuery = '') {
   const container = document.getElementById('modules-container');
   if (!container) return;
 
   if (modules.length === 0) {
     container.innerHTML = `
       <div style="text-align: center; padding: 4rem 1rem; color: var(--text-light);">
-        <p style="font-size: 1.1rem; font-weight: 600;">Nenhum tema encontrado para a sua busca.</p>
-        <button onclick="clearSearch()" style="margin-top: 1rem; background: #ffffff; border: 1px solid var(--color-accent); color: var(--color-accent); padding: 0.5rem 1.25rem; border-radius: 9999px; cursor: pointer; font-weight: 600;">
-          Limpar busca
+        <div style="margin-bottom: 1rem; color: var(--color-accent); display: inline-flex;">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+        </div>
+        <p style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary); margin-bottom: 0.5rem;">Nenhum tema encontrado para sua busca.</p>
+        <p style="font-size: 0.9rem; color: var(--text-muted); max-width: 480px; margin: 0 auto 1.5rem;">Tente pesquisar por termos mais gerais como <strong>"Pix"</strong>, <strong>"arrependimento"</strong>, <strong>"nota fiscal"</strong> ou <strong>"glúten"</strong>.</p>
+        <button onclick="clearSearch()" style="background: var(--color-accent); color: #ffffff; border: none; padding: 0.6rem 1.4rem; border-radius: 9999px; cursor: pointer; font-weight: 600; font-size: 0.88rem; box-shadow: var(--shadow-sm);">
+          Limpar busca e ver tudo
         </button>
       </div>
     `;
@@ -3691,7 +5536,7 @@ function renderModules(modules) {
     const cardsHtml = mod.cards.map(card => `
       <article class="guide-card" id="${card.id}">
         <div class="card-top">
-          <h3 class="card-title">${card.title}</h3>
+          <h3 class="card-title">${highlightMatch(card.title, activeQuery)}</h3>
         </div>
 
         <div class="card-layers">
@@ -3701,7 +5546,7 @@ function renderModules(modules) {
               ${SVG_ICONS.law}
               1. O que a Lei diz
             </span>
-            <p class="layer-text">${card.layers.lei}</p>
+            <p class="layer-text">${highlightMatch(card.layers.lei, activeQuery)}</p>
           </div>
 
           <!-- 2. O que isso significa na prática -->
@@ -3710,7 +5555,7 @@ function renderModules(modules) {
               ${SVG_ICONS.practice}
               2. O que isso significa na prática
             </span>
-            <p class="layer-text">${card.layers.pratica}</p>
+            <p class="layer-text">${highlightMatch(card.layers.pratica, activeQuery)}</p>
           </div>
 
           <!-- 3. Como evitar o problema -->
@@ -3719,14 +5564,14 @@ function renderModules(modules) {
               ${SVG_ICONS.prevent}
               3. Como evitar o problema
             </span>
-            <p class="layer-text">${card.layers.comoEvitar}</p>
+            <p class="layer-text">${highlightMatch(card.layers.comoEvitar, activeQuery)}</p>
           </div>
         </div>
 
         <div class="card-footer">
           <span class="base-legal">
             ${SVG_ICONS.base}
-            ${card.baseLegal}
+            ${highlightMatch(card.baseLegal, activeQuery)}
           </span>
         </div>
       </article>
@@ -3736,10 +5581,10 @@ function renderModules(modules) {
       <section class="module-block" id="${mod.id}" data-category="${mod.category}">
         <div class="module-header">
           <div class="module-title-group">
-            <h2 class="module-title">${mod.title}</h2>
+            <h2 class="module-title">${highlightMatch(mod.title, activeQuery)}</h2>
             <span class="module-badge">${mod.badge}</span>
           </div>
-          <p class="module-summary">${mod.summary}</p>
+          <p class="module-summary">${highlightMatch(mod.summary, activeQuery)}</p>
         </div>
 
         <div class="cards-grid">
@@ -3754,11 +5599,14 @@ function renderCategoryTabs(modules) {
   const tabsContainer = document.getElementById('category-tabs');
   if (!tabsContainer) return;
 
-  const categories = ['Todas as Áreas', ...new Set(modules.map(m => m.category))];
+  const categories = [
+    { label: 'Todas as Áreas', id: 'all' },
+    ...Array.from(new Set(modules.map(m => m.category))).map(cat => ({ label: cat, id: cat }))
+  ];
 
   tabsContainer.innerHTML = categories.map((cat, idx) => `
-    <button class="tab-btn ${idx === 0 ? 'active' : ''}" data-cat="${cat === 'Todas as Áreas' ? 'all' : cat}">
-      ${cat}
+    <button class="tab-btn ${idx === 0 ? 'active' : ''}" data-cat="${cat.id}">
+      ${cat.label}
     </button>
   `).join('');
 
@@ -3769,57 +5617,169 @@ function renderCategoryTabs(modules) {
     tabsContainer.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
+    btn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+
     currentCategory = btn.dataset.cat;
     applyFilterAndSearch();
   });
+
+  // Botões laterais do carrossel no desktop
+  const scrollLeftBtn = document.getElementById('tabs-scroll-left');
+  const scrollRightBtn = document.getElementById('tabs-scroll-right');
+
+  const updateScrollButtons = () => {
+    if (!scrollLeftBtn || !scrollRightBtn) return;
+    const maxScroll = tabsContainer.scrollWidth - tabsContainer.clientWidth;
+    scrollLeftBtn.disabled = tabsContainer.scrollLeft <= 5;
+    scrollRightBtn.disabled = tabsContainer.scrollLeft >= maxScroll - 5;
+  };
+
+  if (scrollLeftBtn && scrollRightBtn) {
+    scrollLeftBtn.addEventListener('click', () => {
+      tabsContainer.scrollBy({ left: -240, behavior: 'smooth' });
+    });
+    scrollRightBtn.addEventListener('click', () => {
+      tabsContainer.scrollBy({ left: 240, behavior: 'smooth' });
+    });
+    tabsContainer.addEventListener('scroll', updateScrollButtons);
+    setTimeout(updateScrollButtons, 100);
+  }
 }
 
 function initSearchAndFilter() {
   const searchInput = document.getElementById('search-input');
-  if (!searchInput) return;
+  const clearBtn = document.getElementById('search-clear-btn');
+  const resetAllBtn = document.getElementById('search-reset-all');
 
-  searchInput.addEventListener('input', () => {
-    applyFilterAndSearch();
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      if (clearBtn) {
+        clearBtn.style.display = searchInput.value ? 'flex' : 'none';
+      }
+      applyFilterAndSearch();
+    });
+
+    // Pressionar Escape limpa a pesquisa
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        clearSearch();
+      }
+    });
+  }
+
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+      }
+      clearBtn.style.display = 'none';
+      applyFilterAndSearch();
+    });
+  }
+
+  if (resetAllBtn) {
+    resetAllBtn.addEventListener('click', clearSearch);
+  }
+
+  // Chips de termos sugeridos
+  const suggestionChips = document.querySelectorAll('.suggestion-chip');
+  suggestionChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      const query = chip.dataset.query;
+      if (!searchInput) return;
+
+      if (searchInput.value === query) {
+        searchInput.value = '';
+        chip.classList.remove('active');
+        if (clearBtn) clearBtn.style.display = 'none';
+      } else {
+        searchInput.value = query;
+        suggestionChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        if (clearBtn) clearBtn.style.display = 'flex';
+      }
+      searchInput.focus();
+      applyFilterAndSearch();
+    });
   });
 }
 
 function applyFilterAndSearch() {
   if (!appData || !appData.modules) return;
 
-  const query = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
+  const rawQuery = (document.getElementById('search-input')?.value || '').trim();
+  const normalizedQuery = normalizeText(rawQuery);
+  const searchTerms = normalizedQuery.split(/\s+/).filter(Boolean);
 
-  let filtered = appData.modules.map(mod => {
+  let totalCardsCount = 0;
+
+  // Filtragem inteligente com normalização e suporte a múltiplos termos
+  const filtered = appData.modules.map(mod => {
     const matchesCategory = currentCategory === 'all' || mod.category === currentCategory;
     if (!matchesCategory) return null;
 
-    if (!query) return mod;
+    if (searchTerms.length === 0) {
+      totalCardsCount += mod.cards.length;
+      return mod;
+    }
 
-    const matchedCards = mod.cards.filter(c => {
-      const matchTitle = c.title.toLowerCase().includes(query);
-      const matchLei = c.layers.lei.toLowerCase().includes(query);
-      const matchPratica = c.layers.pratica.toLowerCase().includes(query);
-      const matchEvitar = c.layers.comoEvitar.toLowerCase().includes(query);
-      const matchBase = c.baseLegal.toLowerCase().includes(query);
-      return matchTitle || matchLei || matchPratica || matchEvitar || matchBase;
+    // Busca ponderada em cada card
+    const matchedCards = mod.cards.filter(card => {
+      const fullText = normalizeText(`
+        ${card.title} 
+        ${card.layers.lei} 
+        ${card.layers.pratica} 
+        ${card.layers.comoEvitar} 
+        ${card.baseLegal} 
+        ${mod.title} 
+        ${mod.summary} 
+        ${mod.badge}
+      `);
+
+      // Todos os termos digitados devem estar presentes em qualquer parte do card
+      return searchTerms.every(term => fullText.includes(term));
     });
 
     if (matchedCards.length > 0) {
+      totalCardsCount += matchedCards.length;
       return { ...mod, cards: matchedCards };
-    }
-
-    if (mod.title.toLowerCase().includes(query) || mod.summary.toLowerCase().includes(query)) {
-      return mod;
     }
 
     return null;
   }).filter(Boolean);
 
-  renderModules(filtered);
+  // Atualiza barra de status e contagem de resultados
+  const resultsBar = document.getElementById('search-results-bar');
+  const resultsCount = document.getElementById('search-results-count');
+
+  if (resultsBar && resultsCount) {
+    if (rawQuery || currentCategory !== 'all') {
+      resultsBar.style.display = 'flex';
+      const catLabel = currentCategory === 'all' ? 'em todas as áreas' : `na área "${currentCategory}"`;
+      if (rawQuery) {
+        resultsCount.innerHTML = `Encontrados <strong>${totalCardsCount}</strong> ${totalCardsCount === 1 ? 'item' : 'itens'} para "<strong>${rawQuery}</strong>" ${catLabel}.`;
+      } else {
+        resultsCount.innerHTML = `Mostrando <strong>${totalCardsCount}</strong> ${totalCardsCount === 1 ? 'diretriz' : 'diretrizes'} ${catLabel}.`;
+      }
+    } else {
+      resultsBar.style.display = 'none';
+    }
+  }
+
+  // Sincroniza estado visual dos chips de busca sugerida
+  document.querySelectorAll('.suggestion-chip').forEach(chip => {
+    chip.classList.toggle('active', chip.dataset.query.toLowerCase() === rawQuery.toLowerCase());
+  });
+
+  renderModules(filtered, rawQuery);
 }
 
-function clearSearch() {
+window.clearSearch = function() {
   const searchInput = document.getElementById('search-input');
+  const clearBtn = document.getElementById('search-clear-btn');
   if (searchInput) searchInput.value = '';
+  if (clearBtn) clearBtn.style.display = 'none';
   currentCategory = 'all';
 
   const tabsContainer = document.getElementById('category-tabs');
@@ -3827,10 +5787,12 @@ function clearSearch() {
     tabsContainer.querySelectorAll('.tab-btn').forEach((b, idx) => {
       b.classList.toggle('active', idx === 0);
     });
+    tabsContainer.scrollTo({ left: 0, behavior: 'smooth' });
   }
 
+  document.querySelectorAll('.suggestion-chip').forEach(c => c.classList.remove('active'));
   applyFilterAndSearch();
-}
+};
 
 function renderFaqs(faqs) {
   const container = document.getElementById('faq-container');
@@ -3905,8 +5867,18 @@ function renderOfficialSources(sources) {
 
 function initNavigation() {
   const header = document.querySelector('.site-header');
-  const toggleBtn = document.querySelector('.mobile-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const dropdown = document.getElementById('mobile-dropdown-menu');
+  const backdrop = document.getElementById('dropdown-backdrop');
+
+  const updateHeaderHeight = () => {
+    if (header) {
+      const h = header.offsetHeight || 68;
+      document.documentElement.style.setProperty('--header-actual-height', `${h}px`);
+      if (dropdown) dropdown.style.top = `${h}px`;
+      if (backdrop) backdrop.style.top = `${h}px`;
+    }
+  };
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
@@ -3914,18 +5886,179 @@ function initNavigation() {
     } else {
       header?.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 
-  if (toggleBtn && navLinks) {
-    toggleBtn.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
+  let isMenuOpen = false;
+  let menuOpenedTime = 0;
+
+  const openMenu = () => {
+    isMenuOpen = true;
+    menuOpenedTime = Date.now();
+    updateHeaderHeight();
+    dropdown?.classList.add('open');
+    backdrop?.classList.add('active');
+    toggleBtn?.classList.add('active');
+    toggleBtn?.setAttribute('aria-expanded', 'true');
+  };
+
+  const closeMenu = (force = false) => {
+    // Bloqueia qualquer fechamento nos primeiros 400ms (a menos que seja clique forçado em link de navegação)
+    if (!force && Date.now() - menuOpenedTime < 400) {
+      return;
+    }
+    isMenuOpen = false;
+    dropdown?.classList.remove('open');
+    backdrop?.classList.remove('active');
+    toggleBtn?.classList.remove('active');
+    toggleBtn?.setAttribute('aria-expanded', 'false');
+  };
+
+  if (toggleBtn) {
+    let lastToggleTime = 0;
+    const handleToggle = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      const now = Date.now();
+      if (now - lastToggleTime < 350) return;
+      lastToggleTime = now;
+
+      if (isMenuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    toggleBtn.addEventListener('click', handleToggle);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMenu();
     });
+    backdrop.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closeMenu();
+    }, { passive: false });
+  }
 
-    navLinks.querySelectorAll('a').forEach(link => {
+  if (dropdown) {
+    dropdown.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
+        closeMenu(true); // Força fechamento imediato quando o usuário clica no item para rolar até a seção
       });
     });
+  }
+
+  // Fecha se pressionar a tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isMenuOpen) {
+      closeMenu(true);
+    }
+  });
+
+  // Fecha o menu apenas se a LARGURA da tela mudar para desktop
+  let lastWindowWidth = window.innerWidth;
+  window.addEventListener('resize', () => {
+    const currentWidth = window.innerWidth;
+    if (currentWidth !== lastWindowWidth) {
+      lastWindowWidth = currentWidth;
+      if (currentWidth >= 769 && isMenuOpen) {
+        closeMenu(true);
+      }
+    }
+    updateHeaderHeight();
+  });
+
+  updateHeaderHeight();
+}
+
+/**
+ * Sistema de Modo Escuro Ultra Fluido e Otimizado
+ * Troca instantânea de variáveis CSS com transição suave nos elementos principais,
+ * sem engasgos ou travamento de rasterização de tela cheia no mobile.
+ */
+let isThemeTransitioning = false;
+
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle-btn');
+  const storedTheme = localStorage.getItem('unex_theme');
+  
+  // Define o tema inicial SEMPRE como claro por padrão (light)
+  const currentTheme = storedTheme || 'light';
+  document.documentElement.setAttribute('data-theme', currentTheme);
+  updateThemeColorMeta(currentTheme);
+
+  if (!toggleBtn) return;
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (isThemeTransitioning) return;
+
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const nextTheme = isDark ? 'light' : 'dark';
+
+    // Coordenadas exatas do centro do botão na viewport
+    const rect = toggleBtn.getBoundingClientRect();
+    const x = Math.round(rect.left + rect.width / 2);
+    const y = Math.round(rect.top + rect.height / 2);
+
+    // Raio máximo até o canto mais distante da tela
+    const maxDistX = Math.max(x, window.innerWidth - x);
+    const maxDistY = Math.max(y, window.innerHeight - y);
+    const endRadius = Math.ceil(Math.hypot(maxDistX, maxDistY));
+
+    // Suporte à View Transition API nativa com revelação circular do novo tema
+    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      isThemeTransitioning = true;
+
+      const transition = document.startViewTransition(() => {
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('unex_theme', nextTheme);
+        updateThemeColorMeta(nextTheme);
+      });
+
+      transition.ready.then(() => {
+        const animation = document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${endRadius}px at ${x}px ${y}px)`
+            ]
+          },
+          {
+            duration: 380,
+            easing: 'cubic-bezier(0.2, 0.9, 0.3, 1)',
+            pseudoElement: '::view-transition-new(root)'
+          }
+        );
+
+        animation.onfinish = () => {
+          isThemeTransitioning = false;
+        };
+      }).catch(() => {
+        isThemeTransitioning = false;
+      });
+    } else {
+      // Fallback para navegadores sem View Transition
+      document.documentElement.classList.add('theme-switching');
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('unex_theme', nextTheme);
+      updateThemeColorMeta(nextTheme);
+      setTimeout(() => {
+        document.documentElement.classList.remove('theme-switching');
+      }, 280);
+    }
+  });
+}
+
+function updateThemeColorMeta(theme) {
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) {
+    meta.setAttribute('content', theme === 'dark' ? '#000000' : '#1d4ed8');
   }
 }
 
