@@ -248,6 +248,15 @@ const ChecklistManager = {
         card.classList.toggle('is-active', idx === closestIdx);
       });
 
+      // Ajusta a altura de referência para os cards laterais cortarem na altura exata do selecionado
+      const activeCard = cards[closestIdx];
+      if (activeCard) {
+        const activeHeight = activeCard.scrollHeight || activeCard.offsetHeight;
+        if (activeHeight > 0) {
+          container.style.setProperty('--active-card-height', `${activeHeight}px`);
+        }
+      }
+
       // Atualiza dots
       if (dotsContainer) {
         dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
