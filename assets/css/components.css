@@ -332,17 +332,21 @@
 .checklists-carousel-wrapper {
   position: relative;
   width: 100%;
+  max-width: 1240px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
 }
 
 .checklists-carousel-track {
   width: 100%;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  padding: 0.6rem 0.2rem 1.6rem;
+  /* Padding lateral para que o card ativo fique no centro exato */
+  padding: 1.5rem calc(50% - 210px) 2rem;
 }
 
 .checklists-carousel-track::-webkit-scrollbar {
@@ -356,35 +360,120 @@
   gap: 1.75rem;
   width: max-content;
   scroll-snap-type: x mandatory;
+  padding: 0.5rem 0;
 }
 
+/* Card Padrão (Laterais Meio Apagados / Dimmed) */
 .checklists-carousel-grid .checklist-card {
   scroll-snap-align: center;
-  flex: 0 0 380px;
+  flex: 0 0 420px;
+  width: 420px;
   max-width: 420px;
-  min-width: 310px;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 1.85rem;
-  box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
-}
-
-@media (max-width: 640px) {
-  .checklists-carousel-grid .checklist-card {
-    flex: 0 0 calc(100vw - 3.5rem);
-    max-width: 350px;
-    padding: 1.4rem;
-  }
+  opacity: 0.38;
+  transform: scale(0.92);
+  filter: blur(0.3px);
+  pointer-events: auto;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .checklists-carousel-grid .checklist-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(37, 99, 235, 0.45);
-  box-shadow: 0 16px 32px -4px rgba(15, 23, 42, 0.12);
+  opacity: 0.65;
+  transform: scale(0.95);
+}
+
+/* Card Ativo no Meio (Destaque Total) */
+.checklists-carousel-grid .checklist-card.is-active {
+  opacity: 1;
+  transform: scale(1.02);
+  filter: none;
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.16),
+              0 0 0 1px rgba(37, 99, 235, 0.25);
+  z-index: 2;
+}
+
+[data-theme="dark"] .checklists-carousel-grid .checklist-card.is-active {
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.8),
+              0 0 30px rgba(37, 99, 235, 0.2),
+              0 0 0 1px rgba(37, 99, 235, 0.4);
+}
+
+/* Botões Laterais no Desktop */
+.carousel-side-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-subtle);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.14);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
+}
+
+.carousel-side-btn.prev {
+  left: -20px;
+}
+
+.carousel-side-btn.next {
+  right: -20px;
+}
+
+.carousel-side-btn:hover {
+  background: var(--color-accent);
+  color: #ffffff;
+  border-color: var(--color-accent);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.4);
+}
+
+.carousel-side-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Adaptação Mobile: Visualizar card central + pontas dos laterais para incentivar swipe */
+@media (max-width: 768px) {
+  .carousel-side-btn {
+    display: none; /* No mobile usa o deslize com o dedo */
+  }
+
+  .checklists-carousel-track {
+    /* Deixa 15% de cada lado vazando o próximo e o anterior */
+    padding: 1rem 12vw 1.5rem;
+  }
+
+  .checklists-carousel-grid .checklist-card {
+    flex: 0 0 76vw;
+    width: 76vw;
+    max-width: 340px;
+    padding: 1.45rem;
+    opacity: 0.45;
+    transform: scale(0.94);
+  }
+
+  .checklists-carousel-grid .checklist-card.is-active {
+    opacity: 1;
+    transform: scale(1.02);
+  }
 }
 
 /* Indicadores / Pontos de Navegação Inferiores (Dots) */

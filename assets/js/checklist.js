@@ -186,6 +186,8 @@ const ChecklistManager = {
     const track = document.getElementById('carousel-track');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
+    const sidePrevBtn = document.getElementById('carousel-side-prev');
+    const sideNextBtn = document.getElementById('carousel-side-next');
     const dotsContainer = document.getElementById('carousel-dots');
     const pillsContainer = document.getElementById('carousel-pills');
     const counterCurrent = document.getElementById('counter-current');
@@ -223,25 +225,40 @@ const ChecklistManager = {
       });
     }
 
+    // Calcula qual card está mais próximo do centro geométrico do trilho
     const updateActiveIndex = () => {
-      const trackScroll = track.scrollLeft;
-      const cardWidth = cards[0].offsetWidth + 28;
-      const activeIdx = Math.min(
-        Math.max(0, Math.round(trackScroll / cardWidth)),
-        cards.length - 1
-      );
+      const trackRect = track.getBoundingClientRect();
+      const trackCenter = trackRect.left + trackRect.width / 2;
+
+      let closestIdx = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.left + cardRect.width / 2;
+        const distance = Math.abs(trackCenter - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIdx = idx;
+        }
+      });
+
+      // Aplica classe de destaque is-active (meio nítido, lados apagados)
+      cards.forEach((card, idx) => {
+        card.classList.toggle('is-active', idx === closestIdx);
+      });
 
       // Atualiza dots
       if (dotsContainer) {
         dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
-          dot.classList.toggle('active', idx === activeIdx);
+          dot.classList.toggle('active', idx === closestIdx);
         });
       }
 
-      // Atualiza pílulas
+      // Atualiza pílulas superiores
       if (pillsContainer) {
         pillsContainer.querySelectorAll('.pill-tab').forEach((pill, idx) => {
-          const isActive = idx === activeIdx;
+          const isActive = idx === closestIdx;
           pill.classList.toggle('active', isActive);
           pill.setAttribute('aria-selected', isActive ? 'true' : 'false');
           if (isActive) {
@@ -252,45 +269,56 @@ const ChecklistManager = {
 
       // Atualiza contador
       if (counterCurrent) {
-        counterCurrent.textContent = String(activeIdx + 1).padStart(2, '0');
+        counterCurrent.textContent = String(closestIdx + 1).padStart(2, '0');
       }
+
+      this._currentIndex = closestIdx;
     };
 
     track.removeEventListener('scroll', track._scrollHandler);
     track._scrollHandler = updateActiveIndex;
     track.addEventListener('scroll', updateActiveIndex, { passive: true });
 
-    // Navegação Avançar (Loop)
-    if (nextBtn && !nextBtn._bound) {
-      nextBtn._bound = true;
-      nextBtn.addEventListener('click', () => {
-        const cardWidth = cards[0].offsetWidth + 28;
-        const maxScroll = track.scrollWidth - track.clientWidth;
-        
-        // Se estiver no final, dá loop suave para o início
-        if (track.scrollLeft >= maxScroll - 20) {
-          track.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-          track.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        }
-      });
-    }
+    // Funções de Avançar e Voltar com Loop Infinito
+    const goNext = () => {
+      const current = this._currentIndex || 0;
+      const nextIdx = (current + 1) % cards.length;
+      this.scrollToIndex(nextIdx);
+    };
 
-    // Navegação Voltar (Loop)
-    if (prevBtn && !prevBtn._bound) {
-      prevBtn._bound = true;
-      prevBtn.addEventListener('click', () => {
-        const cardWidth = cards[0].offsetWidth + 28;
-        const maxScroll = track.scrollWidth - track.clientWidth;
+    const goPrev = () => {
+      const current = this._currentIndex || 0;
+      const prevIdx = (current - 1 + cards.length) % cards.length;
+      this.scrollToIndex(prevIdx);
+    };
 
-        // Se estiver no começo, dá loop suave para o final
-        if (track.scrollLeft <= 20) {
-          track.scrollTo({ left: maxScroll, behavior: 'smooth' });
-        } else {
-          track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-        }
-      });
-    }
+    // Vincula botões superiores e laterais
+    [nextBtn, sideNextBtn].forEach(btn => {
+      if (btn && !btn._bound) {
+        btn._bound = true;
+        btn.addEventListener('click', goNext);
+      }
+    });
+
+    [prevBtn, sidePrevBtn].forEach(btn => {
+      if (btn && !btn._bound) {
+        btn._bound = true;
+        btn.addEventListener('click', goPrev);
+      }
+    });
+
+    // Clique direto no card lateral traz ele para o meio
+    cards.forEach((card, idx) => {
+      if (!card._clickBound) {
+        card._clickBound = true;
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist')) return;
+          if (!card.classList.contains('is-active')) {
+            this.scrollToIndex(idx);
+          }
+        });
+      }
+    });
 
     // Suporte a arrasto fluído no desktop
     let isDown = false;
@@ -322,6 +350,9 @@ const ChecklistManager = {
       const walk = (x - startX) * 1.5;
       track.scrollLeft = scrollLeft - walk;
     });
+
+    // Executa uma vez no início para marcar o primeiro card ativo
+    updateActiveIndex();
   },
 
   scrollToIndex(index) {
@@ -330,8 +361,10 @@ const ChecklistManager = {
     if (!track || !container) return;
     const cards = container.querySelectorAll('.checklist-card');
     if (cards[index]) {
-      const cardWidth = cards[0].offsetWidth + 28;
-      track.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+      const card = cards[index];
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const targetScroll = cardCenter - track.clientWidth / 2;
+      track.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
     }
   }
 };
