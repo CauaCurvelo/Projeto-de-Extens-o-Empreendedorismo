@@ -176,17 +176,25 @@ function renderCategoryTabs(modules) {
   const tabsContainer = document.getElementById('category-tabs');
   if (!tabsContainer) return;
 
-  const categories = ['Todas as Áreas', ...new Set(modules.map(m => m.category))];
+  const categories = ['Todas as Áreas', ...new Set(modules.map(m => m.category)), 'Checklists Rápidos'];
 
   tabsContainer.innerHTML = categories.map((cat, idx) => `
-    <button class="tab-btn ${idx === 0 ? 'active' : ''}" data-cat="${cat === 'Todas as Áreas' ? 'all' : cat}">
-      ${cat}
+    <button class="tab-btn ${idx === 0 ? 'active' : ''} ${cat === 'Checklists Rápidos' ? 'tab-btn-highlight' : ''}" data-cat="${cat === 'Todas as Áreas' ? 'all' : cat}">
+      ${cat === 'Checklists Rápidos' ? '✓ ' + cat : cat}
     </button>
   `).join('');
 
   tabsContainer.addEventListener('click', (e) => {
     const btn = e.target.closest('.tab-btn');
     if (!btn) return;
+
+    if (btn.dataset.cat === 'Checklists Rápidos') {
+      const chkSection = document.getElementById('checklists');
+      if (chkSection) {
+        chkSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
 
     tabsContainer.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');

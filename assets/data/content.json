@@ -13,12 +13,12 @@
       "category": "Vendas & CDC",
       "badge": "Obrigatório",
       "icon": "shield",
-      "title": "2. Regras Gerais para Qualquer Negócio",
+      "title": "Regras Gerais para Qualquer Negócio",
       "summary": "Deveres de quem vende, informação clara, publicidade responsável e cumprimento integral da oferta.",
       "cards": [
         {
           "id": "cdc-deveres",
-          "title": "2.1 Quem vende também assume deveres",
+          "title": "Quem vende também assume deveres",
           "layers": {
             "lei": "O Código de Defesa do Consumidor estabelece direitos básicos, entre eles proteção à vida, saúde e segurança, informação adequada e clara e proteção contra publicidade enganosa ou abusiva. O CDC também disciplina oferta, contratos, vícios, responsabilidade e práticas comerciais.",
             "pratica": "Quem comercializa produtos ou presta serviços assume obrigações legais diretas perante o comprador, mesmo em negócios informais ou de pequeno porte.",
@@ -28,7 +28,7 @@
         },
         {
           "id": "informacao-obrigacao",
-          "title": "2.2 Informação é obrigação, não favor",
+          "title": "Informação é obrigação, não favor",
           "layers": {
             "lei": "Preço, características, composição, quantidade, qualidade, condições da oferta e riscos relevantes devem ser informados de maneira adequada. Uma descrição incompleta pode criar expectativa que o negócio depois não consegue cumprir.",
             "pratica": "Exemplo do guia: se uma confeiteira anuncia 'bolo de chocolate com recheio de morango', mas usa outro recheio ou reduz substancialmente a quantidade sem avisar, comete descumprimento de oferta.",
@@ -38,7 +38,7 @@
         },
         {
           "id": "publicidade-enganosa",
-          "title": "2.3 Publicidade enganosa e abusiva",
+          "title": "Publicidade enganosa e abusiva",
           "layers": {
             "lei": "Publicidade enganosa é aquela inteira ou parcialmente falsa, ou capaz de induzir o consumidor a erro. Publicidade abusiva inclui, entre outras hipóteses, práticas que explorem medo, superstição, deficiência de julgamento da criança ou outras situações previstas no CDC.",
             "pratica": "Omissão de restrições importantes ou apelo a medos e inseguranças para forçar uma venda configura infração ao consumidor.",
@@ -48,7 +48,7 @@
         },
         {
           "id": "publicidade-promessas",
-          "title": "2.4 Não prometa resultado que você não controla",
+          "title": "Não prometa resultado que você não controla",
           "layers": {
             "lei": "Frases que prometem resultados infalíveis geram obrigação de resultado. A comunicação deve corresponder rigorosamente ao que pode ser efetivamente entregue.",
             "pratica": "Expressões como 'resultado garantido', 'sem qualquer risco', 'vai funcionar para todo mundo' ou promessas de cura são extremamente problemáticas, sobretudo em beleza, estética e saúde.",
@@ -58,7 +58,7 @@
         },
         {
           "id": "oferta-vinculante",
-          "title": "2.5 Oferta anunciada precisa ser cumprida",
+          "title": "Oferta anunciada precisa ser cumprida",
           "layers": {
             "lei": "Se a oferta for suficientemente precisa, ela integra a obrigação do fornecedor. Se o fornecedor se recusar a cumprir, o CDC prevê alternativas ao consumidor (exigir o cumprimento forçado, aceitar outro equivalente ou rescindir com restituição).",
             "pratica": "Informou um preço em post, panfleto ou catálogo? Você fica legalmente vinculada àquele valor enquanto a oferta estiver pública.",
@@ -73,12 +73,12 @@
       "category": "Vendas Online",
       "badge": "Instagram & WhatsApp",
       "icon": "message",
-      "title": "3. Vendas pelo Instagram, WhatsApp e Internet",
+      "title": "Vendas pelo Instagram, WhatsApp e Internet",
       "summary": "Informações prévias obrigatórias, direito de arrependimento (7 dias), encomendas e validade das conversas.",
       "cards": [
         {
           "id": "o-que-deve-aparecer",
-          "title": "3.1 O que deve aparecer antes da contratação",
+          "title": "O que deve aparecer antes da contratação",
           "layers": {
             "lei": "No comércio eletrônico, o Decreto nº 7.962/2013 regulamenta aspectos do CDC e exige informações claras sobre produto, serviço e fornecedor, além de mecanismos para atendimento e exercício do direito de arrependimento.",
             "pratica": "A cliente precisa ter acesso prévio a: produto/serviço detalhado, preço e formas de pagamento, prazo de confecção/entrega, limitações, regras de cancelamento, canais de atendimento e dados do vendedor.",
@@ -88,7 +88,7 @@
         },
         {
           "id": "direito-arrependimento",
-          "title": "3.2 Direito de arrependimento: não confunda",
+          "title": "Direito de arrependimento: não confunda",
           "layers": {
             "lei": "O art. 49 do CDC prevê o direito de desistir da contratação em até 7 dias a contar da assinatura ou do recebimento do produto/serviço quando a contratação ocorrer fora do estabelecimento comercial (telefone, WhatsApp, Instagram, internet).",
             "pratica": "A aplicação do direito depende da forma e das circunstâncias da contratação. Não trate automaticamente qualquer venda online como se a cliente não tivesse direitos.",
@@ -98,7 +98,7 @@
         },
         {
           "id": "venda-encomenda",
-          "title": "3.3 Venda por encomenda",
+          "title": "Venda por encomenda",
           "layers": {
             "lei": "Em produtos personalizados, não trate automaticamente a encomenda como se o consumidor nunca tivesse direitos. A situação concreta e a forma de contratação importam.",
             "pratica": "Desentendimentos com cores, tecidos ou detalhes customizados acontecem quando o combinativo fica vago.",
@@ -108,7 +108,7 @@
         },
         {
           "id": "conversas-whatsapp",
-          "title": "3.4 Conversas no WhatsApp",
+          "title": "Conversas no WhatsApp",
           "layers": {
             "lei": "Mensagens podem registrar o que foi oferecido e combinado, servindo como elementos probatórios de obrigações contratuais.",
             "pratica": "Se um áudio combinou algo diferente do texto inicial e gerou dúvida posterior, o registro documental é o que protege as partes.",
@@ -123,12 +123,12 @@
       "category": "Contratos & Parcerias",
       "badge": "Formalização",
       "icon": "contract",
-      "title": "4. Contratos, Encomendas e Termos",
+      "title": "Contratos, Encomendas e Termos",
       "summary": "Perguntas que um contrato simples deve responder, limites de cláusulas abusivas e a Lei da Parceria em Salão de Beleza.",
       "cards": [
         {
           "id": "contrato-perguntas",
-          "title": "4.1 O que um contrato simples deve responder",
+          "title": "O que um contrato simples deve responder",
           "layers": {
             "lei": "O Código Civil prevê que a liberdade contratual deve ser exercida nos limites da função social do contrato e que os contratantes devem observar a probidade e a boa-fé (arts. 421 e 422).",
             "pratica": "Um contrato não precisa ter termos difíceis; ele precisa ser compreensível para ambas as partes.",
@@ -138,7 +138,7 @@
         },
         {
           "id": "contrato-direitos-legais",
-          "title": "4.2 Contrato não pode apagar direitos legais",
+          "title": "Contrato não pode apagar direitos legais",
           "layers": {
             "lei": "Em relações de consumo, cláusulas abusivas que retirem direitos do consumidor ou isentem o fornecedor de responsabilidade são juridicamente nulas (CDC, art. 51).",
             "pratica": "Colocar no contrato ou recibo uma frase como 'não nos responsabilizamos por nenhum problema' não elimina a responsabilidade legal do negócio perante a lei.",
@@ -148,7 +148,7 @@
         },
         {
           "id": "parceria-salao",
-          "title": "4.3 Parceria em salão de beleza",
+          "title": "Parceria em salão de beleza",
           "layers": {
             "lei": "A Lei nº 12.592/2012 permite contratos de parceria, por escrito, entre salões-parceiros e profissionais-parceiros. A própria lei estabelece requisitos para essa parceria e prevê consequências quando não houver contrato formalizado ou quando o profissional desempenhar funções diferentes das previstas.",
             "pratica": "Sem contrato formalizado ou agindo com subordinação direta e cumprimento obrigatório de jornada, a relação pode ser descaracterizada e gerar passivos trabalhistas.",
@@ -163,12 +163,12 @@
       "category": "Cobranças & Pagamentos",
       "badge": "Financeiro",
       "icon": "wallet",
-      "title": "5. Cobranças, Reservas, Sinal e Inadimplência",
+      "title": "Cobranças, Reservas, Sinal e Inadimplência",
       "summary": "Procedimentos corretos em caso de inadimplência, regras para cobrança de sinal/reserva e conferência de comprovantes.",
       "cards": [
         {
           "id": "cliente-nao-pagou",
-          "title": "5.1 Cliente não pagou",
+          "title": "Cliente não pagou",
           "layers": {
             "lei": "O CDC (art. 42) determina expressamente que na cobrança de débitos o consumidor inadimplente não pode ser exposto ao ridículo nem submetido a qualquer tipo de constrangimento ou ameaça.",
             "pratica": "Cobrar em público ou postar indiretas/nomes em redes sociais configura crime contra o consumidor (art. 71) e gera indenização por danos morais contra você.",
@@ -178,7 +178,7 @@
         },
         {
           "id": "sinal-reserva",
-          "title": "5.2 Sinal / reserva de horário ou pedido",
+          "title": "Sinal / reserva de horário ou pedido",
           "layers": {
             "lei": "Se você cobra um valor para reservar horário, encomenda ou serviço, explique por escrito o que esse pagamento representa e o que ocorre se qualquer das partes cancelar.",
             "pratica": "Reter valores integrais sem justificativa de despesas reais comprovadas pode ser considerado retenção indevida ou abusiva.",
@@ -188,7 +188,7 @@
         },
         {
           "id": "comprovante-pagamento",
-          "title": "5.3 Comprovante de pagamento",
+          "title": "Comprovante de pagamento",
           "layers": {
             "lei": "A relação comercial exige dever de cautela de quem entrega o bem. A presunção de quitação decorre da efetiva disponibilização dos fundos.",
             "pratica": "Imagens e 'prints' de tela podem ser agendamentos cancelados minutos depois, comprovantes editados ou montagens de aplicativos falsos.",
@@ -203,12 +203,12 @@
       "category": "Imagem & LGPD",
       "badge": "Privacidade",
       "icon": "camera",
-      "title": "6. Fotos, Vídeos, Imagem e LGPD",
+      "title": "Fotos, Vídeos, Imagem e LGPD",
       "summary": "Direitos de imagem, autorização para divulgação de fotos, regras da LGPD e cuidados redobrados com crianças e adolescentes.",
       "cards": [
         {
           "id": "foto-cliente-protecao",
-          "title": "6.1 Foto da cliente não é simplesmente 'uma foto do meu trabalho'",
+          "title": "Foto da cliente não é simplesmente 'uma foto do meu trabalho'",
           "layers": {
             "lei": "A imagem da pessoa possui proteção jurídica. A Constituição Federal protege a intimidade, a vida privada, a honra e a imagem (art. 5º, X). O Código Civil disciplina os direitos da personalidade (arts. 11 a 21).",
             "pratica": "A cliente é dona de sua própria imagem. O trabalho executado não anula o direito de privacidade dela.",
@@ -218,7 +218,7 @@
         },
         {
           "id": "tirar-foto-autorizacao",
-          "title": "6.2 Tirar foto ≠ autorização automática para publicar",
+          "title": "Tirar foto ≠ autorização automática para publicar",
           "layers": {
             "lei": "O consentimento deve ter finalidade determinada. A permissão para um ato não autoriza automaticamente atos posteriores distintos.",
             "pratica": "Uma cliente pode aceitar ser fotografada para registro do procedimento no prontuário interno e não querer que a foto vá para o Instagram, TikTok ou anúncio.",
@@ -228,7 +228,7 @@
         },
         {
           "id": "lgpd-dados-imagens",
-          "title": "6.3 LGPD e imagens/dados",
+          "title": "LGPD e imagens/dados",
           "layers": {
             "lei": "A LGPD se aplica ao tratamento de dados pessoais (inclusive imagem facial), em meios digitais. Consentimento deve ser livre, informado e inequívoco para finalidade determinada; autorizações genéricas são inadequadas.",
             "pratica": "Termos de autorização vagos ou amplos demais não conferem segurança jurídica caso haja questionamento futuro.",
@@ -238,7 +238,7 @@
         },
         {
           "id": "como-criar-autorizacao",
-          "title": "6.4 Como criar autorização mais segura",
+          "title": "Como criar autorização mais segura",
           "layers": {
             "lei": "A autorização deve explicar de forma compreensível qual imagem será utilizada, finalidade e canais. Para campanhas complexas ou menores, recomenda-se orientação profissional.",
             "pratica": "Um texto claro no WhatsApp ou em formulário simples tem validade e evita qualquer desentendimento posterior.",
@@ -248,7 +248,7 @@
         },
         {
           "id": "cliente-pediu-retirar",
-          "title": "6.5 Cliente pediu para retirar a foto",
+          "title": "Cliente pediu para retirar a foto",
           "layers": {
             "lei": "Não ignore o pedido. Quando o tratamento se baseia em consentimento, a LGPD (art. 8º, §5º e art. 18) prevê expressamente a possibilidade de revogação por manifestação expressa.",
             "pratica": "Mesmo que a cliente tenha autorizado no passado, se ela solicitar a retirada hoje, você deve arquivar ou deletar o post.",
@@ -258,7 +258,7 @@
         },
         {
           "id": "criancas-adolescentes",
-          "title": "6.6 Crianças e adolescentes",
+          "title": "Crianças e adolescentes",
           "layers": {
             "lei": "O tratamento de dados e imagens de crianças e adolescentes deve observar o melhor interesse (LGPD, art. 14). Além disso, o Estatuto da Criança e do Adolescente (ECA) protege rigorosamente a imagem e a dignidade (Lei nº 8.069/1990, especialmente art. 17).",
             "pratica": "Fotos de menores em festas infantis, salões ou ensaios sem autorização inequívoca de pai/mãe configuram infração gravíssima.",
@@ -273,12 +273,12 @@
       "category": "Alimentação & Anvisa",
       "badge": "Vigilância Sanitária",
       "icon": "food",
-      "title": "7. Quem Vende Comida: Guia Prático",
+      "title": "Quem Vende Comida: Guia Prático",
       "summary": "Regras sanitárias, RDC 216/2004, contaminação cruzada, alergênicos, rotulagem e delivery seguro.",
       "cards": [
         {
           "id": "regra-sanitaria-motivo",
-          "title": "7.1 Por que existe uma regra sanitária?",
+          "title": "Por que existe uma regra sanitária?",
           "layers": {
             "lei": "A venda de alimentos envolve risco direto à saúde pública. A Anvisa indica a RDC nº 216/2004 como referência para Boas Práticas para Serviços de Alimentação, garantindo condições higiênico-sanitárias do alimento preparado.",
             "pratica": "O cumprimento das práticas protege os clientes contra surtos alimentares e protege a reputação do seu empreendimento.",
@@ -288,7 +288,7 @@
         },
         {
           "id": "higiene-manipulacao",
-          "title": "7.2 Higiene das mãos e manipulação",
+          "title": "Higiene das mãos e manipulação",
           "layers": {
             "lei": "As Boas Práticas da Anvisa exigem controle sanitário rigoroso no contato manual com ingredientes e alimentos prontos para consumo.",
             "pratica": "Pegar em dinheiro, maquininha ou celular e logo em seguida manipular pães, salgados ou doces transfere microrganismos nocivos.",
@@ -298,7 +298,7 @@
         },
         {
           "id": "contaminacao-cruzada",
-          "title": "7.3 Contaminação cruzada",
+          "title": "Contaminação cruzada",
           "layers": {
             "lei": "A transmissão de microrganismos de superfícies ou insumos contaminados para alimentos prontos fere as normas sanitárias básicas de produção de alimentos.",
             "pratica": "Exemplo do guia: usar a mesma faca ou tábua de corte para frango cru e para legumes de uma salada pronta sem higienização adequada multiplica o risco de contaminação.",
@@ -308,7 +308,7 @@
         },
         {
           "id": "conservacao-temperatura",
-          "title": "7.4 Conservação e temperatura",
+          "title": "Conservação e temperatura",
           "layers": {
             "lei": "Alimentos perecíveis exigem controle adequado de conservação conforme orientações sanitárias e parâmetros de temperatura.",
             "pratica": "Manter recheios de leite, tortas, maioneses ou carnes em temperatura ambiente por horas propicia proliferação bacteriana acelerada.",
@@ -318,7 +318,7 @@
         },
         {
           "id": "validade-alimentos",
-          "title": "7.5 Validade",
+          "title": "Validade",
           "layers": {
             "lei": "Não invente um prazo de validade apenas porque 'sempre funcionou'. A validade depende das características do alimento, formulação, processamento, embalagem e condições de armazenamento.",
             "pratica": "Rotular validade sem embasamento gera risco de intoxicação e autuação pelos órgãos fiscalizadores.",
@@ -328,7 +328,7 @@
         },
         {
           "id": "alergenicos-rotulos",
-          "title": "7.6 Alergênicos: cuidado com declarações",
+          "title": "Alergênicos: cuidado com declarações",
           "layers": {
             "lei": "A Anvisa (RDC nº 727/2022) estabelece normas sobre rotulagem de alergênicos. Alegações de ausência de alergênicos não podem ser usadas indiscriminadamente até que existam critérios específicos aplicáveis.",
             "pratica": "Dizer que um produto é 'zero glúten' quando há farinha de trigo manipulada no mesmo ambiente expõe pessoas celíacas a choque anafilático.",
@@ -338,7 +338,7 @@
         },
         {
           "id": "rotulagem-geral",
-          "title": "7.7 Rotulagem de produtos embalados",
+          "title": "Rotulagem de produtos embalados",
           "layers": {
             "lei": "Para alimentos embalados sujeitos às regras de rotulagem, existem exigências quanto a ingredientes, validade, informações nutricionais, origem, lote e alergênicos.",
             "pratica": "Vender potes de doces, geleias ou congelados em mercados e feiras sem rótulo adequado sujeita à apreensão da mercadoria.",
@@ -348,7 +348,7 @@
         },
         {
           "id": "delivery-comida-guia",
-          "title": "7.8 Venda de comida por delivery",
+          "title": "Venda de comida por delivery",
           "layers": {
             "lei": "O fornecedor responde pela integridade do produto até a entrega ao destinatário final.",
             "pratica": "Embalagens frágeis que vazam ou abrem no baú da moto arruinam o produto e geram direito de cancelamento.",
@@ -358,7 +358,7 @@
         },
         {
           "id": "vigilancia-sanitaria-alimentos",
-          "title": "7.9 Vigilância Sanitária local",
+          "title": "Vigilância Sanitária local",
           "layers": {
             "lei": "A regularização sanitária depende da atividade e da legislação municipal e estadual específica.",
             "pratica": "Trabalhar em conformidade evita multas, interdições e dá credibilidade comercial perante clientes.",
@@ -373,12 +373,12 @@
       "category": "Beleza & Estética",
       "badge": "Biossegurança",
       "icon": "beauty",
-      "title": "8. Profissionais da Beleza e Embelezamento",
+      "title": "Profissionais da Beleza e Embelezamento",
       "summary": "Profissões abrangidas, normas sanitárias municipais, materiais reutilizáveis, formol e cuidados com manicure e maquiagem.",
       "cards": [
         {
           "id": "quem-esta-abrangido",
-          "title": "8.1 Quem está abrangido pela Lei nº 12.592/2012",
+          "title": "Quem está abrangido pela Lei nº 12.592/2012",
           "layers": {
             "lei": "A Lei nº 12.592/2012 reconhece as atividades de cabeleireiro, barbeiro, esteticista, manicure, pedicure, depilador e maquiador. A lei determina que esses profissionais observem normas sanitárias e efetuem a esterilização de materiais e utensílios.",
             "pratica": "A legislação reconhece a profissão mas atrela diretamente o exercício à responsabilidade sanitária e de biossegurança.",
@@ -388,7 +388,7 @@
         },
         {
           "id": "regra-sanitaria-municipio",
-          "title": "8.2 A regra sanitária não é igual em todo município",
+          "title": "A regra sanitária não é igual em todo município",
           "layers": {
             "lei": "A Anvisa informa que normas sanitárias específicas para serviços de embelezamento são definidas por estados e municípios, cabendo consulta à autoridade sanitária local.",
             "pratica": "Exigências de autoclave, ventilação ou descarte podem ter especificidades no Código de Posturas do seu município.",
@@ -398,7 +398,7 @@
         },
         {
           "id": "materiais-reutilizaveis",
-          "title": "8.3 Materiais reutilizáveis",
+          "title": "Materiais reutilizáveis",
           "layers": {
             "lei": "A esterilização de instrumentos é exigência expressa do art. 4º da Lei nº 12.592/2012.",
             "pratica": "Compartilhar instrumentos sem processamento sanitário correto gera risco de transmissão de hepatites B e C e infecções bacterianas.",
@@ -408,7 +408,7 @@
         },
         {
           "id": "produtos-cosmeticos",
-          "title": "8.4 Produtos cosméticos",
+          "title": "Produtos cosméticos",
           "layers": {
             "lei": "Os produtos aplicados em clientes devem ter regularização formal perante a Anvisa e serem compatíveis com a finalidade indicada no rótulo.",
             "pratica": "Substituir cosméticos por misturas caseiras ou substâncias proibidas enseja responsabilização civil e criminal.",
@@ -418,7 +418,7 @@
         },
         {
           "id": "formol-alisantes-proibicao",
-          "title": "8.5 Formol e alisantes",
+          "title": "Formol e alisantes",
           "layers": {
             "lei": "A Anvisa informa que a adição de formol a produtos para obter alisamento capilar não é permitida por causa dos graves riscos à saúde pública.",
             "pratica": "O formol possui usos específicos na fabricação de alguns produtos, mas isso não significa que possa ser adicionado livremente durante o atendimento no salão.",
@@ -428,7 +428,7 @@
         },
         {
           "id": "unhas-manicure-pedicure",
-          "title": "8.6 Unhas, manicure e pedicure",
+          "title": "Unhas, manicure e pedicure",
           "layers": {
             "lei": "Instrumentos que entram em contato com cutículas e tecidos biológicos devem seguir parâmetros sanitários de esterilização.",
             "pratica": "Cortes acidentais durante a cutilagem podem ocorrer e exigem conduta padronizada de higienização imediata.",
@@ -438,7 +438,7 @@
         },
         {
           "id": "cabelo-quimica-couro",
-          "title": "8.7 Cabelo, química e couro cabeludo",
+          "title": "Cabelo, química e couro cabeludo",
           "layers": {
             "lei": "Quem aplica químicas capilares responde pelos danos e lesões causados à integridade física do cliente (art. 14 do CDC).",
             "pratica": "Cortes químicos e queimaduras de couro cabeludo decorrem frequentemente da falta do teste de mecha prévio.",
@@ -448,7 +448,7 @@
         },
         {
           "id": "maquiagem-biosseguranca",
-          "title": "8.8 Maquiagem e aplicação higiênica",
+          "title": "Maquiagem e aplicação higiênica",
           "layers": {
             "lei": "Regras de biossegurança proíbem aplicação de cosméticos contaminados ou com prazo de validade expirado.",
             "pratica": "Encostar o aplicador de rímel ou batom diretamente na cliente e voltar para a embalagem contamina o frasco inteiro para a próxima pessoa.",
@@ -463,12 +463,12 @@
       "category": "Estética & Procedimentos",
       "badge": "Atenção Sanitária",
       "icon": "sparkles",
-      "title": "9. Estética e Procedimentos de Maior Risco",
+      "title": "Estética e Procedimentos de Maior Risco",
       "summary": "Competências legais, as 3 perguntas antes do procedimento, limites com a medicina e conduta em reações adversas.",
       "cards": [
         {
           "id": "tres-perguntas-estetica",
-          "title": "9.1 Três perguntas antes de um procedimento",
+          "title": "Três perguntas antes de um procedimento",
           "layers": {
             "lei": "A Anvisa orienta na campanha 'Procedimento Seguro' que todo consumidor e profissional verifique a regularidade prévia.",
             "pratica": "Antes de oferecer qualquer procedimento, certifique-se: 1) O local está regularizado para aquela atividade? 2) O produto ou equipamento é regularizado na Anvisa? 3) O profissional possui habilitação legal comprovada?",
@@ -478,7 +478,7 @@
         },
         {
           "id": "estetica-nao-confundir-medicina",
-          "title": "9.2 Não confundir estética com medicina",
+          "title": "Não confundir estética com medicina",
           "layers": {
             "lei": "A Lei nº 13.643/2018 regulamenta Esteticista e Técnico em Estética e estabelece limites claros para a atuação. Procedimentos e atos privativos de outras profissões não podem ser realizados apenas porque um curso comercial ensina a técnica.",
             "pratica": "Cursos livres rápidos na internet não conferem amparo legal para procedimentos médicos invasivos.",
@@ -488,7 +488,7 @@
         },
         {
           "id": "anvisa-situacao-nota-tecnica",
-          "title": "9.3 Atenção à situação atual das orientações da Anvisa",
+          "title": "Atenção à situação atual das orientações da Anvisa",
           "layers": {
             "lei": "Em setembro de 2026, a Anvisa informou a suspensão temporária dos efeitos da Nota Técnica nº 2/2024/SEI/GGTES/DIRE3/Anvisa durante reavaliação. A suspensão não significa que as normas sanitárias tenham deixado de existir.",
             "pratica": "O site não deve tratar essa Nota Técnica como se fosse uma norma federal atualmente vigente; deve priorizar a legislação aplicável e a orientação da Vigilância Sanitária local.",
@@ -498,7 +498,7 @@
         },
         {
           "id": "reacoes-acidentes",
-          "title": "9.4 Reações e acidentes",
+          "title": "Reações e acidentes",
           "layers": {
             "lei": "O dever de socorro e proteção do consumidor é imediato. A profissional não deve emitir diagnósticos médicos nem prescrever medicamentos privativos.",
             "pratica": "Se uma cliente apresentar dor intensa, queimadura, sangramento ou reação preocupante, a prioridade absoluta é a segurança e o encaminhamento ao serviço de saúde.",
@@ -513,12 +513,12 @@
       "category": "Produtos & Confecção",
       "badge": "Varejo & Moda",
       "icon": "shopping-bag",
-      "title": "10. Roupas, Artesanato e Produtos",
+      "title": "Roupas, Artesanato e Produtos",
       "summary": "Prazos de vício do CDC, política de troca por gosto/tamanho e regras para produtos personalizados.",
       "cards": [
         {
           "id": "produto-defeito-vicio",
-          "title": "10.1 Produto com defeito ou vício",
+          "title": "Produto com defeito ou vício",
           "layers": {
             "lei": "O CDC (arts. 18 a 26) prevê regras específicas para vícios aparentes e ocultos em produtos (30 dias para bens não duráveis e 90 dias para duráveis). O fornecedor deve observar os prazos e mecanismos legais de solução.",
             "pratica": "Avisos como 'não aceitamos trocas de produtos em liquidação' não anulam a obrigação legal de consertar ou trocar caso o item tenha vício de fabricação.",
@@ -528,7 +528,7 @@
         },
         {
           "id": "troca-gosto-tamanho",
-          "title": "10.2 Troca por gosto ou tamanho",
+          "title": "Troca por gosto ou tamanho",
           "layers": {
             "lei": "Nas compras feitas na loja física, a troca por mera preferência (cor ou tamanho que não serviu, sem defeito) depende da política comercial da loja, salvo direito legal específico.",
             "pratica": "Se você promete na etiqueta ou no perfil que troca peças sem uso em até 15 dias, essa oferta passa a ser vinculante e obrigatória.",
@@ -538,7 +538,7 @@
         },
         {
           "id": "produto-personalizado",
-          "title": "10.3 Produto personalizado sob medida",
+          "title": "Produto personalizado sob medida",
           "layers": {
             "lei": "Contratos de produção personalizada regem-se pela conformidade estrita com o projeto acordado previamente com o comprador.",
             "pratica": "Cliente que aprovou a arte digital do bordado ou convite não pode exigir reembolso total após a confecção completa ter sido concluída fielmente ao aprovado.",
@@ -553,12 +553,12 @@
       "category": "Prestação de Serviços",
       "badge": "Escopo & Termos",
       "icon": "briefcase",
-      "title": "11. Prestadoras de Serviços",
+      "title": "Prestadoras de Serviços",
       "summary": "Diretrizes práticas para fotógrafas, designers, social media, costureiras e professoras particulares.",
       "cards": [
         {
           "id": "fotografia-servicos",
-          "title": "11.1 Fotografia",
+          "title": "Fotografia",
           "layers": {
             "lei": "A relação envolve prestação de serviços (Código Civil) e cessão de direitos autorais patrimoniais (Lei nº 9.610/1998).",
             "pratica": "Sem alinhamento, a cliente exige arquivos brutos sem edição ou quer remarcar datas sem pagar os custos do estúdio reservado.",
@@ -568,7 +568,7 @@
         },
         {
           "id": "social-media-design",
-          "title": "11.2 Social media e Designers",
+          "title": "Social media e Designers",
           "layers": {
             "lei": "A obrigação deve conter delimitação de escopo, prazos de envio de material e limites de responsabilidade contratual.",
             "pratica": "O cliente atrasa o envio de dados e depois culpa a profissional pelo atraso do cronograma, além de pedir alterações intermináveis.",
@@ -578,7 +578,7 @@
         },
         {
           "id": "costura-encomendas",
-          "title": "11.3 Costura e encomendas",
+          "title": "Costura e encomendas",
           "layers": {
             "lei": "A confecção de roupas sob medida envolve obrigação de resultado conforme medidas e modelo aprovados.",
             "pratica": "Ajustes decorrentes de mudança de modelo de última hora geram custos extras que a cliente não quer pagar se não foram pactuados antes.",
@@ -593,12 +593,12 @@
       "category": "Marketing & Redes",
       "badge": "Comunicação",
       "icon": "megaphone",
-      "title": "12. Publicidade, Promoções e Influência",
+      "title": "Publicidade, Promoções e Influência",
       "summary": "Promoções sem omissões, antes e depois sem distorções e o uso legítimo de depoimentos reais.",
       "cards": [
         {
           "id": "promocao-informacao",
-          "title": "12.1 Promoção não é desculpa para informação incompleta",
+          "title": "Promoção não é desculpa para informação incompleta",
           "layers": {
             "lei": "O CDC veda aumentos prévios de preço para simular descontos falsos ('metade do dobro') ou ofertas enganosas.",
             "pratica": "Anunciar 'tudo com 50% de desconto' e na hora dizer que só se aplica a 2 itens de ponta de estoque gera infração perante o Procon.",
@@ -608,7 +608,7 @@
         },
         {
           "id": "antes-e-depois-guia",
-          "title": "12.2 Fotos de Antes e Depois",
+          "title": "Fotos de Antes e Depois",
           "layers": {
             "lei": "A imagem deve retratar a realidade do procedimento, sem manipulação digital que crie expectativa irreal no consumidor.",
             "pratica": "Uso de filtros suavizadores, iluminação distorcida ou Photoshop em fotos de antes/depois mascara a realidade e pode configurar publicidade enganosa.",
@@ -618,7 +618,7 @@
         },
         {
           "id": "depoimentos-reais",
-          "title": "12.3 Depoimentos de clientes",
+          "title": "Depoimentos de clientes",
           "layers": {
             "lei": "Depoimentos forjados ou fictícios violam o dever de transparência e veracidade da publicidade comercial.",
             "pratica": "Criar prints fakes de conversas elogiando seu próprio produto quebra a confiança e fere o CDC.",
@@ -633,12 +633,12 @@
       "category": "Segurança Digital",
       "badge": "Prevenção a Golpes",
       "icon": "lock",
-      "title": "13. PIX, Golpes e Segurança Digital",
+      "title": "PIX, Golpes e Segurança Digital",
       "summary": "Prevenção contra prints falsos de Pix, autenticação em dois fatores e o que fazer se sua conta do Instagram for invadida.",
       "cards": [
         {
           "id": "cuidados-pix-golpes",
-          "title": "13.1 PIX, golpes e comprovantes",
+          "title": "PIX, golpes e comprovantes",
           "layers": {
             "lei": "A verificação do pagamento legítimo é diligência básica do comerciante antes da tradição (entrega) do bem.",
             "pratica": "Golpistas enviam comprovantes falsificados com tipografia adulterada ou usam chave agendada para cancelar logo após pegar a mercadoria.",
@@ -648,7 +648,7 @@
         },
         {
           "id": "instagram-invadido",
-          "title": "13.2 Conta do Instagram invadida",
+          "title": "Conta do Instagram invadida",
           "layers": {
             "lei": "O titular da conta deve agir prontamente para mitigar danos e fraudes aplicadas contra seus seguidores e clientes.",
             "pratica": "Criminosos usam a conta invadida para divulgar falsos investimentos (tabela do Pix) ou vender eletrodomésticos inexistentes em seu nome.",
@@ -663,12 +663,12 @@
       "category": "Gestão de Conflitos",
       "badge": "Pós-Venda",
       "icon": "user-check",
-      "title": "14. Reclamações: O Que Fazer",
+      "title": "Reclamações: O Que Fazer",
       "summary": "Postura profissional ao receber reclamações, procedimentos quando há ameaça de Procon/processo e casos com danos físicos.",
       "cards": [
         {
           "id": "cliente-reclamou-postura",
-          "title": "14.1 Cliente reclamou",
+          "title": "Cliente reclamou",
           "layers": {
             "lei": "O CDC assegura canais eficazes de resolução de vícios e atendimento ao consumidor de boa-fé.",
             "pratica": "Responder cliente insatisfeita com ironia ou grosseria no WhatsApp transforma um problema simples de produto em um litígio desgastante.",
@@ -678,7 +678,7 @@
         },
         {
           "id": "ameaca-procon-processo",
-          "title": "14.2 Cliente ameaça Procon ou processo",
+          "title": "Cliente ameaça Procon ou processo",
           "layers": {
             "lei": "O acesso aos órgãos de defesa do consumidor e ao Poder Judiciário é direito constitucional. Nenhuma das partes deve agir com coação.",
             "pratica": "O medo de processo pode levar a empreendedora a apagar conversas, o que destrói a própria prova da defesa.",
@@ -688,7 +688,7 @@
         },
         {
           "id": "produto-causou-dano",
-          "title": "14.3 Produto ou serviço causou dano",
+          "title": "Produto ou serviço causou dano",
           "layers": {
             "lei": "Situações que envolvam lesão, intoxicação, queimadura, reação grave ou prejuízo patrimonial caracterizam fato do produto ou serviço (CDC, arts. 12 a 14).",
             "pratica": "Acidentes exigem apoio e empatia imediata, mas não se deve assumir culpas indevidas por escrito sem conhecimento dos fatos.",
@@ -702,7 +702,7 @@
   "checklists": [
     {
       "id": "chk-anuncio",
-      "title": "15. Checklist Geral — Antes de Publicar Qualquer Anúncio",
+      "title": "Checklist Geral — Antes de Publicar Qualquer Anúncio",
       "desc": "Conferência rápida do documento base antes de postar no feed, stories ou WhatsApp.",
       "items": [
         "O preço está correto e visível?",
@@ -719,7 +719,7 @@
     },
     {
       "id": "chk-comida",
-      "title": "16. Checklist — Quem Vende Comida",
+      "title": "Checklist — Quem Vende Comida",
       "desc": "Boas práticas sanitárias e de manipulação para alimentos e confeitarias.",
       "items": [
         "Consultei a Vigilância Sanitária local?",
@@ -737,7 +737,7 @@
     },
     {
       "id": "chk-beleza",
-      "title": "17. Checklist — Profissional da Beleza",
+      "title": "Checklist — Profissional da Beleza",
       "desc": "Biossegurança, normas sanitárias e conformidade para serviços de beleza.",
       "items": [
         "Consultei a Vigilância Sanitária local?",
@@ -755,7 +755,7 @@
     },
     {
       "id": "chk-fotos",
-      "title": "18. Checklist — Fotos e Imagem",
+      "title": "Checklist — Fotos e Imagem",
       "desc": "Conformidade com a LGPD e direitos da personalidade antes de postar fotos.",
       "items": [
         "A pessoa sabe que a foto será publicada?",
@@ -770,7 +770,7 @@
     },
     {
       "id": "chk-contrato",
-      "title": "19. Checklist — Contrato",
+      "title": "Checklist — Contrato",
       "desc": "Estrutura essencial para acordos escritos e termos de prestação de serviço.",
       "items": [
         "Identifiquei as partes?",

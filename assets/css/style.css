@@ -111,6 +111,81 @@ body {
   background-color: var(--bg-page);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Luz Azul Flutuante e Dinâmica no Fundo no Modo Escuro (True Black + Floating Aura) */
+body::before {
+  content: '';
+  position: fixed;
+  top: -20%;
+  left: 20%;
+  width: 65vw;
+  height: 65vw;
+  max-width: 850px;
+  max-height: 850px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29, 78, 216, 0.22) 0%, rgba(37, 99, 235, 0.08) 45%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(80px);
+  transition: opacity 0.8s ease;
+  animation: floatAmbientBlue 18s ease-in-out infinite alternate;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: -15%;
+  right: 10%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 700px;
+  max-height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.15) 0%, rgba(29, 78, 216, 0.05) 50%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(90px);
+  transition: opacity 0.8s ease;
+  animation: floatAmbientCyan 24s ease-in-out infinite alternate-reverse;
+}
+
+[data-theme="dark"] body::before,
+[data-theme="dark"] body::after {
+  opacity: 1;
+}
+
+@keyframes floatAmbientBlue {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-12vw, 18vh) scale(1.15);
+  }
+  100% {
+    transform: translate(15vw, 8vh) scale(0.95);
+  }
+}
+
+@keyframes floatAmbientCyan {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(10vw, -15vh) scale(1.1);
+  }
+  100% {
+    transform: translate(-15vw, -8vh) scale(0.9);
+  }
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
 }
 
 /* Tipografia */
