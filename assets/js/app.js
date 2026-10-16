@@ -511,6 +511,8 @@ function initNavigation() {
  * Troca instantânea de variáveis CSS com transição suave nos elementos principais,
  * sem engasgos ou travamento de rasterização de tela cheia no mobile.
  */
+let isThemeTransitioning = false;
+
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
   const storedTheme = localStorage.getItem('unex_theme');
@@ -522,27 +524,83 @@ function initThemeToggle() {
 
   if (!toggleBtn) return;
 
-  toggleBtn.addEventListener('click', () => {
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (isThemeTransitioning) return;
+
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const nextTheme = isDark ? 'light' : 'dark';
 
-    // Dispara pulso de halo dinâmico no botão
-    toggleBtn.classList.remove('pulse-halo');
-    void toggleBtn.offsetWidth; // Força recálculo mínimo para reiniciar a animação
-    toggleBtn.classList.add('pulse-halo');
-    setTimeout(() => toggleBtn.classList.remove('pulse-halo'), 360);
+    triggerBubbleThemeToggle(toggleBtn, nextTheme);
+  });
+}
 
-    // Adiciona classe de transição global coordenada
-    document.documentElement.classList.add('theme-switching');
+/**
+ * Animação de Bolha Circular Otimizada
+ * A bolha se origina do centro exato do botão em qualquer rolagem ou aparelho,
+ * expandindo via aceleração de GPU (transform: scale) com 0 travamento.
+ */
+function triggerBubbleThemeToggle(btn, nextTheme) {
+  isThemeTransitioning = true;
+
+  // 1. Pega coordenadas exatas do centro do botão na viewport atual
+  const rect = btn.getBoundingClientRect();
+  const x = Math.round(rect.left + rect.width / 2);
+  const y = Math.round(rect.top + rect.height / 2);
+
+  // 2. Calcula o raio necessário para cobrir o canto mais distante da janela
+  const maxDistX = Math.max(x, window.innerWidth - x);
+  const maxDistY = Math.max(y, window.innerHeight - y);
+  const radius = Math.ceil(Math.hypot(maxDistX, maxDistY));
+  const diameter = radius * 2;
+
+  // 3. Obtém ou cria a bolha no DOM
+  let bubble = document.getElementById('theme-bubble-fx');
+  if (!bubble) {
+    bubble = document.createElement('div');
+    bubble.id = 'theme-bubble-fx';
+    bubble.className = 'theme-bubble-fx';
+    document.body.appendChild(bubble);
+  }
+
+  // 4. Define cor e centro da bolha (preto puro no dark, cinza suave no light)
+  const targetBg = nextTheme === 'dark' ? '#0a0a0a' : '#f8fafc';
+  bubble.style.width = `${diameter}px`;
+  bubble.style.height = `${diameter}px`;
+  bubble.style.left = `${x}px`;
+  bubble.style.top = `${y}px`;
+  bubble.style.backgroundColor = targetBg;
+  bubble.style.opacity = '1';
+  bubble.style.transform = 'translate(-50%, -50%) scale(0)';
+  bubble.style.transition = 'transform 0.36s cubic-bezier(0.2, 0.9, 0.3, 1)';
+  bubble.style.display = 'block';
+
+  // Força renderização do ponto zero antes de expandir
+  void bubble.offsetWidth;
+
+  // Expande a bolha do centro do botão
+  bubble.classList.add('expanding');
+
+  // No meio da expansão (200ms), aplica o novo tema por baixo
+  setTimeout(() => {
     document.documentElement.setAttribute('data-theme', nextTheme);
     localStorage.setItem('unex_theme', nextTheme);
     updateThemeColorMeta(nextTheme);
+  }, 200);
 
-    // Remove a classe de transição após o ciclo para não impactar a rolagem
+  // Ao cobrir tudo (360ms), esvanece suavemente a bolha
+  setTimeout(() => {
+    bubble.style.transition = 'opacity 0.16s ease';
+    bubble.style.opacity = '0';
+
     setTimeout(() => {
-      document.documentElement.classList.remove('theme-switching');
-    }, 280);
-  });
+      bubble.classList.remove('expanding');
+      bubble.style.display = 'none';
+      bubble.style.transition = '';
+      bubble.style.transform = 'translate(-50%, -50%) scale(0)';
+      isThemeTransitioning = false;
+    }, 160);
+  }, 360);
 }
 
 function updateThemeColorMeta(theme) {

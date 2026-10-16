@@ -418,9 +418,19 @@ a:hover {
   transition: background-color var(--transition-fast), border-color var(--transition-fast), transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
   user-select: none;
+  z-index: 99995;
+}
+
+.theme-toggle-btn:focus {
+  outline: none !important;
+}
+
+.theme-toggle-btn:focus-visible {
+  outline: 2px solid var(--color-accent) !important;
+  outline-offset: 2px;
 }
 
 /* Feedback tátil imediato no celular (pressionar o botão dá efeito de mola instantâneo) */
@@ -438,31 +448,14 @@ a:hover {
   }
 }
 
-/* Halo luminoso sutil que pulsa ao alternar o tema */
-.theme-toggle-btn::after {
-  content: '';
-  position: absolute;
-  inset: -3px;
-  border-radius: var(--radius-full);
-  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
-  opacity: 0;
-  transform: scale(0.5);
-  pointer-events: none;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-}
-
-.theme-toggle-btn.pulse-halo::after {
-  opacity: 0.6;
-  transform: scale(1.4);
-}
-
 .theme-icon {
   display: flex;
   align-items: center;
   justify-content: center;
   position: absolute;
   transform-origin: center center;
-  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.22s ease;
+  pointer-events: none;
 }
 
 /* No tema claro: mostra lua elegante, sol escondido */
@@ -486,6 +479,26 @@ a:hover {
 [data-theme="dark"] .moon-icon {
   opacity: 0;
   transform: rotate(-90deg) scale(0.2);
+}
+
+/* ==========================================================================
+   Bolha Circular de Transição de Tema (Aceleração por GPU, centro exato no botão)
+   ========================================================================== */
+.theme-bubble-fx {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99990;
+  transform: translate(-50%, -50%) scale(0);
+  will-change: transform;
+  outline: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+}
+
+.theme-bubble-fx.expanding {
+  transform: translate(-50%, -50%) scale(1) !important;
 }
 
 .mobile-toggle {
