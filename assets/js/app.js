@@ -474,9 +474,8 @@ function renderOfficialSources(sources) {
 function initNavigation() {
   const header = document.querySelector('.site-header');
   const toggleBtn = document.getElementById('mobile-toggle');
-  const drawer = document.getElementById('mobile-drawer');
-  const overlay = document.getElementById('nav-overlay');
-  const closeBtn = document.getElementById('drawer-close-btn');
+  const dropdown = document.getElementById('mobile-dropdown-menu');
+  const backdrop = document.getElementById('dropdown-backdrop');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 30) {
@@ -486,42 +485,54 @@ function initNavigation() {
     }
   });
 
-  const openDrawer = () => {
-    drawer?.classList.add('open');
-    overlay?.classList.add('active');
-    document.documentElement.classList.add('drawer-open');
+  const openMenu = () => {
+    dropdown?.classList.add('open');
+    backdrop?.classList.add('active');
+    toggleBtn?.classList.add('active');
+    toggleBtn?.setAttribute('aria-expanded', 'true');
   };
 
-  const closeDrawer = () => {
-    drawer?.classList.remove('open');
-    overlay?.classList.remove('active');
-    document.documentElement.classList.remove('drawer-open');
+  const closeMenu = () => {
+    dropdown?.classList.remove('open');
+    backdrop?.classList.remove('active');
+    toggleBtn?.classList.remove('active');
+    toggleBtn?.setAttribute('aria-expanded', 'false');
   };
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      if (drawer?.classList.contains('open')) {
-        closeDrawer();
+      if (dropdown?.classList.contains('open')) {
+        closeMenu();
       } else {
-        openDrawer();
+        openMenu();
       }
     });
   }
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeDrawer);
+  if (backdrop) {
+    backdrop.addEventListener('click', closeMenu);
   }
 
-  if (overlay) {
-    overlay.addEventListener('click', closeDrawer);
-  }
-
-  if (drawer) {
-    drawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeDrawer);
+  if (dropdown) {
+    dropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
   }
+
+  // Fecha se pressionar a tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && dropdown?.classList.contains('open')) {
+      closeMenu();
+    }
+  });
+
+  // Fecha o menu se a tela for redimensionada para desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 769 && dropdown?.classList.contains('open')) {
+      closeMenu();
+    }
+  });
 }
 
 /**
