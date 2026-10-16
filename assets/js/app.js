@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadContent() {
   try {
-    const response = await fetch('assets/data/content.json?v=3.0');
+    const response = await fetch('assets/data/content.json?v=3.5');
     if (!response.ok) throw new Error('Não foi possível carregar o arquivo content.json');
     appData = await response.json();
 
@@ -456,10 +456,11 @@ function initNavigation() {
     }
   });
 
+  let isMenuOpen = false;
   let menuOpenedTime = 0;
-  let lastToggleTime = 0;
 
   const openMenu = () => {
+    isMenuOpen = true;
     menuOpenedTime = Date.now();
     dropdown?.classList.add('open');
     backdrop?.classList.add('active');
@@ -467,7 +468,13 @@ function initNavigation() {
     toggleBtn?.setAttribute('aria-expanded', 'true');
   };
 
-  const closeMenu = () => {
+  const closeMenu = (force = false) => {
+    // Bloqueia qualquer fechamento nos primeiros 500ms (a menos que o usuário tenha clicado em um link de navegação)
+    // Isso torna IMPOSSÍVEL que ghost clicks, rebotes táteis ou eventos de layout do iOS Safari fechem o menu rápido
+    if (!force && Date.now() - menuOpenedTime < 500) {
+      return;
+    }
+    isMenuOpen = false;
     dropdown?.classList.remove('open');
     backdrop?.classList.remove('active');
     toggleBtn?.classList.remove('active');
@@ -478,14 +485,8 @@ function initNavigation() {
     toggleBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      const now = Date.now();
-      // Previne que duplo toque ou ghost click no iOS reverta o estado instantaneamente
-      if (now - lastToggleTime < 350) {
-        return;
-      }
-      lastToggleTime = now;
 
-      if (dropdown?.classList.contains('open')) {
+      if (isMenuOpen) {
         closeMenu();
       } else {
         openMenu();
@@ -495,24 +496,23 @@ function initNavigation() {
 
   if (backdrop) {
     backdrop.addEventListener('click', (e) => {
-      // Ignora clique fantasma propagado pelo iOS Safari logo após abrir o menu
-      if (Date.now() - menuOpenedTime < 400) {
-        return;
-      }
+      e.preventDefault();
       closeMenu();
     });
   }
 
   if (dropdown) {
     dropdown.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', closeMenu);
+      link.addEventListener('click', () => {
+        closeMenu(true); // Força fechamento quando o usuário escolhe navegar para uma seção
+      });
     });
   }
 
   // Fecha se pressionar a tecla Escape
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && dropdown?.classList.contains('open')) {
-      closeMenu();
+    if (e.key === 'Escape' && isMenuOpen) {
+      closeMenu(true);
     }
   });
 
@@ -522,8 +522,8 @@ function initNavigation() {
     const currentWidth = window.innerWidth;
     if (currentWidth !== lastWindowWidth) {
       lastWindowWidth = currentWidth;
-      if (currentWidth >= 769 && dropdown?.classList.contains('open')) {
-        closeMenu();
+      if (currentWidth >= 769 && isMenuOpen) {
+        closeMenu(true);
       }
     }
   });
