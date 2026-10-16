@@ -578,27 +578,28 @@
    Componentes Específicos no Modo Escuro
    ========================================================================== */
 [data-theme="dark"] .guide-card {
-  background: #111827;
-  border-color: #1e293b;
-  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.4);
+  background: #0a0a0a;
+  border-color: #262626;
+  box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.8);
 }
 
 [data-theme="dark"] .guide-card:hover {
-  border-color: rgba(96, 165, 250, 0.45);
-  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.6);
+  border-color: rgba(96, 165, 250, 0.6);
+  box-shadow: 0 10px 25px -4px rgba(0, 0, 0, 0.95);
+  background: #0f0f0f;
 }
 
 [data-theme="dark"] .card-top {
-  background: #111827;
-  border-bottom-color: #1e293b;
+  background: #0a0a0a;
+  border-bottom-color: #262626;
 }
 
 [data-theme="dark"] .card-title {
-  color: #f1f5f9;
+  color: #ffffff;
 }
 
 [data-theme="dark"] .layer-law {
-  background-color: #0f172a;
+  background-color: #050b14;
   border-left-color: #3b82f6;
   border-top-color: #1e293b;
   border-right-color: #1e293b;
@@ -609,7 +610,7 @@
 }
 
 [data-theme="dark"] .layer-practice {
-  background-color: #1c1917;
+  background-color: #120d06;
   border-left-color: #f59e0b;
   border-top-color: #292524;
   border-right-color: #292524;
@@ -620,7 +621,7 @@
 }
 
 [data-theme="dark"] .layer-prevent {
-  background-color: #062419;
+  background-color: #03120c;
   border-left-color: #10b981;
   border-top-color: #064e3b;
   border-right-color: #064e3b;
@@ -631,24 +632,24 @@
 }
 
 [data-theme="dark"] .card-footer {
-  background: #0f172a;
-  border-top-color: #1e293b;
+  background: #080808;
+  border-top-color: #262626;
 }
 
 [data-theme="dark"] .base-legal {
-  color: #94a3b8;
+  color: #a1a1aa;
 }
 
 /* Checklists no Modo Escuro */
 [data-theme="dark"] #checklists {
-  background-color: #080d1a !important;
-  border-top-color: #1e293b !important;
-  border-bottom-color: #1e293b !important;
+  background-color: #000000 !important;
+  border-top-color: #262626 !important;
+  border-bottom-color: #262626 !important;
 }
 
 [data-theme="dark"] .checklist-card {
-  background: #111827;
-  border-color: #1e293b;
+  background: #0a0a0a;
+  border-color: #262626;
 }
 
 [data-theme="dark"] .checklist-card-header {

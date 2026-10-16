@@ -472,10 +472,9 @@ function initNavigation() {
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
   const storedTheme = localStorage.getItem('unex_theme');
-  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
   
-  // Define o tema inicial
-  const currentTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+  // Define o tema inicial SEMPRE como claro por padrão (light)
+  const currentTheme = storedTheme || 'light';
   document.documentElement.setAttribute('data-theme', currentTheme);
   updateThemeColorMeta(currentTheme);
 
@@ -536,7 +535,7 @@ function triggerBubbleFallback(x, y, radius, nextTheme) {
   bubble.style.height = `${size}px`;
   bubble.style.left = `${x}px`;
   bubble.style.top = `${y}px`;
-  bubble.style.backgroundColor = nextTheme === 'dark' ? '#0b0f19' : '#fafbfc';
+  bubble.style.backgroundColor = nextTheme === 'dark' ? '#000000' : '#fafbfc';
 
   document.body.appendChild(bubble);
 
@@ -557,6 +556,6 @@ function triggerBubbleFallback(x, y, radius, nextTheme) {
 function updateThemeColorMeta(theme) {
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) {
-    meta.setAttribute('content', theme === 'dark' ? '#0b0f19' : '#1d4ed8');
+    meta.setAttribute('content', theme === 'dark' ? '#000000' : '#1d4ed8');
   }
 }

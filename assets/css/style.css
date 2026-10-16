@@ -45,37 +45,37 @@
 }
 
 /* ==========================================================================
-   Modo Escuro Elaborado & Profissional (Dark Slate / Deep Navy)
-   Não é preto puro (#000) chapado, mas uma paleta de contraste refinada.
+   Modo Escuro — Preto Verdadeiro (True Pitch Black / OLED Black #000000)
+   Contraste máximo, estética moderna ultra-limpa e fundo 100% preto.
    ========================================================================== */
 [data-theme="dark"] {
-  --color-primary: #f1f5f9;        /* Slate 100 */
-  --color-primary-light: #cbd5e1;  /* Slate 300 */
-  --color-accent: #3b82f6;         /* Blue 500 mais luminoso para contraste */
+  --color-primary: #ffffff;
+  --color-primary-light: #e2e8f0;
+  --color-accent: #3b82f6;         /* Blue 500 nítido */
   --color-accent-light: #60a5fa;   /* Blue 400 */
-  --color-accent-subtle: #1e293b;  /* Slate 800 */
+  --color-accent-subtle: #18181b;  /* Zinc 900 */
   --color-accent-gold: #f59e0b;
-  --color-gold-subtle: #451a03;
+  --color-gold-subtle: #271700;
   
-  /* Superfícies e Fundos Escuros */
-  --bg-page: #0b0f19;              /* Deep Navy Dark */
-  --bg-surface: #111827;           /* Slate 900 */
-  --bg-surface-elevated: #1f2937;  /* Slate 800 */
-  --bg-subtle: #182234;            /* Soft Navy Surface */
-  --bg-card-hover: #1e293b;
+  /* Superfícies e Fundos 100% Preto Verdadeiro */
+  --bg-page: #000000;              /* Preto Puro / OLED */
+  --bg-surface: #0a0a0a;           /* Superfície Quase Preta */
+  --bg-surface-elevated: #121212;  /* Cards e Elementos Elevados */
+  --bg-subtle: #171717;            /* Fundo Sutil */
+  --bg-card-hover: #1c1c1c;
   
   /* Textos */
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-light: #64748b;
-  --text-inverse: #0f172a;
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --text-light: #71717a;
+  --text-inverse: #000000;
 
-  /* Bordas e Sombras no Dark */
-  --border-subtle: #1e293b;
+  /* Bordas e Sombras no Preto Verdadeiro */
+  --border-subtle: #262626;
   --border-focus: #3b82f6;
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 14px 25px -4px rgba(0, 0, 0, 0.6), 0 6px 10px -5px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.8);
+  --shadow-md: 0 4px 12px -1px rgba(0, 0, 0, 0.9);
+  --shadow-lg: 0 14px 28px -4px rgba(0, 0, 0, 0.95);
 }
 
 /* Transição de Bolha com View Transition API */
@@ -1135,43 +1135,45 @@ mark.search-match {
 }
 
 /* ==========================================================================
-   Ajustes Específicos & Refinamento Visual para Modo Escuro
+   Ajustes Específicos & Refinamento Visual para Modo Escuro (Preto Puro)
    ========================================================================== */
 [data-theme="dark"] .site-header {
-  background-color: rgba(11, 15, 25, 0.9);
+  background-color: rgba(0, 0, 0, 0.92);
   border-bottom-color: var(--border-subtle);
 }
 
 [data-theme="dark"] .nav-link {
-  color: #94a3b8;
+  color: #a1a1aa;
 }
 
 [data-theme="dark"] .nav-link:hover,
 [data-theme="dark"] .nav-link.active {
   color: #60a5fa;
-  background-color: #1e293b;
+  background-color: #171717;
 }
 
 [data-theme="dark"] .hero-section {
-  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 50%),
-              radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.05), transparent 45%);
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(234, 88, 12, 0.08), transparent 45%),
+              #000000;
   border-bottom-color: var(--border-subtle);
 }
 
 [data-theme="dark"] .hero-card-preview {
-  background: #111827;
-  border-color: #1e293b;
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5);
+  background: #0a0a0a;
+  border-color: #262626;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.9);
 }
 
 [data-theme="dark"] .method-pillar {
-  background: #182234;
+  background: #0d0d0d;
+  border: 1px solid #262626;
 }
 
 [data-theme="dark"] .guide-controls {
-  background: #111827;
-  border-color: #1e293b;
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  background: #0a0a0a;
+  border-color: #262626;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.8);
 }
 
 [data-theme="dark"] .search-input {
