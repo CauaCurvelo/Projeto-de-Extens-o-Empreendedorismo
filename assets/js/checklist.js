@@ -264,14 +264,17 @@ const ChecklistManager = {
         });
       }
 
-      // Atualiza pílulas superiores
+      // Atualiza pílulas superiores (sem disparar scrollIntoView na página inteira)
       if (pillsContainer) {
         pillsContainer.querySelectorAll('.pill-tab').forEach((pill, idx) => {
           const isActive = idx === closestIdx;
           pill.classList.toggle('active', isActive);
           pill.setAttribute('aria-selected', isActive ? 'true' : 'false');
           if (isActive) {
-            pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            // Rola apenas dentro da barra de pílulas horizontal, sem mexer na página vertical
+            const pillCenter = pill.offsetLeft + pill.offsetWidth / 2;
+            const targetPillScroll = pillCenter - pillsContainer.clientWidth / 2;
+            pillsContainer.scrollTo({ left: Math.max(0, targetPillScroll), behavior: 'smooth' });
           }
         });
       }
