@@ -329,113 +329,116 @@ a:hover {
    ========================================================================== */
 .hero-section {
   position: relative;
-  padding: 4.5rem 0 3.5rem;
-  background: radial-gradient(circle at top right, rgba(37, 99, 235, 0.08), transparent 50%),
-              radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.04), transparent 40%);
+  padding: 5rem 0 4.25rem;
+  background: radial-gradient(circle at 85% 15%, rgba(37, 99, 235, 0.09) 0%, transparent 45%),
+              radial-gradient(circle at 10% 85%, rgba(234, 88, 12, 0.05) 0%, transparent 40%),
+              var(--bg-page);
   border-bottom: 1px solid var(--border-subtle);
   overflow: hidden;
 }
 
 .hero-wrapper {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 3rem;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
   align-items: center;
 }
 
 .hero-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.78rem;
-  font-weight: 700;
+  gap: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--color-accent);
-  background: var(--color-accent-subtle);
-  border: 1px solid rgba(29, 78, 216, 0.2);
-  padding: 0.35rem 0.85rem;
+  color: #1d4ed8;
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.95) 0%, rgba(219, 234, 254, 0.7) 100%);
+  border: 1px solid rgba(191, 219, 254, 0.9);
+  padding: 0.4rem 0.95rem;
   border-radius: var(--radius-full);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.08);
 }
 
 .hero-title {
-  font-size: 2.85rem;
+  font-size: clamp(2.35rem, 4.2vw, 3.25rem);
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   color: var(--color-primary);
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
+  line-height: 1.12;
+  margin-bottom: 1.4rem;
 }
 
 .hero-title span {
-  color: var(--color-accent);
-  background: linear-gradient(135deg, var(--color-accent) 0%, #2563eb 100%);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #0284c7 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .hero-desc {
-  font-size: 1.08rem;
+  font-size: 1.1rem;
   color: var(--text-muted);
-  line-height: 1.65;
-  margin-bottom: 2rem;
-  max-width: 600px;
+  line-height: 1.68;
+  margin-bottom: 2.25rem;
+  max-width: 580px;
 }
 
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.1rem;
   flex-wrap: wrap;
 }
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background-color: var(--color-accent);
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.8rem 1.5rem;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.75rem;
   border-radius: var(--radius-md);
-  box-shadow: 0 3px 10px rgba(29, 78, 216, 0.2);
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.32);
   transition: all var(--transition-fast);
-  border: 1px solid transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-decoration: none;
 }
 
 .btn-primary:hover {
-  background-color: #2563eb;
-  color: #ffffff;
+  background: linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(29, 78, 216, 0.3);
+  box-shadow: 0 8px 22px rgba(29, 78, 216, 0.42);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  background-color: #ffffff;
-  color: var(--color-primary);
-  font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.8rem 1.4rem;
+  gap: 0.65rem;
+  background-color: var(--bg-surface);
+  color: var(--color-primary) !important;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  padding: 0.85rem 1.65rem;
   border-radius: var(--radius-md);
-  border: 1px solid var(--border-subtle);
+  border: 1.5px solid var(--border-subtle);
   transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  background-color: var(--bg-surface-elevated);
+  border-color: #94a3b8;
+  background-color: var(--bg-subtle);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 /* Destaque Visual Hero */
 .hero-card-preview {
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 1.75rem;
