@@ -178,13 +178,12 @@ function renderCategoryTabs(modules) {
 
   const categories = [
     { label: 'Todas as Áreas', id: 'all' },
-    ...Array.from(new Set(modules.map(m => m.category))).map(cat => ({ label: cat, id: cat })),
-    { label: 'Checklists Rápidos', id: 'checklists-view' }
+    ...Array.from(new Set(modules.map(m => m.category))).map(cat => ({ label: cat, id: cat }))
   ];
 
   tabsContainer.innerHTML = categories.map((cat, idx) => `
-    <button class="tab-btn ${idx === 0 ? 'active' : ''} ${cat.id === 'checklists-view' ? 'tab-btn-highlight' : ''}" data-cat="${cat.id}">
-      ${cat.id === 'checklists-view' ? '✓ ' + cat.label : cat.label}
+    <button class="tab-btn ${idx === 0 ? 'active' : ''}" data-cat="${cat.id}">
+      ${cat.label}
     </button>
   `).join('');
 
@@ -291,34 +290,6 @@ function applyFilterAndSearch() {
   const searchTerms = normalizedQuery.split(/\s+/).filter(Boolean);
 
   let totalCardsCount = 0;
-
-  // Caso a aba selecionada seja Checklists Rápidos
-  if (currentCategory === 'checklists-view') {
-    const container = document.getElementById('modules-container');
-    if (container && window.ChecklistManager && appData.checklists) {
-      container.innerHTML = `
-        <div class="module-block" id="checklists-inline-view">
-          <div class="module-header">
-            <div class="module-title-group">
-              <h2 class="module-title">Checklists Interativos de Conferência</h2>
-              <span class="module-badge">5 Ferramentas Práticas</span>
-            </div>
-            <p class="module-summary">Faça a checagem rápida de conformidade antes de postar anúncios, assinar contratos, manipular alimentos ou atender no salão. Seu progresso fica salvo no navegador.</p>
-          </div>
-          <div class="checklists-grid" id="checklists-inline-grid"></div>
-        </div>
-      `;
-      ChecklistManager.renderChecklists(appData.checklists, 'checklists-inline-grid');
-    }
-
-    const resultsBar = document.getElementById('search-results-bar');
-    const resultsCount = document.getElementById('search-results-count');
-    if (resultsBar && resultsCount) {
-      resultsBar.style.display = 'flex';
-      resultsCount.innerHTML = `Exibindo <strong>${appData.checklists ? appData.checklists.length : 5} checklists interativos</strong> de conferência rápida.`;
-    }
-    return;
-  }
 
   // Filtragem inteligente com normalização e suporte a múltiplos termos
   const filtered = appData.modules.map(mod => {
@@ -555,9 +526,22 @@ function initThemeToggle() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const nextTheme = isDark ? 'light' : 'dark';
 
+    // Dispara pulso de halo dinâmico no botão
+    toggleBtn.classList.remove('pulse-halo');
+    void toggleBtn.offsetWidth; // Força recálculo mínimo para reiniciar a animação
+    toggleBtn.classList.add('pulse-halo');
+    setTimeout(() => toggleBtn.classList.remove('pulse-halo'), 360);
+
+    // Adiciona classe de transição global coordenada
+    document.documentElement.classList.add('theme-switching');
     document.documentElement.setAttribute('data-theme', nextTheme);
     localStorage.setItem('unex_theme', nextTheme);
     updateThemeColorMeta(nextTheme);
+
+    // Remove a classe de transição após o ciclo para não impactar a rolagem
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-switching');
+    }, 280);
   });
 }
 

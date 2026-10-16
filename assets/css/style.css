@@ -78,10 +78,16 @@
   --shadow-lg: 0 14px 28px -4px rgba(0, 0, 0, 0.95);
 }
 
-/* Transição Fluida e Leve de Cores para o Tema */
-body,
-.site-header {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+/* Transição Global Coordenada e Fluida de Tema */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition-delay: 0s !important;
 }
 
 /* Reset básico */
@@ -129,7 +135,7 @@ body::before {
   z-index: 0;
   opacity: 0;
   filter: blur(120px);
-  transition: opacity 1.2s ease;
+  transition: opacity 0.35s ease;
   animation: lavaLampOne 36s ease-in-out infinite alternate;
 }
 
@@ -148,7 +154,7 @@ body::after {
   z-index: 0;
   opacity: 0;
   filter: blur(130px);
-  transition: opacity 1.2s ease;
+  transition: opacity 0.35s ease;
   animation: lavaLampTwo 42s ease-in-out infinite alternate-reverse;
 }
 
@@ -167,7 +173,7 @@ body::after {
   z-index: 0;
   opacity: 0;
   filter: blur(115px);
-  transition: opacity 1.2s ease;
+  transition: opacity 0.35s ease;
   animation: lavaLampThree 48s ease-in-out infinite alternate;
 }
 
@@ -175,6 +181,15 @@ body::after {
 [data-theme="dark"] body::after,
 [data-theme="dark"] .ambient-glow-orb {
   opacity: 1;
+}
+
+/* Desativa as orbes de desfoque pesado (120px) no celular para máxima fluidez e 0 travamento */
+@media (max-width: 768px) {
+  body::before,
+  body::after,
+  .ambient-glow-orb {
+    display: none !important;
+  }
 }
 
 /* Movimentos amplos e fluidos imitando cera de lâmpada de lava */
@@ -399,19 +414,46 @@ a:hover {
   color: var(--color-primary);
   cursor: pointer;
   position: relative;
-  overflow: hidden;
-  transition: all var(--transition-fast);
+  overflow: visible;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
   -webkit-tap-highlight-color: transparent;
   outline: none;
+  user-select: none;
 }
 
-.theme-toggle-btn:hover {
-  background: var(--bg-surface);
-  border-color: var(--color-accent);
-  color: var(--color-accent);
-  transform: scale(1.08) rotate(8deg);
+/* Feedback tátil imediato no celular (pressionar o botão dá efeito de mola instantâneo) */
+.theme-toggle-btn:active {
+  transform: scale(0.88);
+}
+
+/* Hover suave apenas para computadores com mouse (evita travar o botão torto no toque de celular) */
+@media (hover: hover) and (pointer: fine) {
+  .theme-toggle-btn:hover {
+    background: var(--bg-surface);
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: scale(1.06);
+  }
+}
+
+/* Halo luminoso sutil que pulsa ao alternar o tema */
+.theme-toggle-btn::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  pointer-events: none;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+.theme-toggle-btn.pulse-halo::after {
+  opacity: 0.6;
+  transform: scale(1.4);
 }
 
 .theme-icon {
@@ -419,13 +461,14 @@ a:hover {
   align-items: center;
   justify-content: center;
   position: absolute;
-  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.18s ease;
+  transform-origin: center center;
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
 }
 
-/* No tema claro: mostra lua (para mudar para escuro), sol escondido */
+/* No tema claro: mostra lua elegante, sol escondido */
 .sun-icon {
   opacity: 0;
-  transform: rotate(-90deg) scale(0.5);
+  transform: rotate(90deg) scale(0.2);
 }
 
 .moon-icon {
@@ -433,16 +476,16 @@ a:hover {
   transform: rotate(0) scale(1);
 }
 
-/* No tema escuro: mostra sol (para mudar para claro), lua escondida */
+/* No tema escuro: mostra sol dourado vibrante, lua escondida */
 [data-theme="dark"] .sun-icon {
   opacity: 1;
   transform: rotate(0) scale(1);
-  color: #fbbf24; /* Sol dourado suave */
+  color: #fbbf24;
 }
 
 [data-theme="dark"] .moon-icon {
   opacity: 0;
-  transform: rotate(90deg) scale(0.5);
+  transform: rotate(-90deg) scale(0.2);
 }
 
 .mobile-toggle {
