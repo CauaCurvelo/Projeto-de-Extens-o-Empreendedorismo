@@ -491,11 +491,15 @@
 
 /* Indicadores / Pontos de Navegação Inferiores (Dots) */
 .carousel-dots {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 0.6rem;
-  margin-top: 0.5rem;
+  margin: 1.25rem auto 0;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 5;
 }
 
 .carousel-dot {
@@ -506,6 +510,7 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  flex-shrink: 0;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
