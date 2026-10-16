@@ -115,63 +115,62 @@ body {
   overflow-x: hidden;
 }
 
-/* Luzes Azuis Flutuantes e Orgânicas no Fundo no Modo Escuro (True Black + Multi-Orb Ambient Aura) */
+/* Luzes Azuis Orgânicas — Estilo Lava Lamp (Gentil, Suave, Flutuando pela Tela Toda) */
 body::before {
   content: '';
   position: fixed;
-  top: -10%;
-  left: 15%;
-  width: 60vw;
-  height: 60vw;
-  max-width: 800px;
-  max-height: 800px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.42) 0%, rgba(29, 78, 216, 0.22) 40%, transparent 72%);
+  top: 10%;
+  left: 10%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 680px;
+  max-height: 680px;
+  border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(29, 78, 216, 0.08) 50%, transparent 75%);
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  filter: blur(75px);
-  transition: opacity 0.8s ease;
-  animation: floatOrbOne 16s ease-in-out infinite alternate;
+  filter: blur(120px);
+  transition: opacity 1.2s ease;
+  animation: lavaLampOne 36s ease-in-out infinite alternate;
 }
 
 body::after {
   content: '';
   position: fixed;
-  bottom: -10%;
-  right: 5%;
-  width: 65vw;
-  height: 65vw;
-  max-width: 850px;
-  max-height: 850px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(14, 165, 233, 0.35) 0%, rgba(30, 64, 175, 0.18) 45%, transparent 75%);
+  bottom: 10%;
+  right: 15%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 60% 40% 50% 50% / 45% 55% 45% 55%;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.13) 0%, rgba(30, 64, 175, 0.06) 55%, transparent 75%);
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  filter: blur(85px);
-  transition: opacity 0.8s ease;
-  animation: floatOrbTwo 22s ease-in-out infinite alternate-reverse;
+  filter: blur(130px);
+  transition: opacity 1.2s ease;
+  animation: lavaLampTwo 42s ease-in-out infinite alternate-reverse;
 }
 
-/* Terceira orbe luminosa central que cruza a tela sutilmente */
+/* Terceira gota fluida que passeia pelo centro e laterais */
 .ambient-glow-orb {
   position: fixed;
-  top: 45%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 45vw;
-  height: 45vw;
-  max-width: 650px;
-  max-height: 650px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(79, 70, 229, 0.28) 0%, rgba(37, 99, 235, 0.12) 50%, transparent 70%);
+  width: 42vw;
+  height: 42vw;
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 50% 50% 40% 60% / 55% 45% 55% 45%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14) 0%, rgba(79, 70, 229, 0.05) 50%, transparent 75%);
   pointer-events: none;
   z-index: 0;
   opacity: 0;
-  filter: blur(80px);
-  transition: opacity 0.8s ease;
-  animation: floatOrbThree 28s ease-in-out infinite alternate;
+  filter: blur(115px);
+  transition: opacity 1.2s ease;
+  animation: lavaLampThree 48s ease-in-out infinite alternate;
 }
 
 [data-theme="dark"] body::before,
@@ -180,45 +179,55 @@ body::after {
   opacity: 1;
 }
 
-@keyframes floatOrbOne {
+/* Movimentos amplos e fluidos imitando cera de lâmpada de lava */
+@keyframes lavaLampOne {
   0% {
-    transform: translate(0, 0) scale(1);
+    transform: translate(0, 0) scale(1) rotate(0deg);
   }
-  33% {
-    transform: translate(14vw, 15vh) scale(1.18);
-  }
-  66% {
-    transform: translate(-8vw, 25vh) scale(0.92);
-  }
-  100% {
-    transform: translate(-15vw, 8vh) scale(1.08);
-  }
-}
-
-@keyframes floatOrbTwo {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  33% {
-    transform: translate(-18vw, -12vh) scale(1.12);
-  }
-  66% {
-    transform: translate(-5vw, -28vh) scale(0.88);
-  }
-  100% {
-    transform: translate(12vw, -10vh) scale(1.05);
-  }
-}
-
-@keyframes floatOrbThree {
-  0% {
-    transform: translate(-50%, -50%) scale(0.9);
+  25% {
+    transform: translate(35vw, 25vh) scale(1.15) rotate(45deg);
   }
   50% {
-    transform: translate(-30%, -25%) scale(1.22);
+    transform: translate(15vw, 65vh) scale(0.9) rotate(90deg);
+  }
+  75% {
+    transform: translate(-10vw, 40vh) scale(1.1) rotate(135deg);
   }
   100% {
-    transform: translate(-65%, -60%) scale(0.95);
+    transform: translate(25vw, -5vh) scale(1) rotate(180deg);
+  }
+}
+
+@keyframes lavaLampTwo {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  30% {
+    transform: translate(-40vw, -30vh) scale(1.2) rotate(-60deg);
+  }
+  60% {
+    transform: translate(-20vw, -70vh) scale(0.85) rotate(-120deg);
+  }
+  85% {
+    transform: translate(15vw, -40vh) scale(1.1) rotate(-180deg);
+  }
+  100% {
+    transform: translate(-25vw, 10vh) scale(0.95) rotate(-240deg);
+  }
+}
+
+@keyframes lavaLampThree {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(-20%, -75%) scale(1.18) rotate(70deg);
+  }
+  66% {
+    transform: translate(-80%, -25%) scale(0.9) rotate(140deg);
+  }
+  100% {
+    transform: translate(-30%, -30%) scale(1.12) rotate(210deg);
   }
 }
 
@@ -300,17 +309,17 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--color-accent) 0%, #2563eb 100%);
-  color: #fff;
-  box-shadow: 0 2px 6px rgba(29, 78, 216, 0.2);
-  transition: transform var(--transition-fast);
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  color: var(--color-accent);
+  transition: transform var(--transition-fast), color var(--transition-fast);
+  flex-shrink: 0;
 }
 
 .brand:hover .brand-badge {
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(-3deg);
+  color: #2563eb;
 }
 
 .brand-title {
