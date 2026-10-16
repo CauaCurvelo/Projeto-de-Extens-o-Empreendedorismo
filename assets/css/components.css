@@ -387,10 +387,11 @@
 
 .progress-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 50%, #10b981 100%);
+  background: linear-gradient(90deg, #1d4ed8 0%, #2563eb 60%, #38bdf8 100%);
   width: 0%;
   border-radius: var(--radius-full);
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
 }
 
 /* Lista de Itens Táteis */
@@ -421,15 +422,15 @@
 
 .checklist-item:hover {
   background: var(--bg-surface);
-  border-color: rgba(37, 99, 235, 0.3);
+  border-color: rgba(37, 99, 235, 0.35);
   color: var(--text-main);
   transform: translateX(4px);
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 .checklist-item.checked {
-  background: rgba(16, 185, 129, 0.09);
-  border-color: rgba(16, 185, 129, 0.3);
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.3);
   color: var(--color-primary);
 }
 
@@ -448,7 +449,7 @@
 
 .checklist-item:hover .custom-checkbox {
   border-color: var(--color-accent);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
 .custom-checkbox svg {
@@ -460,9 +461,9 @@
 }
 
 .checklist-item.checked .custom-checkbox {
-  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-  border-color: #059669;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #38bdf8 100%);
+  border-color: #2563eb;
+  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.45);
   transform: scale(1.05);
 }
 
