@@ -225,53 +225,45 @@ const ChecklistManager = {
       });
     }
 
-    // Calcula qual card está mais próximo do centro geométrico do trilho
+    // Calcula qual card está mais próximo do centro geométrico do trilho de forma leve
     const updateActiveIndex = () => {
-      const trackRect = track.getBoundingClientRect();
-      const trackCenter = trackRect.left + trackRect.width / 2;
+      const currentTrackCenter = track.scrollLeft + track.clientWidth / 2;
 
       let closestIdx = 0;
       let minDistance = Infinity;
 
       cards.forEach((card, idx) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const distance = Math.abs(trackCenter - cardCenter);
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(currentTrackCenter - cardCenter);
         if (distance < minDistance) {
           minDistance = distance;
           closestIdx = idx;
         }
       });
 
-      // Aplica classe de destaque is-active (meio nítido, lados apagados)
+      if (this._currentIndex === closestIdx && cards[closestIdx].classList.contains('is-active')) {
+        return;
+      }
+
+      // Aplica classe de destaque is-active (card central em foco nítido)
       cards.forEach((card, idx) => {
         card.classList.toggle('is-active', idx === closestIdx);
       });
 
-      // Ajusta a altura de referência para os cards laterais cortarem na altura exata do selecionado
-      const activeCard = cards[closestIdx];
-      if (activeCard) {
-        const activeHeight = activeCard.scrollHeight || activeCard.offsetHeight;
-        if (activeHeight > 0) {
-          container.style.setProperty('--active-card-height', `${activeHeight}px`);
-        }
-      }
-
-      // Atualiza dots
+      // Atualiza dots inferiores
       if (dotsContainer) {
         dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
           dot.classList.toggle('active', idx === closestIdx);
         });
       }
 
-      // Atualiza pílulas superiores (sem disparar scrollIntoView na página inteira)
+      // Atualiza pílulas superiores (sem mexer na rolagem vertical da página)
       if (pillsContainer) {
         pillsContainer.querySelectorAll('.pill-tab').forEach((pill, idx) => {
           const isActive = idx === closestIdx;
           pill.classList.toggle('active', isActive);
           pill.setAttribute('aria-selected', isActive ? 'true' : 'false');
           if (isActive) {
-            // Rola apenas dentro da barra de pílulas horizontal, sem mexer na página vertical
             const pillCenter = pill.offsetLeft + pill.offsetWidth / 2;
             const targetPillScroll = pillCenter - pillsContainer.clientWidth / 2;
             pillsContainer.scrollTo({ left: Math.max(0, targetPillScroll), behavior: 'smooth' });
@@ -279,7 +271,7 @@ const ChecklistManager = {
         });
       }
 
-      // Atualiza contador
+      // Atualiza contador numérico
       if (counterCurrent) {
         counterCurrent.textContent = String(closestIdx + 1).padStart(2, '0');
       }
@@ -287,11 +279,23 @@ const ChecklistManager = {
       this._currentIndex = closestIdx;
     };
 
-    track.removeEventListener('scroll', track._scrollHandler);
-    track._scrollHandler = updateActiveIndex;
-    track.addEventListener('scroll', updateActiveIndex, { passive: true });
+    // Scroll com throttling via requestAnimationFrame para máxima fluidez a 60/120Hz
+    let ticking = false;
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateActiveIndex();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
 
-    // Funções de Avançar e Voltar com Loop Infinito
+    track.removeEventListener('scroll', track._scrollHandler);
+    track._scrollHandler = onScroll;
+    track.addEventListener('scroll', onScroll, { passive: true });
+
+    // Funções de Avançar e Voltar com Loop Contínuo
     const goNext = () => {
       const current = this._currentIndex || 0;
       const nextIdx = (current + 1) % cards.length;
@@ -324,7 +328,7 @@ const ChecklistManager = {
       if (!card._clickBound) {
         card._clickBound = true;
         card.addEventListener('click', (e) => {
-          if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist')) return;
+          if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist') || e.target.closest('button')) return;
           if (!card.classList.contains('is-active')) {
             this.scrollToIndex(idx);
           }
@@ -332,34 +336,44 @@ const ChecklistManager = {
       }
     });
 
-    // Suporte a arrasto fluído no desktop
+    // Suporte a arrasto fluido no desktop com snap inteligente
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
+    let hasDragged = false;
 
     track.addEventListener('mousedown', (e) => {
-      if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist')) return;
+      if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist') || e.target.closest('button')) return;
       isDown = true;
+      hasDragged = false;
+      track.classList.add('is-dragging');
       track.style.cursor = 'grabbing';
+      track.style.scrollSnapType = 'none'; // Libera o snap durante o arrasto com mouse
       startX = e.pageX - track.offsetLeft;
       scrollLeft = track.scrollLeft;
     });
 
-    track.addEventListener('mouseleave', () => {
+    const stopDrag = () => {
+      if (!isDown) return;
       isDown = false;
+      track.classList.remove('is-dragging');
       track.style.cursor = '';
-    });
+      track.style.scrollSnapType = ''; // Reativa o snap para travar no card
+      if (hasDragged) {
+        updateActiveIndex();
+        this.scrollToIndex(this._currentIndex || 0);
+      }
+    };
 
-    track.addEventListener('mouseup', () => {
-      isDown = false;
-      track.style.cursor = '';
-    });
+    track.addEventListener('mouseleave', stopDrag);
+    track.addEventListener('mouseup', stopDrag);
 
     track.addEventListener('mousemove', (e) => {
       if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - track.offsetLeft;
-      const walk = (x - startX) * 1.5;
+      const walk = (x - startX) * 1.3;
+      if (Math.abs(walk) > 4) hasDragged = true;
       track.scrollLeft = scrollLeft - walk;
     });
 
@@ -377,6 +391,7 @@ const ChecklistManager = {
       const cardCenter = card.offsetLeft + card.offsetWidth / 2;
       const targetScroll = cardCenter - track.clientWidth / 2;
       track.scrollTo({ left: Math.max(0, targetScroll), behavior: 'smooth' });
+      this._currentIndex = index;
     }
   }
 };

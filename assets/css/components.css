@@ -349,12 +349,11 @@
   max-width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
-  /* Padding lateral para que o card ativo fique no centro exato */
+  overscroll-behavior-x: contain;
+  /* Centraliza o card ativo na área útil */
   padding: 1.5rem calc(50% - 210px) 1.5rem;
-  transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .checklists-carousel-track::-webkit-scrollbar {
@@ -365,14 +364,14 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-start;
-  align-items: flex-start; /* Permite que cada card mantenha sua própria altura real */
-  gap: 1.75rem;
+  align-items: stretch;
+  gap: 1.5rem;
   width: max-content;
   scroll-snap-type: x mandatory;
   padding: 0.5rem 0;
 }
 
-/* Card Padrão (Laterais Meio Apagados / Dimmed e com degradê para disfarçar o corte) */
+/* Card Padrão (Sem blur, sem máscaras cortantes e com altura uniforme e limpa) */
 .checklists-carousel-grid .checklist-card {
   scroll-snap-align: center;
   flex: 0 0 420px;
@@ -385,47 +384,35 @@
   box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
   display: flex;
   flex-direction: column;
-  opacity: 0.38;
-  transform: scale(0.92);
-  filter: blur(0.3px);
+  opacity: 0.65;
+  transform: scale(0.96);
   pointer-events: auto;
-  overflow: hidden;
   position: relative;
-  /* Altura transitando suavemente em ambas as direções (crescer e diminuir) */
-  max-height: var(--active-card-height, 600px);
-  -webkit-mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 65%, transparent 100%);
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+  transition: opacity 0.28s ease,
+              transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s ease,
+              border-color 0.28s ease;
 }
 
 .checklists-carousel-grid .checklist-card:hover {
-  opacity: 0.65;
-  transform: scale(0.95);
+  opacity: 0.85;
+  transform: scale(0.98);
 }
 
-/* Card Ativo no Meio (Destaque Total, altura natural suave e sem corte) */
+/* Card Ativo no Meio (Destaque Total, nítido e iluminado) */
 .checklists-carousel-grid .checklist-card.is-active {
   opacity: 1;
-  transform: scale(1.02);
-  filter: none;
+  transform: scale(1);
   border-color: rgba(37, 99, 235, 0.5);
-  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.16),
+  box-shadow: 0 16px 36px -6px rgba(15, 23, 42, 0.12),
               0 0 0 1px rgba(37, 99, 235, 0.25);
   z-index: 2;
-  max-height: var(--active-card-height, 1200px);
-  -webkit-mask-image: none !important;
-  mask-image: none !important;
-  overflow: visible;
 }
 
 [data-theme="dark"] .checklists-carousel-grid .checklist-card.is-active {
-  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.8),
-              0 0 30px rgba(37, 99, 235, 0.2),
+  box-shadow: 0 16px 40px -6px rgba(0, 0, 0, 0.8),
+              0 0 25px rgba(37, 99, 235, 0.2),
               0 0 0 1px rgba(37, 99, 235, 0.4);
 }
 
@@ -470,38 +457,66 @@
   transform: translateY(-50%) scale(0.95);
 }
 
-/* Adaptação Mobile: Visualizar card central + pontas dos laterais para incentivar swipe */
+/* Adaptação Mobile: Visualizar card central + pontas dos laterais para incentivar swipe fluido */
 @media (max-width: 768px) {
   .carousel-side-btn {
     display: none !important;
   }
 
+  .carousel-control-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .carousel-pill-tabs {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 0.3rem 0.4rem;
+  }
+
+  .pill-tab {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.8rem;
+  }
+
+  .carousel-actions-group {
+    margin-left: 0;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 0.25rem;
+  }
+
   .checklists-carousel-track {
-    /* Deixa 15% de cada lado vazando o próximo e o anterior */
-    padding: 1rem 12vw 1.5rem;
+    /* Padding lateral deixando 7vw de respiro para visualizar o próximo card com clareza */
+    padding: 0.75rem 7vw 1.25rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
   }
 
   .checklists-grid.checklists-carousel-grid {
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .checklists-carousel-grid .checklist-card {
-    flex: 0 0 76vw;
-    width: 76vw;
-    max-width: 340px;
-    padding: 1.45rem;
-    opacity: 0.45;
-    transform: scale(0.94);
+    flex: 0 0 86vw;
+    width: 86vw;
+    max-width: 380px;
+    padding: 1.5rem;
+    opacity: 0.65;
+    transform: scale(0.97);
     scroll-snap-align: center;
-    scroll-snap-stop: always;
   }
 
   .checklists-carousel-grid .checklist-card.is-active {
     opacity: 1;
-    transform: scale(1.02);
+    transform: scale(1);
+    border-color: var(--color-accent);
+    box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12),
+                0 0 0 1px rgba(37, 99, 235, 0.3);
   }
 }
 
