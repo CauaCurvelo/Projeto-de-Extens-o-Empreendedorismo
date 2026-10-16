@@ -1447,6 +1447,9 @@ mark.search-match {
     cursor: pointer;
     flex-shrink: 0;
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
     overflow: hidden;
     transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
   }
@@ -1499,10 +1502,13 @@ mark.search-match {
    ========================================================================== */
 .mobile-dropdown-backdrop {
   position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  top: 68px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(100vh - 68px);
+  height: calc(100dvh - 68px);
   background: rgba(15, 23, 42, 0.4);
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);

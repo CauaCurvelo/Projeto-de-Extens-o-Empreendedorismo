@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadContent() {
   try {
-    const response = await fetch('assets/data/content.json?v=2.9');
+    const response = await fetch('assets/data/content.json?v=3.0');
     if (!response.ok) throw new Error('Não foi possível carregar o arquivo content.json');
     appData = await response.json();
 
@@ -456,7 +456,11 @@ function initNavigation() {
     }
   });
 
+  let menuOpenedTime = 0;
+  let lastToggleTime = 0;
+
   const openMenu = () => {
+    menuOpenedTime = Date.now();
     dropdown?.classList.add('open');
     backdrop?.classList.add('active');
     toggleBtn?.classList.add('active');
@@ -472,7 +476,15 @@ function initNavigation() {
 
   if (toggleBtn) {
     toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       e.stopPropagation();
+      const now = Date.now();
+      // Previne que duplo toque ou ghost click no iOS reverta o estado instantaneamente
+      if (now - lastToggleTime < 350) {
+        return;
+      }
+      lastToggleTime = now;
+
       if (dropdown?.classList.contains('open')) {
         closeMenu();
       } else {
@@ -482,7 +494,13 @@ function initNavigation() {
   }
 
   if (backdrop) {
-    backdrop.addEventListener('click', closeMenu);
+    backdrop.addEventListener('click', (e) => {
+      // Ignora clique fantasma propagado pelo iOS Safari logo após abrir o menu
+      if (Date.now() - menuOpenedTime < 400) {
+        return;
+      }
+      closeMenu();
+    });
   }
 
   if (dropdown) {
@@ -498,10 +516,15 @@ function initNavigation() {
     }
   });
 
-  // Fecha o menu se a tela for redimensionada para desktop
+  // Fecha o menu apenas se a LARGURA da tela mudar para desktop (ignora redimensionamento vertical da barra do Safari no iOS)
+  let lastWindowWidth = window.innerWidth;
   window.addEventListener('resize', () => {
-    if (window.innerWidth >= 769 && dropdown?.classList.contains('open')) {
-      closeMenu();
+    const currentWidth = window.innerWidth;
+    if (currentWidth !== lastWindowWidth) {
+      lastWindowWidth = currentWidth;
+      if (currentWidth >= 769 && dropdown?.classList.contains('open')) {
+        closeMenu();
+      }
     }
   });
 }
