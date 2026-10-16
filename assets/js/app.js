@@ -473,8 +473,8 @@ function renderOfficialSources(sources) {
 
 function initNavigation() {
   const header = document.querySelector('.site-header');
-  const toggleBtn = document.querySelector('.mobile-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  const toggleBtn = document.getElementById('mobile-toggle');
+  const drawer = document.getElementById('mobile-drawer');
   const overlay = document.getElementById('nav-overlay');
   const closeBtn = document.getElementById('drawer-close-btn');
 
@@ -487,20 +487,21 @@ function initNavigation() {
   });
 
   const openDrawer = () => {
-    navLinks?.classList.add('open');
+    drawer?.classList.add('open');
     overlay?.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.documentElement.classList.add('drawer-open');
   };
 
   const closeDrawer = () => {
-    navLinks?.classList.remove('open');
+    drawer?.classList.remove('open');
     overlay?.classList.remove('active');
-    document.body.style.overflow = '';
+    document.documentElement.classList.remove('drawer-open');
   };
 
   if (toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      if (navLinks?.classList.contains('open')) {
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (drawer?.classList.contains('open')) {
         closeDrawer();
       } else {
         openDrawer();
@@ -516,16 +517,16 @@ function initNavigation() {
     overlay.addEventListener('click', closeDrawer);
   }
 
-  if (navLinks) {
-    navLinks.querySelectorAll('a').forEach(link => {
+  if (drawer) {
+    drawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeDrawer);
     });
   }
 }
 
 /**
- * Sistema de Modo Escuro com Animação de Bolha Circular Expansiva
- * Utiliza a moderna View Transition API com fallback de pseudo-overlay circular.
+ * Sistema de Modo Escuro Fluido e Rápido
+ * Utiliza View Transition API nativa de alta performance e transição acelerada por GPU.
  */
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
@@ -538,77 +539,23 @@ function initThemeToggle() {
 
   if (!toggleBtn) return;
 
-  toggleBtn.addEventListener('click', (event) => {
+  toggleBtn.addEventListener('click', () => {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const nextTheme = isDark ? 'light' : 'dark';
 
-    // Coordenadas centrais do botão para a expansão da bolha
-    const rect = toggleBtn.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-
-    // Distância até o canto mais distante da tela
-    const endRadius = Math.hypot(
-      Math.max(x, window.innerWidth - x),
-      Math.max(y, window.innerHeight - y)
-    );
-
-    // 1. Suporte à View Transition API nativa (Chrome 111+, Edge, Safari 18+)
+    // Transição suave, instantânea ao toque e sem engasgos
     if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      const transition = document.startViewTransition(() => {
+      document.startViewTransition(() => {
         document.documentElement.setAttribute('data-theme', nextTheme);
         localStorage.setItem('unex_theme', nextTheme);
         updateThemeColorMeta(nextTheme);
       });
-
-      transition.ready.then(() => {
-        const clipPath = [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`
-        ];
-
-        document.documentElement.animate(
-          {
-            clipPath: clipPath
-          },
-          {
-            duration: 650,
-            easing: 'cubic-bezier(0.4, 0, 0.2, 1)',
-            pseudoElement: '::view-transition-new(root)'
-          }
-        );
-      });
     } else {
-      // 2. Fallback elegante com Bolha SVG/CSS expansiva
-      triggerBubbleFallback(x, y, endRadius, nextTheme);
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('unex_theme', nextTheme);
+      updateThemeColorMeta(nextTheme);
     }
   });
-}
-
-function triggerBubbleFallback(x, y, radius, nextTheme) {
-  const bubble = document.createElement('div');
-  bubble.className = 'theme-bubble-overlay';
-  const size = radius * 2.2;
-  bubble.style.width = `${size}px`;
-  bubble.style.height = `${size}px`;
-  bubble.style.left = `${x}px`;
-  bubble.style.top = `${y}px`;
-  bubble.style.backgroundColor = nextTheme === 'dark' ? '#000000' : '#fafbfc';
-
-  document.body.appendChild(bubble);
-
-  // Força repaint para animar a escala
-  void bubble.offsetWidth;
-  bubble.classList.add('expanding');
-
-  setTimeout(() => {
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('unex_theme', nextTheme);
-    updateThemeColorMeta(nextTheme);
-    setTimeout(() => {
-      bubble.remove();
-    }, 150);
-  }, 450);
 }
 
 function updateThemeColorMeta(theme) {

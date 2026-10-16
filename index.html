@@ -44,69 +44,22 @@
         <span class="brand-title">Empreendedorismo em Foco</span>
       </a>
 
-      <!-- Overlay de Fundo para o Menu Lateral Mobile -->
-      <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
-
-      <nav aria-label="Navegação Principal" class="main-navigation">
-        <ul class="nav-links" id="nav-links">
-          <li class="drawer-header mobile-only">
-            <span class="drawer-title">Menu de Navegação</span>
-            <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Fechar menu">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-              </svg>
-            </button>
-          </li>
+      <nav aria-label="Navegação Principal" class="desktop-navigation">
+        <ul class="nav-links">
+          <li><a href="#diretrizes" class="nav-link">Temas</a></li>
+          <li><a href="#checklists" class="nav-link">Checklists</a></li>
+          <li><a href="#duvidas" class="nav-link">Dúvidas</a></li>
+          <li><a href="#fontes-oficiais" class="nav-link">Legislação</a></li>
           <li>
-            <a href="#diretrizes" class="nav-link">
-              <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-              </svg>
-              <span>Temas</span>
-            </a>
-          </li>
-          <li>
-            <a href="#checklists" class="nav-link">
-              <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m9 11 3 3L22 4"></path>
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
-              </svg>
-              <span>Checklists</span>
-            </a>
-          </li>
-          <li>
-            <a href="#duvidas" class="nav-link">
-              <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-              <span>Dúvidas</span>
-            </a>
-          </li>
-          <li>
-            <a href="#fontes-oficiais" class="nav-link">
-              <svg class="nav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
-                <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
-                <path d="M7 21h10"></path>
-                <path d="M12 3v18"></path>
-              </svg>
-              <span>Legislação</span>
-            </a>
-          </li>
-          <li class="drawer-cta-item">
             <a href="https://forms.gle/CNi8nQm6ViK3J8j4A" target="_blank" rel="noopener noreferrer" class="nav-cta">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
                 <line x1="16" y1="13" x2="8" y2="13"></line>
                 <line x1="16" y1="17" x2="8" y2="17"></line>
                 <polyline points="10 9 9 9 8 9"></polyline>
               </svg>
-              <span>Diagnóstico</span>
+              Diagnóstico
             </a>
           </li>
         </ul>
@@ -144,6 +97,73 @@
       </div>
     </div>
   </header>
+
+  <!-- Menu Lateral Mobile (Direto no body para nunca ficar preso no topo ou no header) -->
+  <div class="mobile-drawer-overlay" id="nav-overlay" aria-hidden="true"></div>
+  <aside class="mobile-drawer" id="mobile-drawer" aria-label="Menu de Navegação Móvel">
+    <div class="drawer-header">
+      <span class="drawer-title">Menu de Navegação</span>
+      <button type="button" class="drawer-close-btn" id="drawer-close-btn" aria-label="Fechar menu">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <ul class="drawer-links">
+      <li>
+        <a href="#diretrizes" class="drawer-link">
+          <svg class="drawer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          <span>Temas</span>
+        </a>
+      </li>
+      <li>
+        <a href="#checklists" class="drawer-link">
+          <svg class="drawer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m9 11 3 3L22 4"></path>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+          </svg>
+          <span>Checklists</span>
+        </a>
+      </li>
+      <li>
+        <a href="#duvidas" class="drawer-link">
+          <svg class="drawer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+            <line x1="12" y1="17" x2="12.01" y2="17"></line>
+          </svg>
+          <span>Dúvidas</span>
+        </a>
+      </li>
+      <li>
+        <a href="#fontes-oficiais" class="drawer-link">
+          <svg class="drawer-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+            <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"></path>
+            <path d="M7 21h10"></path>
+            <path d="M12 3v18"></path>
+          </svg>
+          <span>Legislação</span>
+        </a>
+      </li>
+      <li class="drawer-cta-item">
+        <a href="https://forms.gle/CNi8nQm6ViK3J8j4A" target="_blank" rel="noopener noreferrer" class="drawer-cta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+            <polyline points="14 2 14 8 20 8"></polyline>
+            <line x1="16" y1="13" x2="8" y2="13"></line>
+            <line x1="16" y1="17" x2="8" y2="17"></line>
+            <polyline points="10 9 9 9 8 9"></polyline>
+          </svg>
+          <span>Diagnóstico</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 
   <!-- ========================================================================
        Hero Section
