@@ -181,12 +181,14 @@ const ChecklistManager = {
     this.initCarousel();
   },
 
-  // Inicializador do Carrossel com navegação em loop contínuo e indicadores
+  // Inicializador do Carrossel com navegação em loop contínuo, pílulas e contador
   initCarousel() {
     const track = document.getElementById('carousel-track');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
     const dotsContainer = document.getElementById('carousel-dots');
+    const pillsContainer = document.getElementById('carousel-pills');
+    const counterCurrent = document.getElementById('counter-current');
     const container = document.getElementById('checklists-container');
 
     if (!track || !container) return;
@@ -194,7 +196,7 @@ const ChecklistManager = {
     const cards = container.querySelectorAll('.checklist-card');
     if (cards.length === 0) return;
 
-    // Gera os pontinhos indicadores
+    // Gera os pontinhos indicadores inferiores
     if (dotsContainer) {
       dotsContainer.innerHTML = '';
       cards.forEach((_, idx) => {
@@ -208,24 +210,55 @@ const ChecklistManager = {
       });
     }
 
-    const updateActiveDot = () => {
-      if (!dotsContainer) return;
-      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    // Configura cliques nas pílulas superiores
+    if (pillsContainer) {
+      const pills = pillsContainer.querySelectorAll('.pill-tab');
+      pills.forEach((pill, idx) => {
+        if (!pill._bound) {
+          pill._bound = true;
+          pill.addEventListener('click', () => {
+            this.scrollToIndex(idx);
+          });
+        }
+      });
+    }
+
+    const updateActiveIndex = () => {
       const trackScroll = track.scrollLeft;
-      const cardWidth = cards[0].offsetWidth + 28; // card width + gap
+      const cardWidth = cards[0].offsetWidth + 28;
       const activeIdx = Math.min(
         Math.max(0, Math.round(trackScroll / cardWidth)),
         cards.length - 1
       );
 
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === activeIdx);
-      });
+      // Atualiza dots
+      if (dotsContainer) {
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === activeIdx);
+        });
+      }
+
+      // Atualiza pílulas
+      if (pillsContainer) {
+        pillsContainer.querySelectorAll('.pill-tab').forEach((pill, idx) => {
+          const isActive = idx === activeIdx;
+          pill.classList.toggle('active', isActive);
+          pill.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          if (isActive) {
+            pill.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        });
+      }
+
+      // Atualiza contador
+      if (counterCurrent) {
+        counterCurrent.textContent = String(activeIdx + 1).padStart(2, '0');
+      }
     };
 
     track.removeEventListener('scroll', track._scrollHandler);
-    track._scrollHandler = updateActiveDot;
-    track.addEventListener('scroll', updateActiveDot, { passive: true });
+    track._scrollHandler = updateActiveIndex;
+    track.addEventListener('scroll', updateActiveIndex, { passive: true });
 
     // Navegação Avançar (Loop)
     if (nextBtn && !nextBtn._bound) {
@@ -234,8 +267,8 @@ const ChecklistManager = {
         const cardWidth = cards[0].offsetWidth + 28;
         const maxScroll = track.scrollWidth - track.clientWidth;
         
-        // Se estiver no final, dá loop suave para o primeiro
-        if (track.scrollLeft >= maxScroll - 15) {
+        // Se estiver no final, dá loop suave para o início
+        if (track.scrollLeft >= maxScroll - 20) {
           track.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
           track.scrollBy({ left: cardWidth, behavior: 'smooth' });
@@ -250,8 +283,8 @@ const ChecklistManager = {
         const cardWidth = cards[0].offsetWidth + 28;
         const maxScroll = track.scrollWidth - track.clientWidth;
 
-        // Se estiver no começo, dá loop suave para o último
-        if (track.scrollLeft <= 15) {
+        // Se estiver no começo, dá loop suave para o final
+        if (track.scrollLeft <= 20) {
           track.scrollTo({ left: maxScroll, behavior: 'smooth' });
         } else {
           track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
@@ -259,13 +292,12 @@ const ChecklistManager = {
       });
     }
 
-    // Suporte a arrasto no desktop
+    // Suporte a arrasto fluído no desktop
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
 
     track.addEventListener('mousedown', (e) => {
-      // Ignora clique em botões ou checkboxes para não travar a interação
       if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist')) return;
       isDown = true;
       track.style.cursor = 'grabbing';

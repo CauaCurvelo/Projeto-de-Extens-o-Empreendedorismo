@@ -261,14 +261,49 @@
           </p>
         </div>
 
+        <!-- Controles Superiores Modernos do Carrossel -->
+        <div class="carousel-control-bar">
+          <!-- Segmented Tab Switcher (Pílulas de Seleção Rápida) -->
+          <div class="carousel-pill-tabs" id="carousel-pills" role="tablist" aria-label="Temas dos Checklists">
+            <button class="pill-tab active" data-index="0" role="tab" aria-selected="true">
+              <span class="pill-dot"></span> 1. Anúncios
+            </button>
+            <button class="pill-tab" data-index="1" role="tab" aria-selected="false">
+              <span class="pill-dot"></span> 2. Alimentos
+            </button>
+            <button class="pill-tab" data-index="2" role="tab" aria-selected="false">
+              <span class="pill-dot"></span> 3. Salão de Beleza
+            </button>
+            <button class="pill-tab" data-index="3" role="tab" aria-selected="false">
+              <span class="pill-dot"></span> 4. Fotos & Imagem
+            </button>
+            <button class="pill-tab" data-index="4" role="tab" aria-selected="false">
+              <span class="pill-dot"></span> 5. Contratos
+            </button>
+          </div>
+
+          <!-- Navegação por Setas e Contador de Slides -->
+          <div class="carousel-actions-group">
+            <span class="carousel-counter" id="carousel-counter">
+              <strong id="counter-current">01</strong> / 05
+            </span>
+            <div class="carousel-arrows">
+              <button class="carousel-arrow-btn" id="carousel-prev" aria-label="Checklist anterior" title="Anterior">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="carousel-arrow-btn" id="carousel-next" aria-label="Próximo checklist" title="Próximo">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <!-- Carrossel Interativo de Checklists (Desktop & Mobile) -->
         <div class="checklists-carousel-wrapper" id="checklists-carousel">
-          <button class="carousel-nav-btn prev" id="carousel-prev" aria-label="Checklist anterior">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="15 18 9 12 15 6"></polyline>
-            </svg>
-          </button>
-
           <div class="checklists-carousel-track" id="carousel-track">
             <div class="checklists-grid checklists-carousel-grid" id="checklists-container">
               <div class="checklist-card" id="card-chk-anuncio">
@@ -787,12 +822,6 @@
             </div>
             </div>
           </div>
-
-          <button class="carousel-nav-btn next" id="carousel-next" aria-label="Próximo checklist">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
         </div>
 
         <!-- Indicadores / Dots do Carrossel -->
