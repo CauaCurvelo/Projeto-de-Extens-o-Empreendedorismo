@@ -176,25 +176,21 @@ function renderCategoryTabs(modules) {
   const tabsContainer = document.getElementById('category-tabs');
   if (!tabsContainer) return;
 
-  const categories = ['Todas as Áreas', ...new Set(modules.map(m => m.category)), 'Checklists Rápidos'];
+  const categories = [
+    { label: 'Todas as Áreas', id: 'all' },
+    ...Array.from(new Set(modules.map(m => m.category))).map(cat => ({ label: cat, id: cat })),
+    { label: 'Checklists Rápidos', id: 'checklists-view' }
+  ];
 
   tabsContainer.innerHTML = categories.map((cat, idx) => `
-    <button class="tab-btn ${idx === 0 ? 'active' : ''} ${cat === 'Checklists Rápidos' ? 'tab-btn-highlight' : ''}" data-cat="${cat === 'Todas as Áreas' ? 'all' : cat}">
-      ${cat === 'Checklists Rápidos' ? '✓ ' + cat : cat}
+    <button class="tab-btn ${idx === 0 ? 'active' : ''} ${cat.id === 'checklists-view' ? 'tab-btn-highlight' : ''}" data-cat="${cat.id}">
+      ${cat.id === 'checklists-view' ? '✓ ' + cat.label : cat.label}
     </button>
   `).join('');
 
   tabsContainer.addEventListener('click', (e) => {
     const btn = e.target.closest('.tab-btn');
     if (!btn) return;
-
-    if (btn.dataset.cat === 'Checklists Rápidos') {
-      const chkSection = document.getElementById('checklists');
-      if (chkSection) {
-        chkSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-      return;
-    }
 
     tabsContainer.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
@@ -295,6 +291,34 @@ function applyFilterAndSearch() {
   const searchTerms = normalizedQuery.split(/\s+/).filter(Boolean);
 
   let totalCardsCount = 0;
+
+  // Caso a aba selecionada seja Checklists Rápidos
+  if (currentCategory === 'checklists-view') {
+    const container = document.getElementById('modules-container');
+    if (container && window.ChecklistManager && appData.checklists) {
+      container.innerHTML = `
+        <div class="module-block" id="checklists-inline-view">
+          <div class="module-header">
+            <div class="module-title-group">
+              <h2 class="module-title">Checklists Interativos de Conferência</h2>
+              <span class="module-badge">5 Ferramentas Práticas</span>
+            </div>
+            <p class="module-summary">Faça a checagem rápida de conformidade antes de postar anúncios, assinar contratos, manipular alimentos ou atender no salão. Seu progresso fica salvo no navegador.</p>
+          </div>
+          <div class="checklists-grid" id="checklists-inline-grid"></div>
+        </div>
+      `;
+      ChecklistManager.renderChecklists(appData.checklists, 'checklists-inline-grid');
+    }
+
+    const resultsBar = document.getElementById('search-results-bar');
+    const resultsCount = document.getElementById('search-results-count');
+    if (resultsBar && resultsCount) {
+      resultsBar.style.display = 'flex';
+      resultsCount.innerHTML = `Exibindo <strong>${appData.checklists ? appData.checklists.length : 5} checklists interativos</strong> de conferência rápida.`;
+    }
+    return;
+  }
 
   // Filtragem inteligente com normalização e suporte a múltiplos termos
   const filtered = appData.modules.map(mod => {
