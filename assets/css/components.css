@@ -205,9 +205,11 @@
    2. Checklists Interativos (Design Ergonômico & Tátil)
    ========================================================================== */
 .checklists-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
+  width: 100%;
 }
 
 .checklist-card {
@@ -218,6 +220,9 @@
   box-shadow: 0 4px 16px -2px rgba(15, 23, 42, 0.05);
   display: flex;
   flex-direction: column;
+  flex: 1 1 360px;
+  max-width: 580px;
+  min-width: 320px;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
 }
 
@@ -289,59 +294,66 @@
 
 .checklist-item {
   display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
+  align-items: center;
+  gap: 0.95rem;
   cursor: pointer;
   user-select: none;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--text-muted);
   line-height: 1.5;
-  padding: 0.75rem 0.95rem;
-  border-radius: 9px;
+  padding: 0.85rem 1.05rem;
+  border-radius: 10px;
   background: var(--bg-subtle);
   border: 1px solid transparent;
-  transition: all var(--transition-fast);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .checklist-item:hover {
   background: var(--bg-surface);
-  border-color: var(--border-subtle);
+  border-color: rgba(37, 99, 235, 0.3);
   color: var(--text-main);
-  transform: translateX(3px);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 .checklist-item.checked {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.09);
+  border-color: rgba(16, 185, 129, 0.3);
   color: var(--color-primary);
 }
 
 .custom-checkbox {
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  border: 1.5px solid var(--border-subtle);
-  border-radius: 6px;
+  width: 22px;
+  height: 22px;
+  border: 1.8px solid var(--border-subtle);
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 1px;
-  transition: all var(--transition-fast);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   background: var(--bg-surface);
+}
+
+.checklist-item:hover .custom-checkbox {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 .custom-checkbox svg {
   display: none;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   stroke: #ffffff;
-  stroke-width: 3;
+  stroke-width: 3.2;
 }
 
 .checklist-item.checked .custom-checkbox {
   background: linear-gradient(135deg, #059669 0%, #10b981 100%);
   border-color: #059669;
-  box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.35);
+  transform: scale(1.05);
 }
 
 .checklist-item.checked .custom-checkbox svg {
@@ -351,6 +363,7 @@
 .checklist-item.checked span {
   text-decoration: line-through;
   color: var(--text-light);
+  opacity: 0.85;
 }
 
 .checklist-actions {

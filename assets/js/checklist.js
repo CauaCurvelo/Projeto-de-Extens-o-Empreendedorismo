@@ -23,12 +23,66 @@ const ChecklistManager = {
     }
   },
 
-  initStatic() {
-    const container = document.getElementById('checklists-container');
+  // Atualiza um card específico (contagem de itens marcados e barra de progresso)
+  updateCardProgress(card) {
+    if (!card) return;
+    const chkId = card.id ? card.id.replace('card-', '') : null;
+    const items = card.querySelectorAll('.checklist-item');
+    const checked = card.querySelectorAll('.checklist-item.checked');
+    const total = items.length;
+    const count = checked.length;
+    const percent = total > 0 ? Math.round((count / total) * 100) : 0;
+
+    const percentEl = chkId ? document.getElementById(`percent-${chkId}`) : card.querySelector('[id^="percent-"]');
+    const barEl = chkId ? document.getElementById(`bar-${chkId}`) : card.querySelector('[id^="bar-"]');
+
+    if (percentEl) percentEl.textContent = `${count} de ${total} (${percent}%)`;
+    if (barEl) barEl.style.width = `${percent}%`;
+  },
+
+  // Alterna o estado de um item clicado
+  toggleItemEl(itemEl) {
+    if (!itemEl) return;
+    const chkId = itemEl.dataset.chkId;
+    const idx = parseInt(itemEl.dataset.idx, 10);
+    const card = itemEl.closest('.checklist-card');
+
+    const state = this.getState();
+    if (!state[chkId]) state[chkId] = [];
+
+    // Inverte estado
+    state[chkId][idx] = !state[chkId][idx];
+    this.saveState(state);
+
+    const isChecked = Boolean(state[chkId][idx]);
+    itemEl.classList.toggle('checked', isChecked);
+    itemEl.setAttribute('aria-checked', isChecked ? 'true' : 'false');
+
+    if (card) {
+      this.updateCardProgress(card);
+    }
+  },
+
+  // Reseta um checklist inteiro
+  resetChecklist(chkId, card) {
+    const state = this.getState();
+    delete state[chkId];
+    this.saveState(state);
+
+    if (card) {
+      card.querySelectorAll('.checklist-item').forEach(el => {
+        el.classList.remove('checked');
+        el.setAttribute('aria-checked', 'false');
+      });
+      this.updateCardProgress(card);
+    }
+  },
+
+  // Hidrata os itens já presentes no HTML ou recém-renderizados
+  hydrateContainer(container) {
     if (!container) return;
-    
-    // Hidrata estado salvo no localStorage para os itens já em tela
     const savedState = this.getState();
+
     Object.keys(savedState).forEach(chkId => {
       const items = savedState[chkId];
       if (Array.isArray(items)) {
@@ -44,84 +98,29 @@ const ChecklistManager = {
       }
     });
 
-    // Atualiza contadores
     container.querySelectorAll('.checklist-card').forEach(card => {
-      const chkId = card.id.replace('card-', '');
-      const items = card.querySelectorAll('.checklist-item');
-      const checked = card.querySelectorAll('.checklist-item.checked');
-      const total = items.length;
-      const count = checked.length;
-      const percent = total > 0 ? Math.round((count / total) * 100) : 0;
-      
-      const percentEl = document.getElementById(`percent-${chkId}`);
-      const barEl = document.getElementById(`bar-${chkId}`);
-      if (percentEl) percentEl.textContent = `${count} de ${total} (${percent}%)`;
-      if (barEl) barEl.style.width = `${percent}%`;
-    });
-
-    this.bindStaticEvents(container);
-  },
-
-  bindStaticEvents(container) {
-    if (container._bound) return;
-    container._bound = true;
-
-    container.addEventListener('click', (e) => {
-      const itemEl = e.target.closest('.checklist-item');
-      if (itemEl) {
-        const chkId = itemEl.dataset.chkId;
-        const idx = parseInt(itemEl.dataset.idx, 10);
-        const card = itemEl.closest('.checklist-card');
-        const state = this.getState();
-        if (!state[chkId]) state[chkId] = [];
-        state[chkId][idx] = !state[chkId][idx];
-        this.saveState(state);
-
-        const isChecked = Boolean(state[chkId][idx]);
-        itemEl.classList.toggle('checked', isChecked);
-        itemEl.setAttribute('aria-checked', isChecked);
-
-        // Atualiza progresso
-        if (card) {
-          const items = card.querySelectorAll('.checklist-item');
-          const checked = card.querySelectorAll('.checklist-item.checked');
-          const total = items.length;
-          const count = checked.length;
-          const percent = Math.round((count / total) * 100);
-          const percentEl = document.getElementById(`percent-${chkId}`);
-          const barEl = document.getElementById(`bar-${chkId}`);
-          if (percentEl) percentEl.textContent = `${count} de ${total} (${percent}%)`;
-          if (barEl) barEl.style.width = `${percent}%`;
-        }
-        return;
-      }
-
-      const resetBtn = e.target.closest('.btn-reset-checklist');
-      if (resetBtn) {
-        const chkId = resetBtn.dataset.resetId;
-        const card = resetBtn.closest('.checklist-card');
-        const state = this.getState();
-        delete state[chkId];
-        this.saveState(state);
-
-        if (card) {
-          card.querySelectorAll('.checklist-item').forEach(el => {
-            el.classList.remove('checked');
-            el.setAttribute('aria-checked', 'false');
-          });
-          const total = card.querySelectorAll('.checklist-item').length;
-          const percentEl = document.getElementById(`percent-${chkId}`);
-          const barEl = document.getElementById(`bar-${chkId}`);
-          if (percentEl) percentEl.textContent = `0 de ${total} (0%)`;
-          if (barEl) barEl.style.width = `0%`;
-        }
-      }
+      this.updateCardProgress(card);
     });
   },
 
+  // Inicializa checklists estáticos
+  initStatic() {
+    const container = document.getElementById('checklists-container');
+    if (container) {
+      this.hydrateContainer(container);
+    }
+  },
+
+  // Renderiza dinamicamente se chamado via content.json ou aba interna
   renderChecklists(checklists, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
+
+    // Se já existem cards no container estático e são os mesmos, apenas hidrata para não piscar
+    if (container.querySelectorAll('.checklist-card').length > 0 && containerId === 'checklists-container') {
+      this.hydrateContainer(container);
+      return;
+    }
 
     const savedState = this.getState();
 
@@ -129,7 +128,7 @@ const ChecklistManager = {
       const chkState = savedState[chk.id] || [];
       const total = chk.items.length;
       const checkedCount = chkState.filter(Boolean).length;
-      const percent = Math.round((checkedCount / total) * 100);
+      const percent = total > 0 ? Math.round((checkedCount / total) * 100) : 0;
 
       const itemsHtml = chk.items.map((item, idx) => {
         const isChecked = Boolean(chkState[idx]);
@@ -138,7 +137,7 @@ const ChecklistManager = {
               data-chk-id="${chk.id}" 
               data-idx="${idx}"
               role="checkbox"
-              aria-checked="${isChecked}"
+              aria-checked="${isChecked ? 'true' : 'false'}"
               tabindex="0">
             <div class="custom-checkbox">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
@@ -178,97 +177,40 @@ const ChecklistManager = {
       `;
     }).join('');
 
-    this.bindEvents(container, checklists);
-  },
-
-  bindEvents(container, checklists) {
-    // Clique nos itens
-    container.addEventListener('click', (e) => {
-      const itemEl = e.target.closest('.checklist-item');
-      if (itemEl) {
-        const chkId = itemEl.dataset.chkId;
-        const idx = parseInt(itemEl.dataset.idx, 10);
-        this.toggleItem(chkId, idx, itemEl, checklists);
-        return;
-      }
-
-      const resetBtn = e.target.closest('.btn-reset-checklist');
-      if (resetBtn) {
-        const chkId = resetBtn.dataset.resetId;
-        this.resetChecklist(chkId, checklists);
-      }
-    });
-
-    // Acessibilidade via teclado (Enter / Space)
-    container.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        const itemEl = e.target.closest('.checklist-item');
-        if (itemEl) {
-          e.preventDefault();
-          const chkId = itemEl.dataset.chkId;
-          const idx = parseInt(itemEl.dataset.idx, 10);
-          this.toggleItem(chkId, idx, itemEl, checklists);
-        }
-      }
-    });
-  },
-
-  toggleItem(chkId, idx, itemEl, checklists) {
-    const state = this.getState();
-    const chk = checklists.find(c => c.id === chkId);
-    if (!chk) return;
-
-    if (!state[chkId]) {
-      state[chkId] = new Array(chk.items.length).fill(false);
-    }
-
-    state[chkId][idx] = !state[chkId][idx];
-    this.saveState(state);
-
-    const isChecked = state[chkId][idx];
-    itemEl.classList.toggle('checked', isChecked);
-    itemEl.setAttribute('aria-checked', isChecked);
-
-    this.updateProgress(chkId, chk);
-  },
-
-  resetChecklist(chkId, checklists) {
-    const chk = checklists.find(c => c.id === chkId);
-    if (!chk) return;
-
-    const state = this.getState();
-    state[chkId] = new Array(chk.items.length).fill(false);
-    this.saveState(state);
-
-    const itemsContainer = document.getElementById(`items-${chkId}`);
-    if (itemsContainer) {
-      itemsContainer.querySelectorAll('.checklist-item').forEach(el => {
-        el.classList.remove('checked');
-        el.setAttribute('aria-checked', 'false');
-      });
-    }
-
-    this.updateProgress(chkId, chk);
-  },
-
-  updateProgress(chkId, chk) {
-    const state = this.getState();
-    const chkState = state[chkId] || [];
-    const total = chk.items.length;
-    const checkedCount = chkState.filter(Boolean).length;
-    const percent = Math.round((checkedCount / total) * 100);
-
-    const percentEl = document.getElementById(`percent-${chkId}`);
-    const barEl = document.getElementById(`bar-${chkId}`);
-
-    if (percentEl) percentEl.textContent = `${checkedCount} de ${total} (${percent}%)`;
-    if (barEl) barEl.style.width = `${percent}%`;
+    this.hydrateContainer(container);
   }
 };
 
+// Listener global para cliques em qualquer checklist (seja no container principal ou na aba)
+document.addEventListener('click', (e) => {
+  const itemEl = e.target.closest('.checklist-item');
+  if (itemEl) {
+    ChecklistManager.toggleItemEl(itemEl);
+    return;
+  }
+
+  const resetBtn = e.target.closest('.btn-reset-checklist');
+  if (resetBtn) {
+    const chkId = resetBtn.dataset.resetId;
+    const card = resetBtn.closest('.checklist-card');
+    ChecklistManager.resetChecklist(chkId, card);
+  }
+});
+
+// Acessibilidade via teclado (Enter / Barra de espaço)
+document.addEventListener('keydown', (e) => {
+  if (e.key === ' ' || e.key === 'Enter') {
+    const itemEl = e.target.closest('.checklist-item');
+    if (itemEl) {
+      e.preventDefault();
+      ChecklistManager.toggleItemEl(itemEl);
+    }
+  }
+});
+
 window.ChecklistManager = ChecklistManager;
 
-// Auto-inicializa checklists já presentes no HTML estático
+// Auto-inicializa checklists assim que o documento carregar
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => ChecklistManager.initStatic());
 } else {
