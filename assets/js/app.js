@@ -536,8 +536,9 @@ function initNavigation() {
 }
 
 /**
- * Sistema de Modo Escuro Fluido e Rápido
- * Utiliza View Transition API nativa de alta performance e transição acelerada por GPU.
+ * Sistema de Modo Escuro Ultra Fluido e Otimizado
+ * Troca instantânea de variáveis CSS com transição suave nos elementos principais,
+ * sem engasgos ou travamento de rasterização de tela cheia no mobile.
  */
 function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle-btn');
@@ -554,18 +555,9 @@ function initThemeToggle() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const nextTheme = isDark ? 'light' : 'dark';
 
-    // Transição suave, instantânea ao toque e sem engasgos
-    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.startViewTransition(() => {
-        document.documentElement.setAttribute('data-theme', nextTheme);
-        localStorage.setItem('unex_theme', nextTheme);
-        updateThemeColorMeta(nextTheme);
-      });
-    } else {
-      document.documentElement.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('unex_theme', nextTheme);
-      updateThemeColorMeta(nextTheme);
-    }
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    localStorage.setItem('unex_theme', nextTheme);
+    updateThemeColorMeta(nextTheme);
   });
 }
 
