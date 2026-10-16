@@ -473,12 +473,19 @@
 /* Adaptação Mobile: Visualizar card central + pontas dos laterais para incentivar swipe */
 @media (max-width: 768px) {
   .carousel-side-btn {
-    display: none; /* No mobile usa o deslize com o dedo */
+    display: none !important;
   }
 
   .checklists-carousel-track {
     /* Deixa 15% de cada lado vazando o próximo e o anterior */
     padding: 1rem 12vw 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .checklists-grid.checklists-carousel-grid {
+    gap: 1.25rem;
   }
 
   .checklists-carousel-grid .checklist-card {
@@ -488,6 +495,8 @@
     padding: 1.45rem;
     opacity: 0.45;
     transform: scale(0.94);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   .checklists-carousel-grid .checklist-card.is-active {
