@@ -482,23 +482,20 @@ a:hover {
 }
 
 /* ==========================================================================
-   Bolha Circular de Transição de Tema (Aceleração por GPU, centro exato no botão)
+   Transição de Tema Circular (Bolha Expansiva Revelando o Novo Tema)
    ========================================================================== */
-.theme-bubble-fx {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99990;
-  transform: translate(-50%, -50%) scale(0);
-  will-change: transform;
-  outline: none !important;
-  border: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
-.theme-bubble-fx.expanding {
-  transform: translate(-50%, -50%) scale(1) !important;
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 99999;
 }
 
 .mobile-toggle {

@@ -531,76 +531,58 @@ function initThemeToggle() {
     const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     const nextTheme = isDark ? 'light' : 'dark';
 
-    triggerBubbleThemeToggle(toggleBtn, nextTheme);
+    // Coordenadas exatas do centro do botão na viewport
+    const rect = toggleBtn.getBoundingClientRect();
+    const x = Math.round(rect.left + rect.width / 2);
+    const y = Math.round(rect.top + rect.height / 2);
+
+    // Raio máximo até o canto mais distante da tela
+    const maxDistX = Math.max(x, window.innerWidth - x);
+    const maxDistY = Math.max(y, window.innerHeight - y);
+    const endRadius = Math.ceil(Math.hypot(maxDistX, maxDistY));
+
+    // Suporte à View Transition API nativa com revelação circular do novo tema
+    if (document.startViewTransition && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      isThemeTransitioning = true;
+
+      const transition = document.startViewTransition(() => {
+        document.documentElement.setAttribute('data-theme', nextTheme);
+        localStorage.setItem('unex_theme', nextTheme);
+        updateThemeColorMeta(nextTheme);
+      });
+
+      transition.ready.then(() => {
+        const animation = document.documentElement.animate(
+          {
+            clipPath: [
+              `circle(0px at ${x}px ${y}px)`,
+              `circle(${endRadius}px at ${x}px ${y}px)`
+            ]
+          },
+          {
+            duration: 380,
+            easing: 'cubic-bezier(0.2, 0.9, 0.3, 1)',
+            pseudoElement: '::view-transition-new(root)'
+          }
+        );
+
+        animation.onfinish = () => {
+          isThemeTransitioning = false;
+        };
+      }).catch(() => {
+        isThemeTransitioning = false;
+      });
+    } else {
+      // Fallback para navegadores sem View Transition
+      document.documentElement.classList.add('theme-switching');
+      document.documentElement.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('unex_theme', nextTheme);
+      updateThemeColorMeta(nextTheme);
+      setTimeout(() => {
+        document.documentElement.classList.remove('theme-switching');
+      }, 280);
+    }
   });
-}
-
-/**
- * Animação de Bolha Circular Otimizada
- * A bolha se origina do centro exato do botão em qualquer rolagem ou aparelho,
- * expandindo via aceleração de GPU (transform: scale) com 0 travamento.
- */
-function triggerBubbleThemeToggle(btn, nextTheme) {
-  isThemeTransitioning = true;
-
-  // 1. Pega coordenadas exatas do centro do botão na viewport atual
-  const rect = btn.getBoundingClientRect();
-  const x = Math.round(rect.left + rect.width / 2);
-  const y = Math.round(rect.top + rect.height / 2);
-
-  // 2. Calcula o raio necessário para cobrir o canto mais distante da janela
-  const maxDistX = Math.max(x, window.innerWidth - x);
-  const maxDistY = Math.max(y, window.innerHeight - y);
-  const radius = Math.ceil(Math.hypot(maxDistX, maxDistY));
-  const diameter = radius * 2;
-
-  // 3. Obtém ou cria a bolha no DOM
-  let bubble = document.getElementById('theme-bubble-fx');
-  if (!bubble) {
-    bubble = document.createElement('div');
-    bubble.id = 'theme-bubble-fx';
-    bubble.className = 'theme-bubble-fx';
-    document.body.appendChild(bubble);
-  }
-
-  // 4. Define cor e centro da bolha (preto puro no dark, cinza suave no light)
-  const targetBg = nextTheme === 'dark' ? '#0a0a0a' : '#f8fafc';
-  bubble.style.width = `${diameter}px`;
-  bubble.style.height = `${diameter}px`;
-  bubble.style.left = `${x}px`;
-  bubble.style.top = `${y}px`;
-  bubble.style.backgroundColor = targetBg;
-  bubble.style.opacity = '1';
-  bubble.style.transform = 'translate(-50%, -50%) scale(0)';
-  bubble.style.transition = 'transform 0.36s cubic-bezier(0.2, 0.9, 0.3, 1)';
-  bubble.style.display = 'block';
-
-  // Força renderização do ponto zero antes de expandir
-  void bubble.offsetWidth;
-
-  // Expande a bolha do centro do botão
-  bubble.classList.add('expanding');
-
-  // No meio da expansão (200ms), aplica o novo tema por baixo
-  setTimeout(() => {
-    document.documentElement.setAttribute('data-theme', nextTheme);
-    localStorage.setItem('unex_theme', nextTheme);
-    updateThemeColorMeta(nextTheme);
-  }, 200);
-
-  // Ao cobrir tudo (360ms), esvanece suavemente a bolha
-  setTimeout(() => {
-    bubble.style.transition = 'opacity 0.16s ease';
-    bubble.style.opacity = '0';
-
-    setTimeout(() => {
-      bubble.classList.remove('expanding');
-      bubble.style.display = 'none';
-      bubble.style.transition = '';
-      bubble.style.transform = 'translate(-50%, -50%) scale(0)';
-      isThemeTransitioning = false;
-    }, 160);
-  }, 360);
 }
 
 function updateThemeColorMeta(theme) {
