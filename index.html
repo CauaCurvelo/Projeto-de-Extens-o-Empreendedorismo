@@ -261,8 +261,17 @@
           </p>
         </div>
 
-        <div class="checklists-grid" id="checklists-container">
-          <div class="checklist-card" id="card-chk-anuncio">
+        <!-- Carrossel Interativo de Checklists (Desktop & Mobile) -->
+        <div class="checklists-carousel-wrapper" id="checklists-carousel">
+          <button class="carousel-nav-btn prev" id="carousel-prev" aria-label="Checklist anterior">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+
+          <div class="checklists-carousel-track" id="carousel-track">
+            <div class="checklists-grid checklists-carousel-grid" id="checklists-container">
+              <div class="checklist-card" id="card-chk-anuncio">
             <div class="checklist-header">
               <h3>Checklist Geral — Antes de Publicar Qualquer Anúncio</h3>
               <p>Conferência rápida do documento base antes de postar no feed, stories ou WhatsApp.</p>
@@ -776,8 +785,18 @@
             <div class="checklist-actions">
               <button class="btn-reset-checklist" data-reset-id="chk-contrato">Limpar checklist</button>
             </div>
+            </div>
           </div>
+
+          <button class="carousel-nav-btn next" id="carousel-next" aria-label="Próximo checklist">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
         </div>
+
+        <!-- Indicadores / Dots do Carrossel -->
+        <div class="carousel-dots" id="carousel-dots" aria-label="Navegação de slides"></div>
       </div>
     </section>
 

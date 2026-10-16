@@ -178,6 +178,129 @@ const ChecklistManager = {
     }).join('');
 
     this.hydrateContainer(container);
+    this.initCarousel();
+  },
+
+  // Inicializador do Carrossel com navegação em loop contínuo e indicadores
+  initCarousel() {
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    const dotsContainer = document.getElementById('carousel-dots');
+    const container = document.getElementById('checklists-container');
+
+    if (!track || !container) return;
+
+    const cards = container.querySelectorAll('.checklist-card');
+    if (cards.length === 0) return;
+
+    // Gera os pontinhos indicadores
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      cards.forEach((_, idx) => {
+        const dot = document.createElement('button');
+        dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
+        dot.setAttribute('aria-label', `Ir para o checklist ${idx + 1}`);
+        dot.addEventListener('click', () => {
+          this.scrollToIndex(idx);
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
+    const updateActiveDot = () => {
+      if (!dotsContainer) return;
+      const dots = dotsContainer.querySelectorAll('.carousel-dot');
+      const trackScroll = track.scrollLeft;
+      const cardWidth = cards[0].offsetWidth + 28; // card width + gap
+      const activeIdx = Math.min(
+        Math.max(0, Math.round(trackScroll / cardWidth)),
+        cards.length - 1
+      );
+
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === activeIdx);
+      });
+    };
+
+    track.removeEventListener('scroll', track._scrollHandler);
+    track._scrollHandler = updateActiveDot;
+    track.addEventListener('scroll', updateActiveDot, { passive: true });
+
+    // Navegação Avançar (Loop)
+    if (nextBtn && !nextBtn._bound) {
+      nextBtn._bound = true;
+      nextBtn.addEventListener('click', () => {
+        const cardWidth = cards[0].offsetWidth + 28;
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        
+        // Se estiver no final, dá loop suave para o primeiro
+        if (track.scrollLeft >= maxScroll - 15) {
+          track.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Navegação Voltar (Loop)
+    if (prevBtn && !prevBtn._bound) {
+      prevBtn._bound = true;
+      prevBtn.addEventListener('click', () => {
+        const cardWidth = cards[0].offsetWidth + 28;
+        const maxScroll = track.scrollWidth - track.clientWidth;
+
+        // Se estiver no começo, dá loop suave para o último
+        if (track.scrollLeft <= 15) {
+          track.scrollTo({ left: maxScroll, behavior: 'smooth' });
+        } else {
+          track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+        }
+      });
+    }
+
+    // Suporte a arrasto no desktop
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    track.addEventListener('mousedown', (e) => {
+      // Ignora clique em botões ou checkboxes para não travar a interação
+      if (e.target.closest('.checklist-item') || e.target.closest('.btn-reset-checklist')) return;
+      isDown = true;
+      track.style.cursor = 'grabbing';
+      startX = e.pageX - track.offsetLeft;
+      scrollLeft = track.scrollLeft;
+    });
+
+    track.addEventListener('mouseleave', () => {
+      isDown = false;
+      track.style.cursor = '';
+    });
+
+    track.addEventListener('mouseup', () => {
+      isDown = false;
+      track.style.cursor = '';
+    });
+
+    track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      track.scrollLeft = scrollLeft - walk;
+    });
+  },
+
+  scrollToIndex(index) {
+    const track = document.getElementById('carousel-track');
+    const container = document.getElementById('checklists-container');
+    if (!track || !container) return;
+    const cards = container.querySelectorAll('.checklist-card');
+    if (cards[index]) {
+      const cardWidth = cards[0].offsetWidth + 28;
+      track.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+    }
   }
 };
 
@@ -212,7 +335,11 @@ window.ChecklistManager = ChecklistManager;
 
 // Auto-inicializa checklists assim que o documento carregar
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => ChecklistManager.initStatic());
+  document.addEventListener('DOMContentLoaded', () => {
+    ChecklistManager.initStatic();
+    ChecklistManager.initCarousel();
+  });
 } else {
   ChecklistManager.initStatic();
+  ChecklistManager.initCarousel();
 }
