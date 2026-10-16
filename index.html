@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Empreendedorismo em Foco — Guia Prático de Segurança Jurídica, Sanitária e Digital</title>
+  
+  <!-- Meta tags SEO -->
+  <meta name="description" content="Guia prático e descomplicado de segurança jurídica, sanitária e digital para microempreendedoras. Projeto de Extensão UNEX (Direito e Sistemas de Informação).">
+  <meta name="author" content="UNEX — Extensão Universitária">
+  <meta name="theme-color" content="#1d4ed8">
+
+  <!-- Tipografia Moderna do Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Estilos da Aplicação -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+</head>
+<body>
+
+  <!-- ========================================================================
+       Header / Barra Superior
+       ======================================================================== -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <a href="#inicio" class="brand" aria-label="Ir para o início do site">
+        <div class="brand-badge" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+            <path d="M2 17l10 5 10-5"></path>
+            <path d="M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <span class="brand-title">Empreendedorismo em Foco</span>
+      </a>
+
+      <nav aria-label="Navegação Principal">
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#diretrizes" class="nav-link">Temas</a></li>
+          <li><a href="#checklists" class="nav-link">Checklists</a></li>
+          <li><a href="#duvidas" class="nav-link">Dúvidas</a></li>
+          <li><a href="#fontes-oficiais" class="nav-link">Legislação</a></li>
+          <li>
+            <a href="https://forms.gle/CNi8nQm6ViK3J8j4A" target="_blank" rel="noopener noreferrer" class="nav-cta">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              Diagnóstico
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Alternar modo escuro" title="Alternar tema claro/escuro">
+          <span class="theme-icon sun-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="theme-icon moon-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+        </button>
+
+        <button class="mobile-toggle" aria-label="Abrir menu de navegação" id="mobile-toggle">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       Hero Section
+       ======================================================================== -->
+  <main id="main-content">
+    <section class="hero-section" id="inicio">
+      <div class="container hero-wrapper">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg>
+            Projeto de Extensão Universitária &bull; UNEX
+          </div>
+          <h1 class="hero-title">
+            Segurança prática para quem <span>empreende e realiza</span>.
+          </h1>
+          <p class="hero-desc">
+            Informações claras sobre o Código de Defesa do Consumidor, Anvisa, LGPD, contratos e prevenção a fraudes no WhatsApp e Instagram — explicadas sem juridiquês.
+          </p>
+          <div class="hero-actions">
+            <a href="#diretrizes" class="btn-primary">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              Consultar o Guia
+            </a>
+            <a href="#checklists" class="btn-secondary">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 11 12 14 22 4"></polyline>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+              </svg>
+              Abrir Checklists Rápidos
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-card-preview" aria-hidden="true">
+          <div class="preview-header">
+            <span class="preview-title">Estrutura em 3 Camadas</span>
+            <span class="preview-badge">Método do Projeto</span>
+          </div>
+          <div class="method-pillars">
+            <div class="method-pillar law">
+              <div class="pillar-icon-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+              </div>
+              <div class="pillar-content">
+                <strong>1. O que a Lei diz</strong>
+                <span>Artigos e fontes oficiais do CDC, Anvisa e LGPD</span>
+              </div>
+            </div>
+            <div class="method-pillar practice">
+              <div class="pillar-icon-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              </div>
+              <div class="pillar-content">
+                <strong>2. Na Prática</strong>
+                <span>Como isso afeta seus pedidos, clientes e entregas</span>
+              </div>
+            </div>
+            <div class="method-pillar prevent">
+              <div class="pillar-icon-box">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="pillar-content">
+                <strong>3. Como Evitar o Problema</strong>
+                <span>Passo a passo preventivo para proteger seu negócio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Seção Principal: Guia de Diretrizes (Cards em 3 Camadas)
+         ======================================================================== -->
+    <section class="section" id="diretrizes">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Orientações Fundamentadas</span>
+          <h2 class="section-title">Guia Prático de Segurança</h2>
+          <p class="section-subtitle">
+            Selecione uma área de atuação ou faça uma busca por palavra-chave (ex: "cancelamento", "glúten", "manicure", "fotos").
+          </p>
+        </div>
+
+        <!-- Controles: Busca e Filtro de Categorias -->
+        <div class="guide-controls">
+          <div class="search-box-wrapper">
+            <span class="search-icon-box" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+            </span>
+            <input 
+              type="text" 
+              id="search-input" 
+              class="search-input" 
+              placeholder="Pesquisar por assunto, dúvida ou base legal (ex: Pix, formol, arrependimento)..."
+              aria-label="Pesquisar no guia prático"
+            >
+            <button type="button" id="search-clear-btn" class="search-clear-btn" aria-label="Limpar pesquisa" style="display: none;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Sugestões de Busca Rápida (Termos Frequentes) -->
+          <div class="search-suggestions" id="search-suggestions">
+            <span class="suggestions-label">Buscas frequentes:</span>
+            <div class="suggestion-chips">
+              <button type="button" class="suggestion-chip" data-query="Pix">Pix</button>
+              <button type="button" class="suggestion-chip" data-query="Arrependimento">Arrependimento 7 dias</button>
+              <button type="button" class="suggestion-chip" data-query="Anvisa">Anvisa & Glúten</button>
+              <button type="button" class="suggestion-chip" data-query="Formol">Salão & Formol</button>
+              <button type="button" class="suggestion-chip" data-query="WhatsApp">WhatsApp & Instagram</button>
+              <button type="button" class="suggestion-chip" data-query="Cancelamento">Cancelamento</button>
+              <button type="button" class="suggestion-chip" data-query="Contrato">Contrato</button>
+            </div>
+          </div>
+
+          <div class="category-tabs-wrapper">
+            <button class="tabs-scroll-btn left" id="tabs-scroll-left" aria-label="Rolar categorias para esquerda">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <nav class="category-tabs" id="category-tabs" aria-label="Filtrar por Área"></nav>
+            <button class="tabs-scroll-btn right" id="tabs-scroll-right" aria-label="Rolar categorias para direita">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+
+          <!-- Barra de Status / Contador Dinâmico de Resultados -->
+          <div class="search-results-bar" id="search-results-bar" style="display: none;">
+            <span id="search-results-count" class="results-count-text"></span>
+            <button type="button" id="search-reset-all" class="results-reset-btn">Limpar busca e filtros</button>
+          </div>
+        </div>
+
+        <!-- Container onde o app.js injeta os cards em 3 camadas -->
+        <div class="modules-container" id="modules-container">
+          <!-- Renderizado via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Seção de Checklists Interativos
+         ======================================================================== -->
+    <section class="section section-alternate" id="checklists">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Ferramentas de Conferência</span>
+          <h2 class="section-title">Checklists Interativos</h2>
+          <p class="section-subtitle">
+            Faça a conferência antes de publicar promoções, preparar encomendas de comida, atender no salão ou fechar contratos. O progresso é salvo no seu navegador.
+          </p>
+        </div>
+
+        <div class="checklists-grid" id="checklists-container">
+          <!-- Renderizado via checklist.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Seção: Situações Práticas do Dia a Dia (FAQ)
+         ======================================================================== -->
+    <section class="section" id="duvidas">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">20. Situações Práticas para o Site</span>
+          <h2 class="section-title">Situações Comuns do Dia a Dia</h2>
+          <p class="section-subtitle">
+            Dúvidas frequentes do cotidiano das microempreendedoras no WhatsApp e Instagram.
+          </p>
+        </div>
+
+        <div class="faq-grid" id="faq-container">
+          <!-- Renderizado via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Seção 21: Quando Procurar Profissional
+         ======================================================================== -->
+    <section class="section" id="quando-procurar" style="padding-top: 0;">
+      <div class="container">
+        <div class="warning-box">
+          <div class="warning-header">
+            <div class="warning-icon-box" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
+            <div>
+              <h3>21. Quando Procurar Profissional Especializado</h3>
+              <p style="font-size: 0.88rem; color: #92400e;">O projeto oferece informação geral preventiva; não deve se apresentar como serviço de consultoria jurídica individualizada:</p>
+            </div>
+          </div>
+          <ul class="warning-list" id="warning-list">
+            <!-- Renderizado via app.js -->
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         Seção 22: Legislação & Fontes Oficiais
+         ======================================================================== -->
+    <section class="section section-alternate" id="fontes-oficiais">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Transparência & Embasamento</span>
+          <h2 class="section-title">22. Legislação e Fontes Oficiais</h2>
+          <p class="section-subtitle">
+            Consulte na íntegra as leis, resoluções e regulamentos normativos citados no material elaborado pelos alunos de Direito da UNEX.
+          </p>
+        </div>
+
+        <div class="sources-grid" id="official-sources-grid">
+          <!-- Renderizado via app.js -->
+        </div>
+
+        <!-- Widget de Avaliação com Estrelas SVG -->
+        <div id="rating-container">
+          <!-- Renderizado via rating.js -->
+        </div>
+
+        <!-- Seção Final: Pesquisa de Diagnóstico da Extensão -->
+        <div class="bottom-diagnosis-card" id="diagnostico-pesquisa">
+          <div class="diagnosis-inner">
+            <div class="diagnosis-icon-badge" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <div class="diagnosis-content">
+              <h4>Participe da Pesquisa de Diagnóstico das Microempreendedoras</h4>
+              <p>Leva menos de 3 minutos. Suas respostas apoiam nosso projeto de extensão e ajudam a mapear os principais desafios da região.</p>
+            </div>
+            <a href="https://forms.gle/CNi8nQm6ViK3J8j4A" target="_blank" rel="noopener noreferrer" class="btn-primary diagnosis-cta">
+              Responder Questionário
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       Footer & Créditos da Extensão
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h4>Empreendedorismo em Foco</h4>
+          <p>
+            Projeto de Extensão Universitária da <strong>UNEX</strong> (Vitória da Conquista - BA), integrando os cursos de <strong>Direito</strong> e <strong>Sistemas de Informação</strong> para capacitar e proteger microempreendedoras.
+          </p>
+          <p style="font-size: 0.8rem; color: #64748b;">
+            Orientado à segurança jurídica, conformidade sanitária e boas práticas digitais.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navegação</h5>
+          <ul class="footer-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#diretrizes">Guia em 3 Camadas</a></li>
+            <li><a href="#checklists">Checklists</a></li>
+            <li><a href="#duvidas">Dúvidas Frequentes</a></li>
+            <li><a href="#fontes-oficiais">Legislação</a></li>
+            <li><a href="#avaliacao">Avaliação</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Bases Oficiais</h5>
+          <ul class="footer-links">
+            <li><a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">CDC (Lei 8.078)</a></li>
+            <li><a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener noreferrer">LGPD (Lei 13.709)</a></li>
+            <li><a href="https://www.gov.br/anvisa/pt-br" target="_blank" rel="noopener noreferrer">Anvisa</a></li>
+            <li><a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12592.htm" target="_blank" rel="noopener noreferrer">Salão-Parceiro</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-disclaimer">
+        <p>
+          <strong>25. Aviso Legal & Educativo:</strong> O portal <em>Empreendedorismo em Foco</em> é um projeto de extensão universitária com finalidade educativa e informativa. As informações apresentadas são gerais e não constituem consulta ou parecer jurídico, contábil, sanitário ou profissional individualizado. As exigências podem variar conforme a atividade, o município e o Estado e podem ser atualizadas. Consulte as fontes oficiais e os órgãos competentes antes de tomar decisões específicas.
+        </p>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2026 UNEX &mdash; Projeto de Extensão Universitária. Todos os direitos reservados.</span>
+        <span>Parceria Interdisciplinar: Direito &bull; Sistemas de Informação</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts Modulares -->
+  <script src="assets/js/checklist.js"></script>
+  <script src="assets/js/rating.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

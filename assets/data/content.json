@@ -1,0 +1,895 @@
+{
+  "projectInfo": {
+    "title": "Empreendedorismo em Foco",
+    "subtitle": "Guia prático de segurança jurídica, sanitária e digital para microempreendedoras",
+    "institution": "UNEX — Projeto de Extensão Universitária",
+    "coursePartnership": "Direito & Sistemas de Informação",
+    "formUrl": "https://forms.gle/CNi8nQm6ViK3J8j4A",
+    "disclaimer": "O Empreendedora em Foco é um projeto de extensão universitária com finalidade educativa e informativa. As informações apresentadas são gerais e não constituem consulta ou parecer jurídico, contábil, sanitário ou profissional individualizado. As exigências podem variar conforme a atividade, o município e o Estado e podem ser atualizadas. Consulte as fontes oficiais e os órgãos competentes antes de tomar decisões específicas."
+  },
+  "modules": [
+    {
+      "id": "regras-gerais",
+      "category": "Vendas & CDC",
+      "badge": "Obrigatório",
+      "icon": "shield",
+      "title": "2. Regras Gerais para Qualquer Negócio",
+      "summary": "Deveres de quem vende, informação clara, publicidade responsável e cumprimento integral da oferta.",
+      "cards": [
+        {
+          "id": "cdc-deveres",
+          "title": "2.1 Quem vende também assume deveres",
+          "layers": {
+            "lei": "O Código de Defesa do Consumidor estabelece direitos básicos, entre eles proteção à vida, saúde e segurança, informação adequada e clara e proteção contra publicidade enganosa ou abusiva. O CDC também disciplina oferta, contratos, vícios, responsabilidade e práticas comerciais.",
+            "pratica": "Quem comercializa produtos ou presta serviços assume obrigações legais diretas perante o comprador, mesmo em negócios informais ou de pequeno porte.",
+            "comoEvitar": "Conheça as regras básicas do CDC aplicáveis ao seu segmento, cumpra prazos e formalize as condições acordadas com o cliente."
+          },
+          "baseLegal": "CDC, Lei nº 8.078/1990 (arts. 6º, 12 a 14, 18 a 20, 30 a 38, 46 a 51)"
+        },
+        {
+          "id": "informacao-obrigacao",
+          "title": "2.2 Informação é obrigação, não favor",
+          "layers": {
+            "lei": "Preço, características, composição, quantidade, qualidade, condições da oferta e riscos relevantes devem ser informados de maneira adequada. Uma descrição incompleta pode criar expectativa que o negócio depois não consegue cumprir.",
+            "pratica": "Exemplo do guia: se uma confeiteira anuncia 'bolo de chocolate com recheio de morango', mas usa outro recheio ou reduz substancialmente a quantidade sem avisar, comete descumprimento de oferta.",
+            "comoEvitar": "Disponibilize descrições completas do produto/serviço antes de receber o pagamento. Se precisar substituir algum item ou ingrediente, consulte expressamente a cliente com antecedência."
+          },
+          "baseLegal": "CDC, art. 6º, III e art. 30"
+        },
+        {
+          "id": "publicidade-enganosa",
+          "title": "2.3 Publicidade enganosa e abusiva",
+          "layers": {
+            "lei": "Publicidade enganosa é aquela inteira ou parcialmente falsa, ou capaz de induzir o consumidor a erro. Publicidade abusiva inclui, entre outras hipóteses, práticas que explorem medo, superstição, deficiência de julgamento da criança ou outras situações previstas no CDC.",
+            "pratica": "Omissão de restrições importantes ou apelo a medos e inseguranças para forçar uma venda configura infração ao consumidor.",
+            "comoEvitar": "Seja transparente na divulgação. Destaque restrições de uso, condições reais e evite qualquer mensagem com teor alarmista ou ilusório."
+          },
+          "baseLegal": "CDC, arts. 36 e 37"
+        },
+        {
+          "id": "publicidade-promessas",
+          "title": "2.4 Não prometa resultado que você não controla",
+          "layers": {
+            "lei": "Frases que prometem resultados infalíveis geram obrigação de resultado. A comunicação deve corresponder rigorosamente ao que pode ser efetivamente entregue.",
+            "pratica": "Expressões como 'resultado garantido', 'sem qualquer risco', 'vai funcionar para todo mundo' ou promessas de cura são extremamente problemáticas, sobretudo em beleza, estética e saúde.",
+            "comoEvitar": "Deixe claro que resultados individuais variam conforme o organismo, rotina de cuidados e fatores biológicos. Prometa dedicação e técnica, nunca milagres."
+          },
+          "baseLegal": "CDC, arts. 36 e 37"
+        },
+        {
+          "id": "oferta-vinculante",
+          "title": "2.5 Oferta anunciada precisa ser cumprida",
+          "layers": {
+            "lei": "Se a oferta for suficientemente precisa, ela integra a obrigação do fornecedor. Se o fornecedor se recusar a cumprir, o CDC prevê alternativas ao consumidor (exigir o cumprimento forçado, aceitar outro equivalente ou rescindir com restituição).",
+            "pratica": "Informou um preço em post, panfleto ou catálogo? Você fica legalmente vinculada àquele valor enquanto a oferta estiver pública.",
+            "comoEvitar": "Coloque prazos claros de vigência em promoções ('válido até dd/mm ou enquanto durar o estoque') e revise sempre os valores publicados antes de postar."
+          },
+          "baseLegal": "CDC, arts. 30 e 35"
+        }
+      ]
+    },
+    {
+      "id": "vendas-internet",
+      "category": "Vendas Online",
+      "badge": "Instagram & WhatsApp",
+      "icon": "message",
+      "title": "3. Vendas pelo Instagram, WhatsApp e Internet",
+      "summary": "Informações prévias obrigatórias, direito de arrependimento (7 dias), encomendas e validade das conversas.",
+      "cards": [
+        {
+          "id": "o-que-deve-aparecer",
+          "title": "3.1 O que deve aparecer antes da contratação",
+          "layers": {
+            "lei": "No comércio eletrônico, o Decreto nº 7.962/2013 regulamenta aspectos do CDC e exige informações claras sobre produto, serviço e fornecedor, além de mecanismos para atendimento e exercício do direito de arrependimento.",
+            "pratica": "A cliente precisa ter acesso prévio a: produto/serviço detalhado, preço e formas de pagamento, prazo de confecção/entrega, limitações, regras de cancelamento, canais de atendimento e dados do vendedor.",
+            "comoEvitar": "Crie um roteiro ou cardápio digital completo com todas essas informações prontas para envio imediato logo no primeiro contato da cliente."
+          },
+          "baseLegal": "Decreto nº 7.962/2013, arts. 2º a 6º"
+        },
+        {
+          "id": "direito-arrependimento",
+          "title": "3.2 Direito de arrependimento: não confunda",
+          "layers": {
+            "lei": "O art. 49 do CDC prevê o direito de desistir da contratação em até 7 dias a contar da assinatura ou do recebimento do produto/serviço quando a contratação ocorrer fora do estabelecimento comercial (telefone, WhatsApp, Instagram, internet).",
+            "pratica": "A aplicação do direito depende da forma e das circunstâncias da contratação. Não trate automaticamente qualquer venda online como se a cliente não tivesse direitos.",
+            "comoEvitar": "Esteja preparada para acolher devoluções de produtos padronizados comprados à distância. Para produtos personalizados feitos sob medida, estipule regras e aprovações claras com antecedência."
+          },
+          "baseLegal": "CDC, art. 49; Decreto nº 7.962/2013, arts. 5º e 6º"
+        },
+        {
+          "id": "venda-encomenda",
+          "title": "3.3 Venda por encomenda",
+          "layers": {
+            "lei": "Em produtos personalizados, não trate automaticamente a encomenda como se o consumidor nunca tivesse direitos. A situação concreta e a forma de contratação importam.",
+            "pratica": "Desentendimentos com cores, tecidos ou detalhes customizados acontecem quando o combinativo fica vago.",
+            "comoEvitar": "Antes de aceitar a encomenda, deixe formalizado por escrito: modelo, tamanho, quantidade, cor, sabor, personalização, prazo, preço, forma de pagamento e condições de alteração ou cancelamento."
+          },
+          "baseLegal": "CDC, arts. 30 e 35; Código Civil"
+        },
+        {
+          "id": "conversas-whatsapp",
+          "title": "3.4 Conversas no WhatsApp",
+          "layers": {
+            "lei": "Mensagens podem registrar o que foi oferecido e combinado, servindo como elementos probatórios de obrigações contratuais.",
+            "pratica": "Se um áudio combinou algo diferente do texto inicial e gerou dúvida posterior, o registro documental é o que protege as partes.",
+            "comoEvitar": "Não apague nem altere registros relevantes. Se houver mudança de preço, prazo ou produto durante o atendimento, confirme a alteração imediatamente por escrito."
+          },
+          "baseLegal": "Código Civil, arts. 421 e 422; CPC, art. 441"
+        }
+      ]
+    },
+    {
+      "id": "contratos-encomendas",
+      "category": "Contratos & Parcerias",
+      "badge": "Formalização",
+      "icon": "contract",
+      "title": "4. Contratos, Encomendas e Termos",
+      "summary": "Perguntas que um contrato simples deve responder, limites de cláusulas abusivas e a Lei da Parceria em Salão de Beleza.",
+      "cards": [
+        {
+          "id": "contrato-perguntas",
+          "title": "4.1 O que um contrato simples deve responder",
+          "layers": {
+            "lei": "O Código Civil prevê que a liberdade contratual deve ser exercida nos limites da função social do contrato e que os contratantes devem observar a probidade e a boa-fé (arts. 421 e 422).",
+            "pratica": "Um contrato não precisa ter termos difíceis; ele precisa ser compreensível para ambas as partes.",
+            "comoEvitar": "Garanta que seu termo responda: Quem contrata e quem presta? O que será entregue? Quanto custa? Quando e como será pago? Quando será entregue? Quem fornece materiais? O que ocorre em caso de atraso? Como funciona cancelamento? Como serão feitas as comunicações?"
+          },
+          "baseLegal": "Código Civil, arts. 421 e 422"
+        },
+        {
+          "id": "contrato-direitos-legais",
+          "title": "4.2 Contrato não pode apagar direitos legais",
+          "layers": {
+            "lei": "Em relações de consumo, cláusulas abusivas que retirem direitos do consumidor ou isentem o fornecedor de responsabilidade são juridicamente nulas (CDC, art. 51).",
+            "pratica": "Colocar no contrato ou recibo uma frase como 'não nos responsabilizamos por nenhum problema' não elimina a responsabilidade legal do negócio perante a lei.",
+            "comoEvitar": "Elabore cláusulas equilibradas e justas, assumindo o dever de qualidade e estipulando prazos e soluções realistas em caso de imprevistos."
+          },
+          "baseLegal": "CDC, art. 51"
+        },
+        {
+          "id": "parceria-salao",
+          "title": "4.3 Parceria em salão de beleza",
+          "layers": {
+            "lei": "A Lei nº 12.592/2012 permite contratos de parceria, por escrito, entre salões-parceiros e profissionais-parceiros. A própria lei estabelece requisitos para essa parceria e prevê consequências quando não houver contrato formalizado ou quando o profissional desempenhar funções diferentes das previstas.",
+            "pratica": "Sem contrato formalizado ou agindo com subordinação direta e cumprimento obrigatório de jornada, a relação pode ser descaracterizada e gerar passivos trabalhistas.",
+            "comoEvitar": "Redija o contrato de parceria por escrito contendo divisão de percentuais, despesas de insumos, esterilização e autonomia da profissional parceira."
+          },
+          "baseLegal": "Lei nº 12.592/2012, arts. 1º-A a 1º-D"
+        }
+      ]
+    },
+    {
+      "id": "cobrancas-inadimplencia",
+      "category": "Cobranças & Pagamentos",
+      "badge": "Financeiro",
+      "icon": "wallet",
+      "title": "5. Cobranças, Reservas, Sinal e Inadimplência",
+      "summary": "Procedimentos corretos em caso de inadimplência, regras para cobrança de sinal/reserva e conferência de comprovantes.",
+      "cards": [
+        {
+          "id": "cliente-nao-pagou",
+          "title": "5.1 Cliente não pagou",
+          "layers": {
+            "lei": "O CDC (art. 42) determina expressamente que na cobrança de débitos o consumidor inadimplente não pode ser exposto ao ridículo nem submetido a qualquer tipo de constrangimento ou ameaça.",
+            "pratica": "Cobrar em público ou postar indiretas/nomes em redes sociais configura crime contra o consumidor (art. 71) e gera indenização por danos morais contra você.",
+            "comoEvitar": "Guarde pedido, orçamento, contrato, comprovantes e comunicações. Faça a cobrança de forma objetiva, individual e estritamente privada (por WhatsApp ou e-mail)."
+          },
+          "baseLegal": "CDC, art. 42 e art. 71"
+        },
+        {
+          "id": "sinal-reserva",
+          "title": "5.2 Sinal / reserva de horário ou pedido",
+          "layers": {
+            "lei": "Se você cobra um valor para reservar horário, encomenda ou serviço, explique por escrito o que esse pagamento representa e o que ocorre se qualquer das partes cancelar.",
+            "pratica": "Reter valores integrais sem justificativa de despesas reais comprovadas pode ser considerado retenção indevida ou abusiva.",
+            "comoEvitar": "Não use automaticamente expressões como 'não devolvemos em hipótese alguma' sem verificar a situação jurídica. Explique previamente o custo de insumos já comprados ou a perda da agenda."
+          },
+          "baseLegal": "Código Civil, arts. 417 a 420; CDC, art. 51"
+        },
+        {
+          "id": "comprovante-pagamento",
+          "title": "5.3 Comprovante de pagamento",
+          "layers": {
+            "lei": "A relação comercial exige dever de cautela de quem entrega o bem. A presunção de quitação decorre da efetiva disponibilização dos fundos.",
+            "pratica": "Imagens e 'prints' de tela podem ser agendamentos cancelados minutos depois, comprovantes editados ou montagens de aplicativos falsos.",
+            "comoEvitar": "Não considere um pagamento realizado apenas porque o cliente enviou uma imagem. Confirme a entrada real do valor no seu aplicativo ou sistema bancário antes de entregar o produto ou iniciar o serviço."
+          },
+          "baseLegal": "Diretrizes de prevenção a fraudes no comércio e meios de pagamento"
+        }
+      ]
+    },
+    {
+      "id": "fotos-lgpd",
+      "category": "Imagem & LGPD",
+      "badge": "Privacidade",
+      "icon": "camera",
+      "title": "6. Fotos, Vídeos, Imagem e LGPD",
+      "summary": "Direitos de imagem, autorização para divulgação de fotos, regras da LGPD e cuidados redobrados com crianças e adolescentes.",
+      "cards": [
+        {
+          "id": "foto-cliente-protecao",
+          "title": "6.1 Foto da cliente não é simplesmente 'uma foto do meu trabalho'",
+          "layers": {
+            "lei": "A imagem da pessoa possui proteção jurídica. A Constituição Federal protege a intimidade, a vida privada, a honra e a imagem (art. 5º, X). O Código Civil disciplina os direitos da personalidade (arts. 11 a 21).",
+            "pratica": "A cliente é dona de sua própria imagem. O trabalho executado não anula o direito de privacidade dela.",
+            "comoEvitar": "Trate fotos de clientes sempre com respeito e peça autorização explícita antes de qualquer publicação em redes públicas ou materiais promocionais."
+          },
+          "baseLegal": "CF/88, art. 5º, X; Código Civil, arts. 11 a 21"
+        },
+        {
+          "id": "tirar-foto-autorizacao",
+          "title": "6.2 Tirar foto ≠ autorização automática para publicar",
+          "layers": {
+            "lei": "O consentimento deve ter finalidade determinada. A permissão para um ato não autoriza automaticamente atos posteriores distintos.",
+            "pratica": "Uma cliente pode aceitar ser fotografada para registro do procedimento no prontuário interno e não querer que a foto vá para o Instagram, TikTok ou anúncio.",
+            "comoEvitar": "Deixe claro: 'Posso tirar essa foto para seu acompanhamento e posso publicar no Instagram?'. Respeite caso ela autorize apenas o acompanhamento privado."
+          },
+          "baseLegal": "Código Civil, art. 20; LGPD, art. 7º e 8º"
+        },
+        {
+          "id": "lgpd-dados-imagens",
+          "title": "6.3 LGPD e imagens/dados",
+          "layers": {
+            "lei": "A LGPD se aplica ao tratamento de dados pessoais (inclusive imagem facial), em meios digitais. Consentimento deve ser livre, informado e inequívoco para finalidade determinada; autorizações genéricas são inadequadas.",
+            "pratica": "Termos de autorização vagos ou amplos demais não conferem segurança jurídica caso haja questionamento futuro.",
+            "comoEvitar": "Especifique exatamente onde a foto será divulgada (ex: perfil do Instagram da marca) e com qual intuito (divulgação de portfólio)."
+          },
+          "baseLegal": "LGPD, Lei nº 13.709/2018 (arts. 1º, 5º, XII, 7º e 8º)"
+        },
+        {
+          "id": "como-criar-autorizacao",
+          "title": "6.4 Como criar autorização mais segura",
+          "layers": {
+            "lei": "A autorização deve explicar de forma compreensível qual imagem será utilizada, finalidade e canais. Para campanhas complexas ou menores, recomenda-se orientação profissional.",
+            "pratica": "Um texto claro no WhatsApp ou em formulário simples tem validade e evita qualquer desentendimento posterior.",
+            "comoEvitar": "Use o modelo do guia: 'Autorizo o uso da minha imagem registrada em meu atendimento para divulgação do trabalho de [Nome], nos canais [Instagram/site/material publicitário], para a finalidade [portfólio/divulgação], conforme informado.'"
+          },
+          "baseLegal": "LGPD, art. 8º; Código Civil, art. 20"
+        },
+        {
+          "id": "cliente-pediu-retirar",
+          "title": "6.5 Cliente pediu para retirar a foto",
+          "layers": {
+            "lei": "Não ignore o pedido. Quando o tratamento se baseia em consentimento, a LGPD (art. 8º, §5º e art. 18) prevê expressamente a possibilidade de revogação por manifestação expressa.",
+            "pratica": "Mesmo que a cliente tenha autorizado no passado, se ela solicitar a retirada hoje, você deve arquivar ou deletar o post.",
+            "comoEvitar": "Atenda prontamente com cordialidade, confirme a remoção da publicação e mantenha um relacionamento de confiança."
+          },
+          "baseLegal": "LGPD, art. 8º, §5º e art. 18"
+        },
+        {
+          "id": "criancas-adolescentes",
+          "title": "6.6 Crianças e adolescentes",
+          "layers": {
+            "lei": "O tratamento de dados e imagens de crianças e adolescentes deve observar o melhor interesse (LGPD, art. 14). Além disso, o Estatuto da Criança e do Adolescente (ECA) protege rigorosamente a imagem e a dignidade (Lei nº 8.069/1990, especialmente art. 17).",
+            "pratica": "Fotos de menores em festas infantis, salões ou ensaios sem autorização inequívoca de pai/mãe configuram infração gravíssima.",
+            "comoEvitar": "Obtenha consentimento específico e por escrito de pelo menos um dos pais ou responsável legal antes de fotografar ou publicar imagem de menor."
+          },
+          "baseLegal": "LGPD, art. 14; ECA, Lei nº 8.069/1990, art. 17"
+        }
+      ]
+    },
+    {
+      "id": "comida-sanitaria",
+      "category": "Alimentação & Anvisa",
+      "badge": "Vigilância Sanitária",
+      "icon": "food",
+      "title": "7. Quem Vende Comida: Guia Prático",
+      "summary": "Regras sanitárias, RDC 216/2004, contaminação cruzada, alergênicos, rotulagem e delivery seguro.",
+      "cards": [
+        {
+          "id": "regra-sanitaria-motivo",
+          "title": "7.1 Por que existe uma regra sanitária?",
+          "layers": {
+            "lei": "A venda de alimentos envolve risco direto à saúde pública. A Anvisa indica a RDC nº 216/2004 como referência para Boas Práticas para Serviços de Alimentação, garantindo condições higiênico-sanitárias do alimento preparado.",
+            "pratica": "O cumprimento das práticas protege os clientes contra surtos alimentares e protege a reputação do seu empreendimento.",
+            "comoEvitar": "Adote padrões rigorosos de limpeza, uso de touca, higiene de utensílios e controle adequado de ingredientes."
+          },
+          "baseLegal": "Anvisa, RDC nº 216/2004"
+        },
+        {
+          "id": "higiene-manipulacao",
+          "title": "7.2 Higiene das mãos e manipulação",
+          "layers": {
+            "lei": "As Boas Práticas da Anvisa exigem controle sanitário rigoroso no contato manual com ingredientes e alimentos prontos para consumo.",
+            "pratica": "Pegar em dinheiro, maquininha ou celular e logo em seguida manipular pães, salgados ou doces transfere microrganismos nocivos.",
+            "comoEvitar": "Lave as mãos corretamente nos momentos necessários; mantenha utensílios e superfícies higienizados; separe crus de prontos; nunca toque dinheiro e alimento simultaneamente sem higienização; proteja alimentos contra contaminantes."
+          },
+          "baseLegal": "Anvisa, RDC nº 216/2004"
+        },
+        {
+          "id": "contaminacao-cruzada",
+          "title": "7.3 Contaminação cruzada",
+          "layers": {
+            "lei": "A transmissão de microrganismos de superfícies ou insumos contaminados para alimentos prontos fere as normas sanitárias básicas de produção de alimentos.",
+            "pratica": "Exemplo do guia: usar a mesma faca ou tábua de corte para frango cru e para legumes de uma salada pronta sem higienização adequada multiplica o risco de contaminação.",
+            "comoEvitar": "Tenha tábuas e facas distintas (ou higienize com água e sabão e desinfete com cloro/álcool adequado entre um preparo e outro)."
+          },
+          "baseLegal": "Anvisa, RDC nº 216/2004"
+        },
+        {
+          "id": "conservacao-temperatura",
+          "title": "7.4 Conservação e temperatura",
+          "layers": {
+            "lei": "Alimentos perecíveis exigem controle adequado de conservação conforme orientações sanitárias e parâmetros de temperatura.",
+            "pratica": "Manter recheios de leite, tortas, maioneses ou carnes em temperatura ambiente por horas propicia proliferação bacteriana acelerada.",
+            "comoEvitar": "Siga as condições de armazenamento adequadas ao tipo de alimento, mantendo produtos refrigerados ou aquecidos conforme a norma técnica."
+          },
+          "baseLegal": "Anvisa, RDC nº 216/2004"
+        },
+        {
+          "id": "validade-alimentos",
+          "title": "7.5 Validade",
+          "layers": {
+            "lei": "Não invente um prazo de validade apenas porque 'sempre funcionou'. A validade depende das características do alimento, formulação, processamento, embalagem e condições de armazenamento.",
+            "pratica": "Rotular validade sem embasamento gera risco de intoxicação e autuação pelos órgãos fiscalizadores.",
+            "comoEvitar": "Quando a atividade exigir avaliação técnica ou requisitos específicos, procure profissional capacitado (nutricionista/engenheiro de alimentos) e a Vigilância Sanitária."
+          },
+          "baseLegal": "Diretrizes sanitárias da Anvisa e Código Sanitário Municipal"
+        },
+        {
+          "id": "alergenicos-rotulos",
+          "title": "7.6 Alergênicos: cuidado com declarações",
+          "layers": {
+            "lei": "A Anvisa (RDC nº 727/2022) estabelece normas sobre rotulagem de alergênicos. Alegações de ausência de alergênicos não podem ser usadas indiscriminadamente até que existam critérios específicos aplicáveis.",
+            "pratica": "Dizer que um produto é 'zero glúten' quando há farinha de trigo manipulada no mesmo ambiente expõe pessoas celíacas a choque anafilático.",
+            "comoEvitar": "Não escreva simplesmente 'sem alergênicos' sem certificar a cadeia completa. Informe a presença real ou risco de contaminação cruzada ('Pode conter traços de leite/castanhas')."
+          },
+          "baseLegal": "Anvisa, RDC nº 727/2022 e orientações sobre rotulagem"
+        },
+        {
+          "id": "rotulagem-geral",
+          "title": "7.7 Rotulagem de produtos embalados",
+          "layers": {
+            "lei": "Para alimentos embalados sujeitos às regras de rotulagem, existem exigências quanto a ingredientes, validade, informações nutricionais, origem, lote e alergênicos.",
+            "pratica": "Vender potes de doces, geleias ou congelados em mercados e feiras sem rótulo adequado sujeita à apreensão da mercadoria.",
+            "comoEvitar": "Consulte a legislação aplicável e estruture rótulos completos e legíveis com lote, data de fabricação, validade, peso líquido e dados do produtor."
+          },
+          "baseLegal": "Anvisa: RDC nº 727/2022; RDC nº 429/2020; IN nº 75/2020"
+        },
+        {
+          "id": "delivery-comida-guia",
+          "title": "7.8 Venda de comida por delivery",
+          "layers": {
+            "lei": "O fornecedor responde pela integridade do produto até a entrega ao destinatário final.",
+            "pratica": "Embalagens frágeis que vazam ou abrem no baú da moto arruinam o produto e geram direito de cancelamento.",
+            "comoEvitar": "Use embalagem adequada; proteja o alimento durante o transporte; informe condições de conservação no rótulo; não prometa tempo que não pode cumprir; registre pedido, horário e endereço; e tenha procedimento claro para reclamações sobre atraso ou troca."
+          },
+          "baseLegal": "CDC, arts. 14, 20 e 30; RDC nº 216/2004"
+        },
+        {
+          "id": "vigilancia-sanitaria-alimentos",
+          "title": "7.9 Vigilância Sanitária local",
+          "layers": {
+            "lei": "A regularização sanitária depende da atividade e da legislação municipal e estadual específica.",
+            "pratica": "Trabalhar em conformidade evita multas, interdições e dá credibilidade comercial perante clientes.",
+            "comoEvitar": "Antes de iniciar ou ampliar sua produção de alimentos, consulte a Vigilância Sanitária municipal para verificar licença, estrutura física exigida e alvarás."
+          },
+          "baseLegal": "Legislação Sanitária Municipal e Estadual"
+        }
+      ]
+    },
+    {
+      "id": "beleza-embelezamento",
+      "category": "Beleza & Estética",
+      "badge": "Biossegurança",
+      "icon": "beauty",
+      "title": "8. Profissionais da Beleza e Embelezamento",
+      "summary": "Profissões abrangidas, normas sanitárias municipais, materiais reutilizáveis, formol e cuidados com manicure e maquiagem.",
+      "cards": [
+        {
+          "id": "quem-esta-abrangido",
+          "title": "8.1 Quem está abrangido pela Lei nº 12.592/2012",
+          "layers": {
+            "lei": "A Lei nº 12.592/2012 reconhece as atividades de cabeleireiro, barbeiro, esteticista, manicure, pedicure, depilador e maquiador. A lei determina que esses profissionais observem normas sanitárias e efetuem a esterilização de materiais e utensílios.",
+            "pratica": "A legislação reconhece a profissão mas atrela diretamente o exercício à responsabilidade sanitária e de biossegurança.",
+            "comoEvitar": "Esteja atenta aos requisitos legais da sua categoria e priorize sempre a esterilização dos instrumentos utilizados no atendimento."
+          },
+          "baseLegal": "Lei nº 12.592/2012, arts. 1º e 4º"
+        },
+        {
+          "id": "regra-sanitaria-municipio",
+          "title": "8.2 A regra sanitária não é igual em todo município",
+          "layers": {
+            "lei": "A Anvisa informa que normas sanitárias específicas para serviços de embelezamento são definidas por estados e municípios, cabendo consulta à autoridade sanitária local.",
+            "pratica": "Exigências de autoclave, ventilação ou descarte podem ter especificidades no Código de Posturas do seu município.",
+            "comoEvitar": "Procure a Vigilância Sanitária da sua cidade para obter o manual de boas práticas local para salões e espaços de estética."
+          },
+          "baseLegal": "Orientações Oficiais da Anvisa sobre Serviços de Embelezamento"
+        },
+        {
+          "id": "materiais-reutilizaveis",
+          "title": "8.3 Materiais reutilizáveis",
+          "layers": {
+            "lei": "A esterilização de instrumentos é exigência expressa do art. 4º da Lei nº 12.592/2012.",
+            "pratica": "Compartilhar instrumentos sem processamento sanitário correto gera risco de transmissão de hepatites B e C e infecções bacterianas.",
+            "comoEvitar": "Siga o método de limpeza, desinfecção ou esterilização exigido pela autoridade local; não reutilize materiais descartáveis; não compartilhe instrumentos sem processamento; mantenha instrumentos guardados para evitar nova contaminação; e tenha atenção especial a perfurocortantes."
+          },
+          "baseLegal": "Lei nº 12.592/2012, art. 4º"
+        },
+        {
+          "id": "produtos-cosmeticos",
+          "title": "8.4 Produtos cosméticos",
+          "layers": {
+            "lei": "Os produtos aplicados em clientes devem ter regularização formal perante a Anvisa e serem compatíveis com a finalidade indicada no rótulo.",
+            "pratica": "Substituir cosméticos por misturas caseiras ou substâncias proibidas enseja responsabilização civil e criminal.",
+            "comoEvitar": "Utilize produtos regularizados; não substitua cosméticos por medicamentos ou fórmulas não autorizadas; siga estritamente o rótulo e as instruções do fabricante."
+          },
+          "baseLegal": "Regulamentação Técnica de Cosméticos da Anvisa"
+        },
+        {
+          "id": "formol-alisantes-proibicao",
+          "title": "8.5 Formol e alisantes",
+          "layers": {
+            "lei": "A Anvisa informa que a adição de formol a produtos para obter alisamento capilar não é permitida por causa dos graves riscos à saúde pública.",
+            "pratica": "O formol possui usos específicos na fabricação de alguns produtos, mas isso não significa que possa ser adicionado livremente durante o atendimento no salão.",
+            "comoEvitar": "Nunca misture formol ou substâncias químicas por conta própria. Utilize apenas produtos alisantes regularizados que possuam registro e autorização da Anvisa."
+          },
+          "baseLegal": "Anvisa — Perguntas e Respostas sobre Serviços de Embelezamento e Formol"
+        },
+        {
+          "id": "unhas-manicure-pedicure",
+          "title": "8.6 Unhas, manicure e pedicure",
+          "layers": {
+            "lei": "Instrumentos que entram em contato com cutículas e tecidos biológicos devem seguir parâmetros sanitários de esterilização.",
+            "pratica": "Cortes acidentais durante a cutilagem podem ocorrer e exigem conduta padronizada de higienização imediata.",
+            "comoEvitar": "Tenha instrumentos processados conforme as normas locais; descarte lixas e palitos na presença da cliente; tenha cuidado com cortes; evite atendimento em caso de lesão infecciosa aparente; mantenha superfícies limpas e use EPIs (luvas e máscara)."
+          },
+          "baseLegal": "Lei nº 12.592/2012; Normas Sanitárias Municipais"
+        },
+        {
+          "id": "cabelo-quimica-couro",
+          "title": "8.7 Cabelo, química e couro cabeludo",
+          "layers": {
+            "lei": "Quem aplica químicas capilares responde pelos danos e lesões causados à integridade física do cliente (art. 14 do CDC).",
+            "pratica": "Cortes químicos e queimaduras de couro cabeludo decorrem frequentemente da falta do teste de mecha prévio.",
+            "comoEvitar": "Use produtos regularizados; faça o teste de mecha; observe contraindicações; proteja olhos e pele; não prometa resultado infalível; e, se houver reação alérgica importante, interrompa imediatamente e oriente atendimento de saúde."
+          },
+          "baseLegal": "CDC, art. 14; Instruções de Rotulagem da Anvisa"
+        },
+        {
+          "id": "maquiagem-biosseguranca",
+          "title": "8.8 Maquiagem e aplicação higiênica",
+          "layers": {
+            "lei": "Regras de biossegurança proíbem aplicação de cosméticos contaminados ou com prazo de validade expirado.",
+            "pratica": "Encostar o aplicador de rímel ou batom diretamente na cliente e voltar para a embalagem contamina o frasco inteiro para a próxima pessoa.",
+            "comoEvitar": "Use placas e espátulas de inox para fracionar o produto; use aplicadores descartáveis para olhos e lábios; nunca utilize maquiagem vencida; e tenha cuidado redobrado com a mucosa ocular."
+          },
+          "baseLegal": "Normas Sanitárias de Serviços de Embelezamento"
+        }
+      ]
+    },
+    {
+      "id": "estetica-alto-risco",
+      "category": "Estética & Procedimentos",
+      "badge": "Atenção Sanitária",
+      "icon": "sparkles",
+      "title": "9. Estética e Procedimentos de Maior Risco",
+      "summary": "Competências legais, as 3 perguntas antes do procedimento, limites com a medicina e conduta em reações adversas.",
+      "cards": [
+        {
+          "id": "tres-perguntas-estetica",
+          "title": "9.1 Três perguntas antes de um procedimento",
+          "layers": {
+            "lei": "A Anvisa orienta na campanha 'Procedimento Seguro' que todo consumidor e profissional verifique a regularidade prévia.",
+            "pratica": "Antes de oferecer qualquer procedimento, certifique-se: 1) O local está regularizado para aquela atividade? 2) O produto ou equipamento é regularizado na Anvisa? 3) O profissional possui habilitação legal comprovada?",
+            "comoEvitar": "Mantenha alvarás, certificados e notas fiscais de aparelhos e produtos arquivados e à disposição para visualização."
+          },
+          "baseLegal": "Anvisa — Campanha 'Procedimento Seguro'; Lei nº 13.643/2018"
+        },
+        {
+          "id": "estetica-nao-confundir-medicina",
+          "title": "9.2 Não confundir estética com medicina",
+          "layers": {
+            "lei": "A Lei nº 13.643/2018 regulamenta Esteticista e Técnico em Estética e estabelece limites claros para a atuação. Procedimentos e atos privativos de outras profissões não podem ser realizados apenas porque um curso comercial ensina a técnica.",
+            "pratica": "Cursos livres rápidos na internet não conferem amparo legal para procedimentos médicos invasivos.",
+            "comoEvitar": "Atue estritamente dentro da habilitação conferida pelo seu diploma técnico ou graduação, sem invadir competências privativas médicas."
+          },
+          "baseLegal": "Lei nº 13.643/2018; Lei do Ato Médico (Lei nº 12.842/2013)"
+        },
+        {
+          "id": "anvisa-situacao-nota-tecnica",
+          "title": "9.3 Atenção à situação atual das orientações da Anvisa",
+          "layers": {
+            "lei": "Em setembro de 2026, a Anvisa informou a suspensão temporária dos efeitos da Nota Técnica nº 2/2024/SEI/GGTES/DIRE3/Anvisa durante reavaliação. A suspensão não significa que as normas sanitárias tenham deixado de existir.",
+            "pratica": "O site não deve tratar essa Nota Técnica como se fosse uma norma federal atualmente vigente; deve priorizar a legislação aplicável e a orientação da Vigilância Sanitária local.",
+            "comoEvitar": "Consulte as normas municipais e estaduais vigentes e os conselhos de classe da sua formação profissional."
+          },
+          "baseLegal": "Anvisa — Notícia de 23/09/2026 sobre suspensão da Nota Técnica de estética"
+        },
+        {
+          "id": "reacoes-acidentes",
+          "title": "9.4 Reações e acidentes",
+          "layers": {
+            "lei": "O dever de socorro e proteção do consumidor é imediato. A profissional não deve emitir diagnósticos médicos nem prescrever medicamentos privativos.",
+            "pratica": "Se uma cliente apresentar dor intensa, queimadura, sangramento ou reação preocupante, a prioridade absoluta é a segurança e o encaminhamento ao serviço de saúde.",
+            "comoEvitar": "Não faça acordos improvisados sem compreender o caso. Registre objetivamente o que ocorreu, produto utilizado, lote, horário e medidas tomadas, respeitando a privacidade dos dados."
+          },
+          "baseLegal": "CDC, art. 14; Código Civil"
+        }
+      ]
+    },
+    {
+      "id": "roupas-artesanato",
+      "category": "Produtos & Confecção",
+      "badge": "Varejo & Moda",
+      "icon": "shopping-bag",
+      "title": "10. Roupas, Artesanato e Produtos",
+      "summary": "Prazos de vício do CDC, política de troca por gosto/tamanho e regras para produtos personalizados.",
+      "cards": [
+        {
+          "id": "produto-defeito-vicio",
+          "title": "10.1 Produto com defeito ou vício",
+          "layers": {
+            "lei": "O CDC (arts. 18 a 26) prevê regras específicas para vícios aparentes e ocultos em produtos (30 dias para bens não duráveis e 90 dias para duráveis). O fornecedor deve observar os prazos e mecanismos legais de solução.",
+            "pratica": "Avisos como 'não aceitamos trocas de produtos em liquidação' não anulam a obrigação legal de consertar ou trocar caso o item tenha vício de fabricação.",
+            "comoEvitar": "Estruture uma política clara de garantia conforme a lei: oportunidade de conserto em até 30 dias ou substituição/restituição se não sanado."
+          },
+          "baseLegal": "CDC, arts. 18 a 26"
+        },
+        {
+          "id": "troca-gosto-tamanho",
+          "title": "10.2 Troca por gosto ou tamanho",
+          "layers": {
+            "lei": "Nas compras feitas na loja física, a troca por mera preferência (cor ou tamanho que não serviu, sem defeito) depende da política comercial da loja, salvo direito legal específico.",
+            "pratica": "Se você promete na etiqueta ou no perfil que troca peças sem uso em até 15 dias, essa oferta passa a ser vinculante e obrigatória.",
+            "comoEvitar": "Deixe expressas na etiqueta e no comprovante as suas regras de troca: prazo, necessidade de etiqueta afixada, estado da peça e condições."
+          },
+          "baseLegal": "CDC, arts. 30 e 31"
+        },
+        {
+          "id": "produto-personalizado",
+          "title": "10.3 Produto personalizado sob medida",
+          "layers": {
+            "lei": "Contratos de produção personalizada regem-se pela conformidade estrita com o projeto acordado previamente com o comprador.",
+            "pratica": "Cliente que aprovou a arte digital do bordado ou convite não pode exigir reembolso total após a confecção completa ter sido concluída fielmente ao aprovado.",
+            "comoEvitar": "Explique antecipadamente e por escrito como funcionará a aprovação de arte, medidas, cor, material, prazo e alterações. Guarde a confirmação por escrito do cliente."
+          },
+          "baseLegal": "Código Civil, arts. 421 e 422; CDC"
+        }
+      ]
+    },
+    {
+      "id": "prestadoras-servicos",
+      "category": "Prestação de Serviços",
+      "badge": "Escopo & Termos",
+      "icon": "briefcase",
+      "title": "11. Prestadoras de Serviços",
+      "summary": "Diretrizes práticas para fotógrafas, designers, social media, costureiras e professoras particulares.",
+      "cards": [
+        {
+          "id": "fotografia-servicos",
+          "title": "11.1 Fotografia",
+          "layers": {
+            "lei": "A relação envolve prestação de serviços (Código Civil) e cessão de direitos autorais patrimoniais (Lei nº 9.610/1998).",
+            "pratica": "Sem alinhamento, a cliente exige arquivos brutos sem edição ou quer remarcar datas sem pagar os custos do estúdio reservado.",
+            "comoEvitar": "Defina quantidade de fotos entregues; prazo de entrega; se haverá tratamento/edição; o que acontece em caso de remarcação; registre autorização de imagem e defina licenças caso haja finalidade comercial."
+          },
+          "baseLegal": "Lei de Direitos Autorais (Lei nº 9.610/1998); Código Civil"
+        },
+        {
+          "id": "social-media-design",
+          "title": "11.2 Social media e Designers",
+          "layers": {
+            "lei": "A obrigação deve conter delimitação de escopo, prazos de envio de material e limites de responsabilidade contratual.",
+            "pratica": "O cliente atrasa o envio de dados e depois culpa a profissional pelo atraso do cronograma, além de pedir alterações intermináveis.",
+            "comoEvitar": "Defina quantidade mensal de posts; quem fornece fotos e informações; prazo de aprovação; número máximo de revisões por arte; e regras de segurança para senhas."
+          },
+          "baseLegal": "Código Civil, arts. 594 a 609"
+        },
+        {
+          "id": "costura-encomendas",
+          "title": "11.3 Costura e encomendas",
+          "layers": {
+            "lei": "A confecção de roupas sob medida envolve obrigação de resultado conforme medidas e modelo aprovados.",
+            "pratica": "Ajustes decorrentes de mudança de modelo de última hora geram custos extras que a cliente não quer pagar se não foram pactuados antes.",
+            "comoEvitar": "Registre medidas exatas na ficha; confirme tecido e cor; defina prazo; registre aprovação do modelo e explique as condições de prova e ajustes incluídos."
+          },
+          "baseLegal": "Código Civil, arts. 610 a 626"
+        }
+      ]
+    },
+    {
+      "id": "publicidade-promocoes",
+      "category": "Marketing & Redes",
+      "badge": "Comunicação",
+      "icon": "megaphone",
+      "title": "12. Publicidade, Promoções e Influência",
+      "summary": "Promoções sem omissões, antes e depois sem distorções e o uso legítimo de depoimentos reais.",
+      "cards": [
+        {
+          "id": "promocao-informacao",
+          "title": "12.1 Promoção não é desculpa para informação incompleta",
+          "layers": {
+            "lei": "O CDC veda aumentos prévios de preço para simular descontos falsos ('metade do dobro') ou ofertas enganosas.",
+            "pratica": "Anunciar 'tudo com 50% de desconto' e na hora dizer que só se aplica a 2 itens de ponta de estoque gera infração perante o Procon.",
+            "comoEvitar": "Se anunciar '50% OFF', informe claramente o valor de referência e condições relevantes. Evite descontos artificiais e anuncie produtos em quantidade razoável."
+          },
+          "baseLegal": "CDC, arts. 30, 31, 36 e 37"
+        },
+        {
+          "id": "antes-e-depois-guia",
+          "title": "12.2 Fotos de Antes e Depois",
+          "layers": {
+            "lei": "A imagem deve retratar a realidade do procedimento, sem manipulação digital que crie expectativa irreal no consumidor.",
+            "pratica": "Uso de filtros suavizadores, iluminação distorcida ou Photoshop em fotos de antes/depois mascara a realidade e pode configurar publicidade enganosa.",
+            "comoEvitar": "Não altere a imagem de forma que crie impressão falsa do resultado. Se a foto for de cliente identificável, colha autorização de imagem específica."
+          },
+          "baseLegal": "CDC, art. 37; Código Civil, art. 20"
+        },
+        {
+          "id": "depoimentos-reais",
+          "title": "12.3 Depoimentos de clientes",
+          "layers": {
+            "lei": "Depoimentos forjados ou fictícios violam o dever de transparência e veracidade da publicidade comercial.",
+            "pratica": "Criar prints fakes de conversas elogiando seu próprio produto quebra a confiança e fere o CDC.",
+            "comoEvitar": "Não invente depoimentos. Ao utilizar feedback real recebido, preserve a autenticidade e avalie a necessidade de ocultar foto ou telefone para proteger a privacidade da cliente."
+          },
+          "baseLegal": "CDC, arts. 36 e 37; LGPD"
+        }
+      ]
+    },
+    {
+      "id": "pix-golpes-seguranca",
+      "category": "Segurança Digital",
+      "badge": "Prevenção a Golpes",
+      "icon": "lock",
+      "title": "13. PIX, Golpes e Segurança Digital",
+      "summary": "Prevenção contra prints falsos de Pix, autenticação em dois fatores e o que fazer se sua conta do Instagram for invadida.",
+      "cards": [
+        {
+          "id": "cuidados-pix-golpes",
+          "title": "13.1 PIX, golpes e comprovantes",
+          "layers": {
+            "lei": "A verificação do pagamento legítimo é diligência básica do comerciante antes da tradição (entrega) do bem.",
+            "pratica": "Golpistas enviam comprovantes falsificados com tipografia adulterada ou usam chave agendada para cancelar logo após pegar a mercadoria.",
+            "comoEvitar": "Confirme o pagamento no aplicativo bancário; não entregue produto apenas com print; desconfie de comprovantes com data ou valor divergente; nunca compartilhe códigos SMS; use autenticação em dois fatores; e separe conta pessoal da conta do negócio."
+          },
+          "baseLegal": "Diretrizes de Segurança do Banco Central e Boas Práticas Digitais"
+        },
+        {
+          "id": "instagram-invadido",
+          "title": "13.2 Conta do Instagram invadida",
+          "layers": {
+            "lei": "O titular da conta deve agir prontamente para mitigar danos e fraudes aplicadas contra seus seguidores e clientes.",
+            "pratica": "Criminosos usam a conta invadida para divulgar falsos investimentos (tabela do Pix) ou vender eletrodomésticos inexistentes em seu nome.",
+            "comoEvitar": "Mantenha e-mail e telefone de recuperação atualizados, use aplicativo autenticador (2FA) e evite compartilhar códigos recebidos. Se ocorrer invasão, registre evidências e procure imediatamente os canais oficiais da plataforma."
+          },
+          "baseLegal": "Marco Civil da Internet (Lei nº 12.965/2014); Código Penal"
+        }
+      ]
+    },
+    {
+      "id": "reclamacoes-conduta",
+      "category": "Gestão de Conflitos",
+      "badge": "Pós-Venda",
+      "icon": "user-check",
+      "title": "14. Reclamações: O Que Fazer",
+      "summary": "Postura profissional ao receber reclamações, procedimentos quando há ameaça de Procon/processo e casos com danos físicos.",
+      "cards": [
+        {
+          "id": "cliente-reclamou-postura",
+          "title": "14.1 Cliente reclamou",
+          "layers": {
+            "lei": "O CDC assegura canais eficazes de resolução de vícios e atendimento ao consumidor de boa-fé.",
+            "pratica": "Responder cliente insatisfeita com ironia ou grosseria no WhatsApp transforma um problema simples de produto em um litígio desgastante.",
+            "comoEvitar": "Não responda com agressividade; leia atentamente o que foi reclamado; confira o pedido, anúncio e comprovantes; identifique se existe obrigação legal; ofereça solução quando houver responsabilidade do negócio; e registre por escrito a solução acordada."
+          },
+          "baseLegal": "CDC, arts. 6º, 18 e 20"
+        },
+        {
+          "id": "ameaca-procon-processo",
+          "title": "14.2 Cliente ameaça Procon ou processo",
+          "layers": {
+            "lei": "O acesso aos órgãos de defesa do consumidor e ao Poder Judiciário é direito constitucional. Nenhuma das partes deve agir com coação.",
+            "pratica": "O medo de processo pode levar a empreendedora a apagar conversas, o que destrói a própria prova da defesa.",
+            "comoEvitar": "Não apague documentos e não ameace o cliente. Organize todos os registros da conversa, nota de materiais e, se houver notificação formal ou risco jurídico relevante, procure orientação profissional especializada."
+          },
+          "baseLegal": "CF/88, art. 5º, XXXV; CDC"
+        },
+        {
+          "id": "produto-causou-dano",
+          "title": "14.3 Produto ou serviço causou dano",
+          "layers": {
+            "lei": "Situações que envolvam lesão, intoxicação, queimadura, reação grave ou prejuízo patrimonial caracterizam fato do produto ou serviço (CDC, arts. 12 a 14).",
+            "pratica": "Acidentes exigem apoio e empatia imediata, mas não se deve assumir culpas indevidas por escrito sem conhecimento dos fatos.",
+            "comoEvitar": "Situações com danos merecem atenção imediata. Não faça acordo improvisado sem compreender o caso e encaminhe com prioridade a assistência adequada."
+          },
+          "baseLegal": "CDC, arts. 12, 14 e 17"
+        }
+      ]
+    }
+  ],
+  "checklists": [
+    {
+      "id": "chk-anuncio",
+      "title": "15. Checklist Geral — Antes de Publicar Qualquer Anúncio",
+      "desc": "Conferência rápida do documento base antes de postar no feed, stories ou WhatsApp.",
+      "items": [
+        "O preço está correto e visível?",
+        "A descrição é verdadeira?",
+        "Tenho condições de cumprir o prazo?",
+        "Tenho estoque/capacidade?",
+        "Informei características importantes?",
+        "Informei riscos relevantes?",
+        "A promoção tem regras claras?",
+        "A foto é verdadeira ou está claramente identificada como ilustrativa?",
+        "Tenho autorização para usar imagem de terceiros?",
+        "Estou coletando apenas dados necessários?"
+      ]
+    },
+    {
+      "id": "chk-comida",
+      "title": "16. Checklist — Quem Vende Comida",
+      "desc": "Boas práticas sanitárias e de manipulação para alimentos e confeitarias.",
+      "items": [
+        "Consultei a Vigilância Sanitária local?",
+        "Minha estrutura atende às exigências aplicáveis?",
+        "Tenho rotina de higiene?",
+        "Evito contaminação cruzada?",
+        "Sei como conservar cada alimento?",
+        "Tenho controle de validade?",
+        "Conheço os ingredientes?",
+        "Sei identificar alergênicos relevantes?",
+        "Minha embalagem é adequada?",
+        "Meu transporte preserva o alimento?",
+        "As informações fornecidas ao consumidor são verdadeiras?"
+      ]
+    },
+    {
+      "id": "chk-beleza",
+      "title": "17. Checklist — Profissional da Beleza",
+      "desc": "Biossegurança, normas sanitárias e conformidade para serviços de beleza.",
+      "items": [
+        "Consultei a Vigilância Sanitária local?",
+        "Tenho regularização/licença exigida?",
+        "Uso produtos regularizados?",
+        "Materiais reutilizáveis são processados conforme a norma local?",
+        "Não reutilizo descartáveis?",
+        "Tenho cuidado com perfurocortantes?",
+        "Tenho EPIs adequados?",
+        "Explico o procedimento e cuidados?",
+        "Tenho cuidado com reações?",
+        "Tenho autorização adequada para publicar fotos?",
+        "Protejo dados e imagens das clientes?"
+      ]
+    },
+    {
+      "id": "chk-fotos",
+      "title": "18. Checklist — Fotos e Imagem",
+      "desc": "Conformidade com a LGPD e direitos da personalidade antes de postar fotos.",
+      "items": [
+        "A pessoa sabe que a foto será publicada?",
+        "A finalidade da publicação foi explicada?",
+        "A autorização é adequada à finalidade?",
+        "A foto mostra outras pessoas sem autorização?",
+        "Há crianças/adolescentes?",
+        "Estou expondo nome, telefone ou outro dado desnecessário?",
+        "Sei onde a foto será publicada?",
+        "Consigo comprovar a autorização quando necessário?"
+      ]
+    },
+    {
+      "id": "chk-contrato",
+      "title": "19. Checklist — Contrato",
+      "desc": "Estrutura essencial para acordos escritos e termos de prestação de serviço.",
+      "items": [
+        "Identifiquei as partes?",
+        "Descrevi o serviço/produto?",
+        "Defini preço?",
+        "Defini prazo?",
+        "Defini forma de pagamento?",
+        "Defini o que acontece em caso de alteração?",
+        "Defini responsabilidades?",
+        "Verifiquei regras de cancelamento?",
+        "Evitei cláusulas abusivas?",
+        "Entreguei uma cópia ao cliente?"
+      ]
+    }
+  ],
+  "faqs": [
+    {
+      "q": "Minha cliente quer que eu publique o antes e depois.",
+      "a": "Peça autorização adequada para uso da imagem e explique a finalidade. Não trate a autorização para fotografar como autorização automática para publicidade."
+    },
+    {
+      "q": "A cliente deixou eu tirar a foto, mas depois pediu para apagar.",
+      "a": "Analise a base jurídica e a autorização. Se o tratamento estiver baseado em consentimento, a LGPD prevê sua revogação por manifestação expressa, observadas as hipóteses legais."
+    },
+    {
+      "q": "Vendo bolo pelo Instagram e o cliente quer cancelar.",
+      "a": "Verifique como a contratação ocorreu e se o art. 49 do CDC é aplicável. Não use uma regra automática para todos os casos."
+    },
+    {
+      "q": "O cliente mandou um comprovante de PIX.",
+      "a": "Confirme a entrada efetiva do dinheiro no banco antes de entregar o produto."
+    },
+    {
+      "q": "Faço unha. Posso reutilizar o alicate depois de passar álcool?",
+      "a": "Não trate álcool como sinônimo automático de esterilização. A Lei 12.592/2012 exige observância das normas sanitárias e esterilização dos materiais e utensílios; o procedimento concreto deve seguir as regras locais."
+    },
+    {
+      "q": "Faço progressiva. Posso colocar formol para durar mais?",
+      "a": "Não. A Anvisa informa que a adição de formol para obter alisamento não é permitida."
+    },
+    {
+      "q": "Minha cliente teve uma reação depois da estética.",
+      "a": "Priorize segurança, interrompa o procedimento quando necessário, registre o ocorrido e encaminhe para atendimento de saúde quando houver sinais relevantes. Não faça diagnóstico."
+    },
+    {
+      "q": "Meu cliente não pagou. Posso postar a foto dele no Instagram?",
+      "a": "Não use exposição pública como método de cobrança. O CDC proíbe exposição do consumidor inadimplente ao ridículo e constrangimento ou ameaça."
+    },
+    {
+      "q": "Posso guardar o CPF de todos os clientes para sempre?",
+      "a": "Não automaticamente. A LGPD exige finalidade, necessidade e base legal adequada; retenção indefinida sem necessidade pode ser incompatível com esses princípios."
+    }
+  ],
+  "whenToSeekProfessional": [
+    "Processo judicial ou notificação formal",
+    "Acidente, lesão, queimadura ou intoxicação",
+    "Problema sanitário ou autuação da fiscalização",
+    "Contrato de alto valor ou alta complexidade",
+    "Dúvida sobre vínculo trabalhista ou parceria em salão",
+    "Questões tributárias específicas",
+    "Tratamento de grande volume de dados pessoais",
+    "Procedimento estético de maior risco",
+    "Reclamação que envolva pedido relevante de indenização"
+  ],
+  "officialSources": [
+    {
+      "title": "Constituição Federal de 1988",
+      "desc": "Art. 5º, X — Proteção da intimidade, vida privada, honra e imagem.",
+      "url": "https://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+    },
+    {
+      "title": "Código de Defesa do Consumidor",
+      "desc": "Lei nº 8.078/1990 — Direitos básicos, publicidade, oferta, contratos e responsabilidade civil.",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm"
+    },
+    {
+      "title": "Decreto do Comércio Eletrônico",
+      "desc": "Decreto nº 7.962/2013 — Informações prévias claras, atendimento e direito de arrependimento.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/decreto/d7962.htm"
+    },
+    {
+      "title": "Código Civil Brasileiro",
+      "desc": "Lei nº 10.406/2002 — Contratos, boa-fé e direitos da personalidade.",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/2002/l10406compilada.htm"
+    },
+    {
+      "title": "Lei do Salão-Parceiro",
+      "desc": "Lei nº 12.592/2012 — Atividades de beleza, exigências de esterilização e parceria formal.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12592.htm"
+    },
+    {
+      "title": "Regulamentação da Estética",
+      "desc": "Lei nº 13.643/2018 — Profissões de Esteticista e Técnico em Estética e limites de atuação.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13643.htm"
+    },
+    {
+      "title": "Lei Geral de Proteção de Dados (LGPD)",
+      "desc": "Lei nº 13.709/2018 — Tratamento de dados pessoais, consentimento e revogação.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm"
+    },
+    {
+      "title": "Estatuto da Criança e do Adolescente (ECA)",
+      "desc": "Lei nº 8.069/1990 — Proteção integral da imagem e dignidade de menores (art. 17).",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l8069.htm"
+    },
+    {
+      "title": "Anvisa — RDC nº 216/2004",
+      "desc": "Regulamento Técnico de Boas Práticas para Serviços de Alimentação.",
+      "url": "https://www.gov.br/anvisa/pt-br"
+    },
+    {
+      "title": "Anvisa — RDC nº 727/2022",
+      "desc": "Rotulagem de alimentos embalados e declaração de substâncias alergênicas.",
+      "url": "https://www.gov.br/anvisa/pt-br"
+    },
+    {
+      "title": "Anvisa — RDC nº 429/2020 e IN nº 75/2020",
+      "desc": "Rotulagem nutricional de alimentos embalados.",
+      "url": "https://www.gov.br/anvisa/pt-br"
+    }
+  ]
+}
