@@ -878,18 +878,38 @@
     },
     {
       "title": "Anvisa — RDC nº 216/2004",
-      "desc": "Regulamento Técnico de Boas Práticas para Serviços de Alimentação.",
-      "url": "https://www.gov.br/anvisa/pt-br"
+      "desc": "Regulamento Técnico de Boas Práticas para Serviços de Alimentação (texto integral).",
+      "url": "https://bvsms.saude.gov.br/bvs/saudelegis/anvisa/2004/res0216_15_09_2004.html"
     },
     {
       "title": "Anvisa — RDC nº 727/2022",
-      "desc": "Rotulagem de alimentos embalados e declaração de substâncias alergênicas.",
-      "url": "https://www.gov.br/anvisa/pt-br"
+      "desc": "Rotulagem de alimentos embalados e declaração obrigatória de substâncias alergênicas.",
+      "url": "https://www.gov.br/anvisa/pt-br/assuntos/alimentos/rotulagem"
     },
     {
       "title": "Anvisa — RDC nº 429/2020 e IN nº 75/2020",
-      "desc": "Rotulagem nutricional de alimentos embalados.",
-      "url": "https://www.gov.br/anvisa/pt-br"
+      "desc": "Nova rotulagem nutricional (tabela padronizada e rotulagem frontal com lupa).",
+      "url": "https://www.gov.br/anvisa/pt-br/assuntos/alimentos/rotulagem"
+    },
+    {
+      "title": "Anvisa — Serviços de Embelezamento",
+      "desc": "Orientações sanitárias oficiais para salões de beleza, esterilização e produtos cosméticos.",
+      "url": "https://www.gov.br/anvisa/pt-br/acessoainformacao/perguntasfrequentes/servicos-de-saude/servicos-de-embelezamento"
+    },
+    {
+      "title": "Lei de Direitos Autorais",
+      "desc": "Lei nº 9.610/1998 — Proteção de fotografias, criações visuais, artesanato e cessão patrimonial.",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/l9610.htm"
+    },
+    {
+      "title": "Marco Civil da Internet",
+      "desc": "Lei nº 12.965/2014 — Direitos e deveres online, guarda de registros e segurança digital.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm"
+    },
+    {
+      "title": "Lei do Ato Médico",
+      "desc": "Lei nº 12.842/2013 — Delimitação entre procedimentos estéticos e atos privativos de médicos.",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2013/lei/l12842.htm"
     }
   ]
 }

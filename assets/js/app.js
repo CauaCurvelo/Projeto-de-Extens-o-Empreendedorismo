@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 async function loadContent() {
   try {
-    const response = await fetch('assets/data/content.json');
+    const response = await fetch('assets/data/content.json?v=2.9');
     if (!response.ok) throw new Error('Não foi possível carregar o arquivo content.json');
     appData = await response.json();
 
