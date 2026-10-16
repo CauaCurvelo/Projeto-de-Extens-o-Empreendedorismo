@@ -103,6 +103,10 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
+  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
@@ -113,6 +117,9 @@ body {
   -webkit-font-smoothing: antialiased;
   position: relative;
   overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100vw;
+  width: 100%;
 }
 
 /* Luzes Azuis Orgânicas — Estilo Lava Lamp (Gentil, Suave, Flutuando pela Tela Toda) */
@@ -864,9 +871,10 @@ a:hover {
 
 @media (max-width: 768px) {
   .guide-controls {
-    padding: 1rem;
+    padding: 0.85rem;
     margin-bottom: 1.5rem;
     border-radius: var(--radius-md);
+    gap: 0.75rem;
   }
 
   .tabs-scroll-btn {
@@ -876,6 +884,42 @@ a:hover {
   .tab-btn {
     font-size: 0.8rem;
     padding: 0.4rem 0.85rem;
+  }
+
+  /* Sugestões de Busca compactas e em trilha deslizável horizontal no celular */
+  .search-suggestions {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.45rem;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .suggestions-label {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+  }
+
+  .suggestion-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.2rem 0;
+    width: 100%;
+  }
+
+  .suggestion-chips::-webkit-scrollbar {
+    display: none;
+  }
+
+  .suggestion-chip {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0.25rem 0.65rem;
+    font-size: 0.72rem;
   }
 }
 
