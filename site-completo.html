@@ -15,10 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- Favicon SVG Moderno (Escudo de Proteção + Negócio) -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231d4ed8'/><path d='M16 6 L24 10 V17 C24 22 16 26 16 26 C16 26 8 22 8 17 V10 Z' fill='%23ffffff' opacity='0.25'/><path d='M16 8.5 L22 11.5 V16.5 C22 20.5 16 23.5 16 23.5 C16 23.5 10 20.5 10 16.5 V11.5 Z' fill='%23ffffff'/><circle cx='16' cy='16' r='2.5' fill='%23ea580c'/></svg>">
+  <!-- Favicon SVG: Balança da Justiça / Direito (Sem fundo, escala cheia) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z'/><path d='M7 21h10'/><path d='M12 3v18'/><path d='M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2'/></svg>">
 
-  <!-- Estilos da Aplicação -->
+  
   <style>
 /* ==========================================================================
    Empreendedorismo em Foco — Design System & Layout Principal
@@ -1693,7 +1693,7 @@ a:hover {
     <!-- ========================================================================
          Seção de Checklists Interativos
          ======================================================================== -->
-    <section class="section" id="checklists" style="background-color: #f8fafc; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <section class="section section-alternate" id="checklists">
       <div class="container">
         <div class="section-header">
           <span class="section-tag">Ferramentas de Conferência</span>
@@ -1704,7 +1704,521 @@ a:hover {
         </div>
 
         <div class="checklists-grid" id="checklists-container">
-          <!-- Renderizado via checklist.js -->
+          <div class="checklist-card" id="card-chk-anuncio">
+            <div class="checklist-header">
+              <h3>Checklist Geral — Antes de Publicar Qualquer Anúncio</h3>
+              <p>Conferência rápida do documento base antes de postar no feed, stories ou WhatsApp.</p>
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-info">
+                <span>Progresso</span>
+                <span id="percent-chk-anuncio">0 de 10 (0%)</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-chk-anuncio" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <ul class="checklist-items" id="items-chk-anuncio">
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="0" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>O preço está correto e visível?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="1" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>A descrição é verdadeira?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="2" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho condições de cumprir o prazo?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="3" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho estoque/capacidade?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="4" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Informei características importantes?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="5" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Informei riscos relevantes?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="6" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>A promoção tem regras claras?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="7" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>A foto é verdadeira ou está claramente identificada como ilustrativa?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="8" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho autorização para usar imagem de terceiros?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-anuncio" data-idx="9" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Estou coletando apenas dados necessários?</span>
+              </li>
+            </ul>
+
+            <div class="checklist-actions">
+              <button class="btn-reset-checklist" data-reset-id="chk-anuncio">Limpar checklist</button>
+            </div>
+          </div>
+          <div class="checklist-card" id="card-chk-comida">
+            <div class="checklist-header">
+              <h3>Checklist — Quem Vende Comida</h3>
+              <p>Boas práticas sanitárias e de manipulação para alimentos e confeitarias.</p>
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-info">
+                <span>Progresso</span>
+                <span id="percent-chk-comida">0 de 11 (0%)</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-chk-comida" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <ul class="checklist-items" id="items-chk-comida">
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="0" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Consultei a Vigilância Sanitária local?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="1" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Minha estrutura atende às exigências aplicáveis?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="2" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho rotina de higiene?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="3" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Evito contaminação cruzada?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="4" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Sei como conservar cada alimento?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="5" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho controle de validade?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="6" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Conheço os ingredientes?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="7" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Sei identificar alergênicos relevantes?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="8" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Minha embalagem é adequada?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="9" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Meu transporte preserva o alimento?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-comida" data-idx="10" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>As informações fornecidas ao consumidor são verdadeiras?</span>
+              </li>
+            </ul>
+
+            <div class="checklist-actions">
+              <button class="btn-reset-checklist" data-reset-id="chk-comida">Limpar checklist</button>
+            </div>
+          </div>
+          <div class="checklist-card" id="card-chk-beleza">
+            <div class="checklist-header">
+              <h3>Checklist — Profissional da Beleza</h3>
+              <p>Biossegurança, normas sanitárias e conformidade para serviços de beleza.</p>
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-info">
+                <span>Progresso</span>
+                <span id="percent-chk-beleza">0 de 11 (0%)</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-chk-beleza" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <ul class="checklist-items" id="items-chk-beleza">
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="0" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Consultei a Vigilância Sanitária local?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="1" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho regularização/licença exigida?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="2" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Uso produtos regularizados?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="3" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Materiais reutilizáveis são processados conforme a norma local?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="4" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Não reutilizo descartáveis?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="5" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho cuidado com perfurocortantes?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="6" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho EPIs adequados?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="7" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Explico o procedimento e cuidados?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="8" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho cuidado com reações?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="9" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Tenho autorização adequada para publicar fotos?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-beleza" data-idx="10" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Protejo dados e imagens das clientes?</span>
+              </li>
+            </ul>
+
+            <div class="checklist-actions">
+              <button class="btn-reset-checklist" data-reset-id="chk-beleza">Limpar checklist</button>
+            </div>
+          </div>
+          <div class="checklist-card" id="card-chk-fotos">
+            <div class="checklist-header">
+              <h3>Checklist — Fotos e Imagem</h3>
+              <p>Conformidade com a LGPD e direitos da personalidade antes de postar fotos.</p>
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-info">
+                <span>Progresso</span>
+                <span id="percent-chk-fotos">0 de 8 (0%)</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-chk-fotos" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <ul class="checklist-items" id="items-chk-fotos">
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="0" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>A pessoa sabe que a foto será publicada?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="1" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>A finalidade da publicação foi explicada?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="2" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>A autorização é adequada à finalidade?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="3" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>A foto mostra outras pessoas sem autorização?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="4" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Há crianças/adolescentes?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="5" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Estou expondo nome, telefone ou outro dado desnecessário?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="6" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Sei onde a foto será publicada?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-fotos" data-idx="7" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Consigo comprovar a autorização quando necessário?</span>
+              </li>
+            </ul>
+
+            <div class="checklist-actions">
+              <button class="btn-reset-checklist" data-reset-id="chk-fotos">Limpar checklist</button>
+            </div>
+          </div>
+          <div class="checklist-card" id="card-chk-contrato">
+            <div class="checklist-header">
+              <h3>Checklist — Contrato</h3>
+              <p>Estrutura essencial para acordos escritos e termos de prestação de serviço.</p>
+            </div>
+
+            <div class="progress-container">
+              <div class="progress-info">
+                <span>Progresso</span>
+                <span id="percent-chk-contrato">0 de 10 (0%)</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-chk-contrato" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <ul class="checklist-items" id="items-chk-contrato">
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="0" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Identifiquei as partes?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="1" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Descrevi o serviço/produto?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="2" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Defini preço?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="3" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Defini prazo?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="4" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Defini forma de pagamento?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="5" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Defini o que acontece em caso de alteração?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="6" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Defini responsabilidades?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="7" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Verifiquei regras de cancelamento?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="8" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Evitei cláusulas abusivas?</span>
+              </li>
+              <li class="checklist-item" data-chk-id="chk-contrato" data-idx="9" role="checkbox" aria-checked="false" tabindex="0">
+                <div class="custom-checkbox">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <span>Entreguei uma cópia ao cliente?</span>
+              </li>
+            </ul>
+
+            <div class="checklist-actions">
+              <button class="btn-reset-checklist" data-reset-id="chk-contrato">Limpar checklist</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>

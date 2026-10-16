@@ -23,6 +23,102 @@ const ChecklistManager = {
     }
   },
 
+  initStatic() {
+    const container = document.getElementById('checklists-container');
+    if (!container) return;
+    
+    // Hidrata estado salvo no localStorage para os itens já em tela
+    const savedState = this.getState();
+    Object.keys(savedState).forEach(chkId => {
+      const items = savedState[chkId];
+      if (Array.isArray(items)) {
+        items.forEach((checked, idx) => {
+          if (checked) {
+            const itemEl = container.querySelector(`.checklist-item[data-chk-id="${chkId}"][data-idx="${idx}"]`);
+            if (itemEl) {
+              itemEl.classList.add('checked');
+              itemEl.setAttribute('aria-checked', 'true');
+            }
+          }
+        });
+      }
+    });
+
+    // Atualiza contadores
+    container.querySelectorAll('.checklist-card').forEach(card => {
+      const chkId = card.id.replace('card-', '');
+      const items = card.querySelectorAll('.checklist-item');
+      const checked = card.querySelectorAll('.checklist-item.checked');
+      const total = items.length;
+      const count = checked.length;
+      const percent = total > 0 ? Math.round((count / total) * 100) : 0;
+      
+      const percentEl = document.getElementById(`percent-${chkId}`);
+      const barEl = document.getElementById(`bar-${chkId}`);
+      if (percentEl) percentEl.textContent = `${count} de ${total} (${percent}%)`;
+      if (barEl) barEl.style.width = `${percent}%`;
+    });
+
+    this.bindStaticEvents(container);
+  },
+
+  bindStaticEvents(container) {
+    if (container._bound) return;
+    container._bound = true;
+
+    container.addEventListener('click', (e) => {
+      const itemEl = e.target.closest('.checklist-item');
+      if (itemEl) {
+        const chkId = itemEl.dataset.chkId;
+        const idx = parseInt(itemEl.dataset.idx, 10);
+        const card = itemEl.closest('.checklist-card');
+        const state = this.getState();
+        if (!state[chkId]) state[chkId] = [];
+        state[chkId][idx] = !state[chkId][idx];
+        this.saveState(state);
+
+        const isChecked = Boolean(state[chkId][idx]);
+        itemEl.classList.toggle('checked', isChecked);
+        itemEl.setAttribute('aria-checked', isChecked);
+
+        // Atualiza progresso
+        if (card) {
+          const items = card.querySelectorAll('.checklist-item');
+          const checked = card.querySelectorAll('.checklist-item.checked');
+          const total = items.length;
+          const count = checked.length;
+          const percent = Math.round((count / total) * 100);
+          const percentEl = document.getElementById(`percent-${chkId}`);
+          const barEl = document.getElementById(`bar-${chkId}`);
+          if (percentEl) percentEl.textContent = `${count} de ${total} (${percent}%)`;
+          if (barEl) barEl.style.width = `${percent}%`;
+        }
+        return;
+      }
+
+      const resetBtn = e.target.closest('.btn-reset-checklist');
+      if (resetBtn) {
+        const chkId = resetBtn.dataset.resetId;
+        const card = resetBtn.closest('.checklist-card');
+        const state = this.getState();
+        delete state[chkId];
+        this.saveState(state);
+
+        if (card) {
+          card.querySelectorAll('.checklist-item').forEach(el => {
+            el.classList.remove('checked');
+            el.setAttribute('aria-checked', 'false');
+          });
+          const total = card.querySelectorAll('.checklist-item').length;
+          const percentEl = document.getElementById(`percent-${chkId}`);
+          const barEl = document.getElementById(`bar-${chkId}`);
+          if (percentEl) percentEl.textContent = `0 de ${total} (0%)`;
+          if (barEl) barEl.style.width = `0%`;
+        }
+      }
+    });
+  },
+
   renderChecklists(checklists, containerId) {
     const container = document.getElementById(containerId);
     if (!container) return;
@@ -169,3 +265,12 @@ const ChecklistManager = {
     if (barEl) barEl.style.width = `${percent}%`;
   }
 };
+
+window.ChecklistManager = ChecklistManager;
+
+// Auto-inicializa checklists já presentes no HTML estático
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => ChecklistManager.initStatic());
+} else {
+  ChecklistManager.initStatic();
+}
