@@ -328,11 +328,15 @@
   transform: translateY(0) scale(0.95);
 }
 
+.container.checklists-container-full {
+  max-width: 1360px;
+  padding: 0 1rem;
+}
+
 /* Contêiner da Trilha do Carrossel */
 .checklists-carousel-wrapper {
   position: relative;
   width: 100%;
-  max-width: 1240px;
   margin: 0 auto;
   display: flex;
   align-items: center;
